@@ -19,5 +19,14 @@ const pageTitle = "Blog";
     </header>
 
     <slot />
+    <div class="tags">
+      {
+        frontmatter?.tags.map((tag) => (
+          <p class="tag">
+            <a href={`/tags/${tag}`}>{tag}</a>
+          </p>
+        ))
+      }
+    </div>
   </article>
 </Layout>
