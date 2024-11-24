@@ -1,17 +1,83 @@
 ---
-
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
 ---
 
 <nav>
   <ul class="nav-links">
-    <li><a href="/">Home</a></li>
+    {
+      currentPath !== "" && (
+        <li class={currentPath === "" ? "active" : ""}>
+          <a href="/">Home</a>
+        </li>
+      )
+    }
 
-    <li><a href="/about/">About</a></li>
+    <li class={currentPath === "about/" ? "active" : ""}>
+      <a href="/about/">About</a>
+    </li>
 
-    <li><a href="/blog/">Blog</a></li>
+    <li class={currentPath === "blog/" ? "active" : ""}>
+      <a href="/blog/">Blog</a>
+    </li>
 
-    <li><a href="/projects/">Projects</a></li>
+    <li class={currentPath === "projects/" ? "active" : ""}>
+      <a href="/projects/">Projects</a>
+    </li>
   </ul>
 </nav>
 
-<style></style>
+<style>
+  nav {
+  }
+
+  ul {
+    display: flex;
+  }
+  li {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin: 0;
+    list-style: none;
+    padding: 0 2em;
+  }
+  li:first-child {
+    border-radius: 2em 0 0 2em;
+    border-inline-start: 1px solid black;
+  }
+  li:last-child {
+    border-radius: 0 2em 2em 0;
+    border-inline-end: 1px solid black;
+  }
+
+  .active {
+    margin: 0 5em 0 5em;
+    border-radius: 2em 2em 2em 2em;
+    border: 1px solid black;
+  }
+
+  li:has(+ .active) {
+    border-radius: 0 2em 2em 0;
+    border-inline-end: 1px solid black;
+  }
+
+  .active + li {
+    border-radius: 2em 0 0 2em;
+    border-inline-end: 1px solid black;
+  }
+  .active + li:first-child {
+    border-radius: 2em;
+    border-inline-end: 1px solid black;
+  }
+  .active + li:last-child {
+    border-radius: 2em;
+    border-inline-end: 1px solid black;
+  }
+
+  li:first-child.active {
+    border-radius: 2em;
+  }
+  li:last-child.active {
+    border-radius: 2em;
+  }
+</style>
