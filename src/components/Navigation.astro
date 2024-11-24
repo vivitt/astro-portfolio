@@ -28,19 +28,20 @@ const currentPath = pathname.slice(1);
 </nav>
 
 <style>
-  nav {
-  }
-
   ul {
     display: flex;
+    align-items: center;
+    justify-content: end;
   }
   li {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     margin: 0;
     list-style: none;
-    padding: 0 2em;
+    padding: 0 0.5em;
   }
+  /* 
+
   li:first-child {
     border-radius: 2em 0 0 2em;
     border-inline-start: 1px solid black;
@@ -79,5 +80,5 @@ const currentPath = pathname.slice(1);
   }
   li:last-child.active {
     border-radius: 2em;
-  }
+  } */
 </style>
