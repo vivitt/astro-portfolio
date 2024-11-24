@@ -33,6 +33,7 @@ const currentPath = pathname.slice(1);
     align-items: center;
     justify-content: end;
   }
+
   li {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
@@ -40,19 +41,30 @@ const currentPath = pathname.slice(1);
     list-style: none;
     padding: 0 0.5em;
   }
-  /* 
 
+  li:hover {
+    background-color: black;
+  }
+
+  a:hover {
+    color: white;
+    background-color: black;
+  }
+  a {
+    padding: 0 0.5em;
+  }
   li:first-child {
     border-radius: 2em 0 0 2em;
     border-inline-start: 1px solid black;
   }
+
   li:last-child {
     border-radius: 0 2em 2em 0;
     border-inline-end: 1px solid black;
   }
 
   .active {
-    margin: 0 5em 0 5em;
+    margin: 0 2em 0 2em;
     border-radius: 2em 2em 2em 2em;
     border: 1px solid black;
   }
@@ -61,24 +73,43 @@ const currentPath = pathname.slice(1);
     border-radius: 0 2em 2em 0;
     border-inline-end: 1px solid black;
   }
-
   .active + li {
     border-radius: 2em 0 0 2em;
-    border-inline-end: 1px solid black;
-  }
-  .active + li:first-child {
-    border-radius: 2em;
-    border-inline-end: 1px solid black;
-  }
-  .active + li:last-child {
-    border-radius: 2em;
-    border-inline-end: 1px solid black;
+    border-inline-start: 1px solid black;
   }
 
-  li:first-child.active {
-    border-radius: 2em;
-  }
+  li:first-child:has(+ .active),
+  .active + li:last-child,
+  li:first-child.active,
   li:last-child.active {
     border-radius: 2em;
-  } */
+  }
+
+  @media screen and (max-width: 600px) {
+    ul {
+      flex-direction: column;
+      align-items: end;
+      justify-content: end;
+    }
+    li:hover {
+      background-color: black;
+    }
+    li,
+    li:first-child,
+    li:last-child,
+    li:has(+ .active),
+    .active + li {
+      margin: 0.2em 0;
+      border: 1px solid black;
+      border-radius: 2em;
+      background-color: white;
+    }
+    li:last-child.active {
+      margin: 1.3em 0 0 0;
+    }
+
+    .active {
+      margin: 1.3em 0;
+    }
+  }
 </style>
