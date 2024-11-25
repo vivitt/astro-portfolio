@@ -5,13 +5,13 @@ const currentPath = pathname.slice(1);
 
 <nav>
   <ul class="nav-links">
-    {
+    <!-- {
       currentPath !== "" && (
         <li class={currentPath === "" ? "active" : ""}>
           <a href="/">Home</a>
         </li>
       )
-    }
+    } -->
 
     <li class={currentPath === "about/" ? "active" : ""}>
       <a href="/about/">About</a>
@@ -28,6 +28,11 @@ const currentPath = pathname.slice(1);
 </nav>
 
 <style>
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   ul {
     display: flex;
     align-items: center;
@@ -46,7 +51,7 @@ const currentPath = pathname.slice(1);
     background-color: black;
   }
 
-  a:hover {
+  li a:hover {
     color: white;
     background-color: black;
   }
