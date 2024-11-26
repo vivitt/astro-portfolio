@@ -2,6 +2,7 @@
 import "@fontsource-variable/work-sans";
 import { Image } from "astro:assets";
 import mainLogo from "../images/logos/logo-viviyanez.png";
+import blogLogo from "../images/logos/blog-viviyanez.png";
 import Navigation from "../components/Navigation.astro";
 import Social from "../components/Social.astro";
 import Hamburger from "../components/Hamburger.astro";
@@ -26,13 +27,20 @@ const { title } = Astro.props;
   </head>
   <body>
     <header>
-      <a href="/"> <Image src={mainLogo} alt="viviyanez.dev" width="400" /></a>
+      <a href="/"
+        >{
+          title === "Vivi's Blog" ? (
+            <Image src={blogLogo} alt="Vivi's Blog" width="400" />
+          ) : (
+            <Image src={mainLogo} alt="viviyanez.dev" width="400" />
+          )
+        }
+      </a>
       <div>
-        <Navigation />
         <VivittSwitcher />
+        <Navigation />
       </div>
     </header>
-    <h1>{title}</h1>
     <slot />
     <footer>
       <Social platform="twitter" username="astrodotbuild" />
@@ -47,26 +55,36 @@ const { title } = Astro.props;
   </body>
 </html>
 <style is:global>
+  :root {
+    --black: #1c1c1c;
+    --white: #f1f5f9;
+    --lilac: #819af5;
+    --foregroundColor: var(--black);
+    --backgroundColor: var(--white);
+    --foregroundColorDark: var(--white);
+    --backgroundColorDark: var(--black);
+    --accentColor: (var(--lilac));
+    --accentColorDark: (var(--lilac));
+  }
+
   * {
     box-sizing: border-box;
   }
+
   html {
-    background-color: #f1f5f9;
+    background-color: var(--backgroundColor);
     font-family: sans-serif;
+    color: var(--foregroundColor);
   }
 
   html.dark {
-    background-color: #1c1c1c;
-    color: #fff;
+    background-color: var(--backgroundColorDark);
+    color: var(--foregroundColorDark);
   }
 
-  .dark .nav-links a {
-    color: #fff;
-  }
   body {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 80ch;
+    margin: 0 1em;
+
     font-family: "Work Sans Variable", sans-serif;
     padding: 1rem;
     line-height: 1.5;
@@ -78,10 +96,13 @@ const { title } = Astro.props;
   }
   header div {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: end;
     justify-content: space-between;
   }
-
+  main {
+    margin: 1em 3em;
+  }
   h1 {
     margin: 1rem 0;
     font-size: 2.5rem;

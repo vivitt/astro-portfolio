@@ -1,11 +1,51 @@
+:root {
+  --foregroundColor: #1c1c1c;
+  --backgroundColor: #f1f5f9;
+  --foregroundColorDark: #1c1c1c;
+  --backgroundColorDark: #f1f5f9;
+  --accentColor: #819af5;
+  --accentColorDark: #819af5;
+
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
 html {
   background-color: #f1f5f9;
   font-family: sans-serif;
 }
 
-* {
-  box-sizing: border-box;
+html.dark {
+  background-color: #1c1c1c;
+  color: #fff;
 }
+
+.dark .nav-links a {
+  color: #fff;
+}
+body {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 80ch;
+  font-family: "Work Sans Variable", sans-serif;
+  padding: 1rem;
+  line-height: 1.5;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
 
 h1 {
   margin: 1rem 0;
