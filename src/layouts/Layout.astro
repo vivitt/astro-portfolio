@@ -1,5 +1,6 @@
 ---
 import "@fontsource-variable/work-sans";
+import "../styles/global.css";
 import { Image } from "astro:assets";
 import mainLogo from "../images/logos/logo-viviyanez.png";
 import blogLogo from "../images/logos/blog-viviyanez.png";
@@ -30,15 +31,15 @@ const { title } = Astro.props;
       <a href="/"
         >{
           title === "Vivi's Blog" ? (
-            <Image src={blogLogo} alt="Vivi's Blog" width="400" />
+            <Image src={blogLogo} alt="Vivi's Blog" width="600" />
           ) : (
-            <Image src={mainLogo} alt="viviyanez.dev" width="400" />
+            <Image src={mainLogo} alt="viviyanez.dev" width="600" />
           )
         }
       </a>
       <div>
-        <VivittSwitcher />
         <Navigation />
+        <VivittSwitcher />
       </div>
     </header>
     <slot />
@@ -55,9 +56,9 @@ const { title } = Astro.props;
   </body>
 </html>
 <style is:global>
-  :root {
+  /* :root {
     --black: #1c1c1c;
-    --white: #f1f5f9;
+    --white: #f8f9fb;
     --lilac: #819af5;
     --foregroundColor: var(--black);
     --backgroundColor: var(--white);
@@ -65,9 +66,9 @@ const { title } = Astro.props;
     --backgroundColorDark: var(--black);
     --accentColor: (var(--lilac));
     --accentColorDark: (var(--lilac));
-  }
+  } */
 
-  * {
+  /* * {
     box-sizing: border-box;
   }
 
@@ -106,5 +107,5 @@ const { title } = Astro.props;
   h1 {
     margin: 1rem 0;
     font-size: 2.5rem;
-  }
+  } */
 </style>
