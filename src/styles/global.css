@@ -4,10 +4,7 @@
   --lilac: #819af5;
   --foregroundColor: var(--black);
   --backgroundColor: var(--white);
-  --foregroundColorDark: var(--white);
-  --backgroundColorDark: var(--black);
   --accentColor: (var(--lilac));
-  --accentColorDark: (var(--lilac));
 }
 
 * {
@@ -15,17 +12,14 @@
 }
 
 html {
-  background-color: #f1f5f9;
+  color: var(--foregroundColor);
+  background-color: var(--backgroundColor);
   font-family: sans-serif;
 }
 
 html.dark {
-  background-color: #1c1c1c;
-  color: #fff;
-}
-
-.dark .nav-links a {
-  color: #fff;
+  --foregroundColor: var(--white);
+  --backgroundColor: var(--black);
 }
 
 img {
@@ -58,4 +52,16 @@ header div {
 h1 {
   margin: 1rem 0;
   font-size: 2.5rem;
+}
+
+.nav-links li a {
+  color: var(--foregroundColor);
+}
+
+.nav-links li.active {
+  background-color: var(--foregroundColor);
+}
+
+.nav-links li.active a {
+  color: var(--backgroundColor);
 }
