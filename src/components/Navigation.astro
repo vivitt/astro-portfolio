@@ -67,8 +67,8 @@ const currentPath = pathname.slice(1);
   }
 
   .nav__links__link.active {
-    min-width: 40%;
-  background-color: var(--foregroundColor);
+    margin: 0 1.5em 0 1.5em;
+    background-color: var(--foregroundColor);
   }
 
   .nav__links__link--about a {
@@ -88,27 +88,25 @@ const currentPath = pathname.slice(1);
     border: none;
   }
 
-  
-  .nav__links__link:has(+ .active)  {
-    margin: 0 3em 0 0;
-    animation: margin-next 500ms backwards;
+  /* match the prev sibiling for an active link */
+  .nav__links__link:has(+ .active)  { 
+    margin: 0 1.5em 0 0;
   }
-
+ 
   .nav__links__link:has(+ .active) a {
     border-radius: 0 2em 2em 0;
     border-inline-end: 1px solid ;
    
   }
+
+  /* match the next sibiling to an active link */
   .active + .nav__links__link {
-   
-    margin: 0 0 0 3em;
-    animation: margin-prev 500ms alternate backwards;
- 
+    margin: 0 0 0 1.5em;
   }
+
   .active + .nav__links__link a{
     border-radius: 2em 0 0 2em;
     border-inline-start: 1px solid ;
- 
   }
 
 
