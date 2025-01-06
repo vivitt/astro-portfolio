@@ -12,7 +12,9 @@ const currentPath = pathname.slice(1);
         </li>
       )
     } -->
-
+ <li class={currentPath === "" ? "active" : ""}>
+  <a href="/">Home</a>
+</li>
     
     <li class={currentPath === "about/" ? "active" : ""}>
       <a href="/about/">About</a>
@@ -44,65 +46,79 @@ const currentPath = pathname.slice(1);
   }
   ul {
     display: flex;
+    flex-flow: nowrap;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
   }
 
   li {
-    border-top: 1px solid ;
-    border-bottom: 1px solid;
-    border-inline-end: 1px solid;
     margin: 0;
     list-style: none;
-    padding: 0 0.5em;
-    transition: margin 500ms ease;
+    transition: all 500ms ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+  }
+
+  li.active{
+    min-width: 70%;
   }
 
   a {
-    padding: 0 0.5em;
+    border-top: 1px solid ;
+    border-bottom: 1px solid;
+    border-inline-end: 1px solid;
+    padding: 0 1em;
     text-decoration: none;
   }
-  li:first-child {
+
+  li:first-child a {
     border-radius: 2em 0 0 2em;
     border-inline-start: 1px solid ;
   }
 
-  li:first-child.active {
-    border-radius: 2em;
-  }
 
-  li:last-child {
+  li:last-child a {
     border-radius: 0 2em 2em 0;
     border-inline-end: 1px solid ;
   }
-
-  li:last-child.active {
-    border-radius: 2em;
+  
+  li.active a, 
+  li:first-child.active a,
+  li:last-child.active a  {
+    border: none;
   }
+
 
   .active {
     border-radius: 2em;
     border: 1px solid;
   }
 
-  li:has(+ .active) {
+
+  li:has(+ .active)  {
+    margin: 0 3em 0 0;
+  }
+  li:has(+ .active) a {
     border-radius: 0 2em 2em 0;
     border-inline-end: 1px solid ;
-    margin: 0 1em 0 0;
-    transition: margin 500ms ease;
+   
   }
   .active + li {
+   
+    margin: 0 0 0 3em;
+ 
+  }
+  .active + li a{
     border-radius: 2em 0 0 2em;
     border-inline-start: 1px solid ;
-    margin: 0 0 0 1em;
-    transition: margin 500ms ease;
  
   }
 
-  li:first-child:has(+ .active),
-  .active + li:last-child,
-  li:first-child.active,
-  li:last-child.active {
+
+  li:first-child:has(+ .active) a,
+  .active + li:last-child a{
     border-radius: 2em;
   }
 
@@ -126,28 +142,18 @@ const currentPath = pathname.slice(1);
       margin: margin: 0 0 0 1em;
     }
   }
-  @media screen and (max-width: 600px) {
-    ul {
-      flex-direction: column;
-      align-items: end;
-      justify-content: end;
+
+  @keyframes width{
+    0% {
+      width: auto;
     }
   
-    li,
-    li:first-child,
-    li:last-child,
-    li:has(+ .active),
-    .active + li {
-      margin: 0.2em 0;
-      border: 1px solid;
-      border-radius: 2em;
-    }
-    li:last-child.active {
-      margin: 1.3em 0 0 0;
-    }
-
-    .active {
-      margin: 2em 0;
+    100% {
+      width: 70%
     }
   }
+  @media screen and (max-width: 600px) {
+  }
+  
+
 </style>
