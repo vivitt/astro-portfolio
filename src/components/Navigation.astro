@@ -4,24 +4,17 @@ const currentPath = pathname.slice(1);
 ---
 
 <nav>
-  <ul class="nav-links">
-    {
-      currentPath !== "" && (
-        <li class={currentPath === "" ? "active" : ""}>
-          <a href="/">Home</a>
-        </li>
-      )
-    }
-
+  <ul class="nav__links">
     
-    <li class={currentPath === "about/" ? "active" : ""}>
+    <li class=`${currentPath === "about/" ? "active" : ""} nav__links__link nav__links__link--about`>
       <a href="/about/">About</a>
     </li>
 
-    <li class={currentPath === "projects/" ? "active" : ""}>
+    <li class=`${currentPath === "projects/" ? "active" : ""} nav__links__link nav__links__link--projects`>
       <a href="/projects/">Projects</a>
     </li>
-    <li class={currentPath === "blog/" ? "active" : ""}>
+
+    <li class=`${currentPath === "blog/" ? "active" : ""} nav__links__link nav__links__link--blog`>
       <a href="/blog/">Blog</a>
     </li>
    
@@ -32,11 +25,10 @@ const currentPath = pathname.slice(1);
   nav {
     display: flex;
     text-transform: uppercase;
+    width: 100%;
     justify-content: end;
-    align-items: center;
-    max-width: 50%;
-    width: 50%;
   }
+
   ul {
     display: flex;
    justify-content: end;
@@ -45,7 +37,7 @@ const currentPath = pathname.slice(1);
     
   }
 
-  li {
+  .nav__links__link {
     margin: 0;
     list-style: none;
     display: flex;
@@ -54,64 +46,74 @@ const currentPath = pathname.slice(1);
     width: auto;
   }
 
-  li.active{
-    min-width: 40%;
-  }
-
-  a {
-    border-top: 1px solid ;
-    border-bottom: 1px solid;
-    border-inline-end: 1px solid;
-    padding: 0 1em;
-    text-decoration: none;
-  }
-
-  li:first-child a {
-    border-radius: 2em 0 0 2em;
-    border-inline-start: 1px solid ;
-  }
-
-
-  li:last-child a {
-    border-radius: 0 2em 2em 0;
-    border-inline-end: 1px solid ;
-  }
-  
-  li.active a, 
-  li:first-child.active a,
-  li:last-child.active a  {
-    border: none;
-  }
-
 
   .active {
     border-radius: 2em;
     border: 1px solid;
   }
 
-
-  li:has(+ .active)  {
-    margin: 0 3em 0 0;
+  .nav__links__link a {
+    border-top: 1px solid ;
+    border-bottom: 1px solid;
+    border-inline-end: 1px solid;
+    padding: 0 1em;
+    text-decoration: none;
+    color: var(--foregroundColor);
   }
-  li:has(+ .active) a {
+
+
+  .nav__links__link.active a {
+  color: var(--backgroundColor);
+  }
+
+  .nav__links__link.active {
+    min-width: 40%;
+  background-color: var(--foregroundColor);
+  }
+
+  .nav__links__link--about a {
+    border-radius: 2em 0 0 2em;
+    border-inline-start: 1px solid ;
+  }
+
+
+  .nav__links__link--blog a {
+    border-radius: 0 2em 2em 0;
+    border-inline-end: 1px solid ;
+  }
+  
+  .nav__links__link.active a, 
+  .nav__links__link--about.active a,
+  .nav__links__link--blog.active a  {
+    border: none;
+  }
+
+  
+  .nav__links__link:has(+ .active)  {
+    margin: 0 3em 0 0;
+    animation: margin-next 500ms backwards;
+  }
+
+  .nav__links__link:has(+ .active) a {
     border-radius: 0 2em 2em 0;
     border-inline-end: 1px solid ;
    
   }
-  .active + li {
+  .active + .nav__links__link {
    
     margin: 0 0 0 3em;
+    animation: margin-prev 500ms alternate backwards;
  
   }
-  .active + li a{
+  .active + .nav__links__link a{
     border-radius: 2em 0 0 2em;
     border-inline-start: 1px solid ;
  
   }
 
 
-  li:first-child:has(+ .active) a,
-  .active + li:last-child a{
+  .nav__links__link--about:has(+ .active) a,
+  .active + .nav__links__link--blog a{
     border-radius: 2em;
   }
 
@@ -121,7 +123,7 @@ const currentPath = pathname.slice(1);
     }
   
     100% {
-      margin: margin: 0 1em 0 0;
+      margin: margin: 0 3em 0 0;
     }
   }
 
@@ -132,7 +134,7 @@ const currentPath = pathname.slice(1);
     }
   
     100% {
-      margin: margin: 0 0 0 1em;
+      margin: margin: 0 0 0 3em;
     }
   }
 
