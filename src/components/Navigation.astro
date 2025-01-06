@@ -5,16 +5,14 @@ const currentPath = pathname.slice(1);
 
 <nav>
   <ul class="nav-links">
-    <!-- {
+    {
       currentPath !== "" && (
         <li class={currentPath === "" ? "active" : ""}>
           <a href="/">Home</a>
         </li>
       )
-    } -->
- <li class={currentPath === "" ? "active" : ""}>
-  <a href="/">Home</a>
-</li>
+    }
+
     
     <li class={currentPath === "about/" ? "active" : ""}>
       <a href="/about/">About</a>
@@ -26,35 +24,30 @@ const currentPath = pathname.slice(1);
     <li class={currentPath === "blog/" ? "active" : ""}>
       <a href="/blog/">Blog</a>
     </li>
-    <!-- <li>
-      <a href="https://github.com/vivitt" target="_blank">GitHub</a>
-    </li>
-    <li>
-      <a href="https://www.linkedin.com/in/viviana-yanez/" target="_blank"
-        >LinkedIn</a
-      >
-    </li> -->
+   
   </ul>
 </nav>
 
 <style>
   nav {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     text-transform: uppercase;
+    justify-content: end;
+    align-items: center;
+    max-width: 50%;
+    width: 50%;
   }
   ul {
     display: flex;
+   justify-content: end;
     flex-flow: nowrap;
-    align-items: center;
-    justify-content: center;
+    max-width: 80ch;
+    
   }
 
   li {
     margin: 0;
     list-style: none;
-    transition: all 500ms ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,7 +55,7 @@ const currentPath = pathname.slice(1);
   }
 
   li.active{
-    min-width: 70%;
+    min-width: 40%;
   }
 
   a {
