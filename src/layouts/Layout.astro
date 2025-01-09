@@ -8,6 +8,7 @@ import Navigation from "../components/Navigation.astro";
 import Social from "../components/Social.astro";
 import ToggleTheme from "../components/ToggleTheme.astro";
 import { Icon } from "astro-icon/components";
+import { ClientRouter, fade, slide } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -25,6 +26,7 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ClientRouter />
   </head>
   <body>
     <header>
@@ -86,5 +88,41 @@ const { title } = Astro.props;
     flex-direction: column;
     justify-content: end;
     align-items: center;
+  }
+
+  [data-style="wipe"] {
+    animation-duration: 1.25s;
+  }
+
+  [data-style="wipe"] {
+    animation-name: reveal-light;
+  }
+
+  [data-style="wipe"],
+  [data-style="wipe"][data-theme="dark"] {
+    animation: none;
+  }
+
+  [data-style="wipe"][data-theme="dark"] {
+    animation-name: reveal-dark;
+  }
+  @keyframes reveal-dark {
+    from {
+      clip-path: polygon(-30% 0, -30% 0, -15% 100%, -10% 115%);
+    }
+
+    to {
+      clip-path: polygon(-30% 0, 130% 0, 115% 100%, -10% 115%);
+    }
+  }
+
+  @keyframes reveal-light {
+    from {
+      clip-path: polygon(130% 0, 130% 0, 115% 100%, 110% 115%);
+    }
+
+    to {
+      clip-path: polygon(130% 0, -30% 0, -15% 100%, 110% 115%);
+    }
   }
 </style>
