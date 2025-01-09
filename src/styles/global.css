@@ -2,9 +2,13 @@
   --black: #1c1c1c;
   --white: #f8f9fb;
   --lilac: #819af5;
+  --light-lilac: #b2c3ff;
   --foregroundColor: var(--black);
   --backgroundColor: var(--white);
-  --accentColor: (var(--lilac));
+  --foregroundColorDark: var(--white);
+  --backgroundColorDark: var(--black);
+  --accentColor: var(--light-lilac);
+  --accentColorDark: var(--lilac);
   --navFont: "Work Sans Variable", sans-serif;
 }
 
@@ -15,11 +19,13 @@
 html {
   color: var(--foregroundColor);
   background-color: var(--backgroundColor);
+  font-family: "Work Sans Variable", sans-serif;
 }
 
 html.dark {
-  --foregroundColor: var(--white);
-  --backgroundColor: var(--black);
+  --foregroundColor: var(--foregroundColorDark);
+  --backgroundColor: var(--backgroundColorDark);
+  --accentColor: var(--accentColorDark);
 }
 
 body {
@@ -42,13 +48,11 @@ header div {
   justify-content: flex-end;
 }
 
-
 main {
   width: 90vh;
   margin: 3em auto 0;
   font-size: 1.3em;
 }
-
 
 footer {
   padding: 2em 5em;
@@ -66,11 +70,10 @@ footer {
   justify-content: start;
   align-items: center;
   color: var(--foregroundColor);
-  
 }
 
 .footer__links [data-icon] {
-  padding-inline-end: 0.3em; 
+  padding-inline-end: 0.3em;
   font-size: 1.2rem;
   color: var(--foregroundColor);
 }

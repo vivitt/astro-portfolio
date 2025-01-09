@@ -1,0 +1,28 @@
+---
+const { tag } = Astro.props;
+---
+
+<span class="tag">
+  <a href={`/tags/${tag}/`}> {tag} </a>
+</span>
+
+<style>
+  .tag {
+    font-family: var(--navFont);
+    text-transform: uppercase;
+    border: 1px solid;
+    border-radius: 2em;
+    padding: 0.2em 1.5em;
+    background-color: var(--backgroundColor);
+    display: inline-flex;
+    cursor: pointer;
+  }
+  .tag a {
+    font-size: 0.6em;
+    color: var(--foregroundColor);
+    text-decoration: none;
+  }
+  span.tag:hover {
+    background-color: var(--accentColor);
+  }
+</style>

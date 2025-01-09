@@ -1,24 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import BlogPost from "../components/BlogPost.astro";
-const { post } = Astro.params;
+import BlogPrev from "../components/BlogPrev.astro";
 
 const allPosts = await Astro.glob("./posts/*.md");
 ---
 
 <Layout title="Vivi's Blog">
-  
-    <h1>Blog</h1>
+  <h1>Blog</h1>
+  <ul>
     <ul>
-      <ul>
-        {
-          allPosts.map((post) => (
-            <BlogPost url={post.url} title={post.frontmatter.title} />
-          ))
-        }
-      </ul>
+      {
+        allPosts.map((post) => (
+          <BlogPrev
+            url={post.url}
+            title={post.frontmatter.title}
+            tags={post.frontmatter.tags}
+          />
+        ))
+      }
     </ul>
-
+  </ul>
 </Layout>
 
 <style></style>

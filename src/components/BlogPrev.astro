@@ -1,0 +1,29 @@
+---
+import Tag from "./Tag.astro";
+const { title, url, tags } = Astro.props;
+---
+
+<li>
+  <a href={url}>{title} </a>
+  <ul>
+    {
+      tags?.map((tag) => (
+        <li>
+          <Tag tag={tag}>{tag}</Tag>
+        </li>
+      ))
+    }
+  </ul>
+</li>
+
+<style>
+  ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    margin: 0 0.2em;
+  }
+</style>

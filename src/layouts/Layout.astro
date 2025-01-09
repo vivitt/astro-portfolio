@@ -7,7 +7,7 @@ import blogLogo from "../images/logos/blog-viviyanez.png";
 import Navigation from "../components/Navigation.astro";
 import Social from "../components/Social.astro";
 import ToggleTheme from "../components/ToggleTheme.astro";
-import { Icon } from 'astro-icon/components'
+import { Icon } from "astro-icon/components";
 
 interface Props {
   title: string;
@@ -25,48 +25,47 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-
   </head>
   <body>
     <header>
-      <div class="header__icons">   
+      <div class="header__icons">
         <Social platform="github" username="vivitt" />
         <Social platform="linkedin" username="in/viviana-yanez" />
         <ToggleTheme />
       </div>
       <div class="header__navigation">
-      <a href="/" 
-        >{
-          title === "Vivi's Blog" ? (
-            <Image src={blogLogo} alt="Vivi's Blog" width="550" />
-          ) : (
-            <Image src={mainLogo} alt="viviyanez.dev" width="550" />
-          )
-        }
-      </a>
-        <Navigation /> 
+        <a href="/"
+          >{
+            title === "Vivi's Blog" ? (
+              <Image src={blogLogo} alt="Vivi's Blog" width="550" />
+            ) : (
+              <Image src={mainLogo} alt="viviyanez.dev" width="550" />
+            )
+          }
+        </a>
+        <Navigation />
       </div>
     </header>
     <main>
-    <slot />
-  </main>
+      <slot />
+    </main>
     <footer>
       <div class="footer__links">
-      <p>Find me on:</p>
-      <a href='https://www.linkedin.com/in/viviana-yanez/' target="_blank"><Icon name='linkedin' />LinkedIn
-      </a>
-      
-      <a href='https://github.com/vivitt' target="_blank"><Icon name='github' />GitHub
-      </a>
+        <p>Find me on:</p>
+        <a href="https://www.linkedin.com/in/viviana-yanez/" target="_blank"
+          ><Icon name="linkedin" />LinkedIn
+        </a>
 
-      <a href='https://bsky.app/profile/viviyanez.bsky.social' target="_blank"><Icon name='bsky' />Bluesky
-      </a>
+        <a href="https://github.com/vivitt" target="_blank"
+          ><Icon name="github" />GitHub
+        </a>
 
-      <a href='https://x.com/yvivi_vi' target="_blank"><Icon name='x' />X
-      </a>
-      
-    </div>
-      
+        <a href="https://bsky.app/profile/viviyanez.bsky.social" target="_blank"
+          ><Icon name="bsky" />Bluesky
+        </a>
+
+        <a href="https://x.com/yvivi_vi" target="_blank"><Icon name="x" />X </a>
+      </div>
     </footer>
     <script>
       document.querySelector(".hamburger").addEventListener("click", () => {
@@ -76,21 +75,6 @@ const { title } = Astro.props;
   </body>
 </html>
 <style is:global>
-  :root {
-    --black: #1c1c1c;
-    --white: #f8f9fb;
-    --lilac: #819af5;
-    --foregroundColor: var(--black);
-    --backgroundColor: var(--white);
-    --foregroundColorDark: var(--white);
-    --backgroundColorDark: var(--black);
-    --accentColor: (var(--lilac));
-    --accentColorDark: (var(--lilac));
-  }
-
-  html {
-    font-family: "Work Sans Variable", sans-serif;
-  }
   .header__icons {
     width: 150vh;
     display: flex;
@@ -103,6 +87,4 @@ const { title } = Astro.props;
     justify-content: end;
     align-items: center;
   }
-
-
 </style>
