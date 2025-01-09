@@ -1,0 +1,38 @@
+---
+import Tag from "./Tag.astro";
+const { title, url, tags, date } = Astro.props;
+---
+
+<li class="blog-summary">
+  <p>{date}</p>
+  <a class="blog-summary__link" href={url}>{title} </a>
+  <ul>
+    {
+      tags?.map((tag) => (
+        <li>
+          <Tag tag={tag}>{tag}</Tag>
+        </li>
+      ))
+    }
+  </ul>
+</li>
+
+<style>
+  ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  .blog-summary {
+    border-top: 1px solid;
+    padding: 2em 0 1.2em 0;
+    margin: 0 0.2em;
+    display: flex;
+    flex-direction: column;
+  }
+  .blog-summary__link {
+    color: var(--foregroundColor);
+    margin: 0 0 1em 0;
+  }
+</style>

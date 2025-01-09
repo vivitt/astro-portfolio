@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import BlogPrev from "../components/BlogPrev.astro";
+import BlogSummary from "../components/BlogSummary.astro";
 
 const allPosts = await Astro.glob("./posts/*.md");
 ---
@@ -8,18 +8,23 @@ const allPosts = await Astro.glob("./posts/*.md");
 <Layout title="Vivi's Blog">
   <h1>Blog</h1>
   <ul>
-    <ul>
-      {
-        allPosts.map((post) => (
-          <BlogPrev
-            url={post.url}
-            title={post.frontmatter.title}
-            tags={post.frontmatter.tags}
-          />
-        ))
-      }
-    </ul>
+    {
+      allPosts.map((post) => (
+        <BlogSummary
+          date={post.frontmatter.date}
+          url={post.url}
+          title={post.frontmatter.title}
+          tags={post.frontmatter.tags}
+        />
+      ))
+    }
   </ul>
 </Layout>
 
-<style></style>
+<style>
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+</style>
