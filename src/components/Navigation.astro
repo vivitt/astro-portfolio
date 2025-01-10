@@ -30,7 +30,7 @@ const currentPath = pathname.slice(1);
     justify-content: end;
   }
 
-  ul {
+  .nav__links {
     display: flex;
     justify-content: end;
     flex-flow: nowrap;
@@ -44,94 +44,87 @@ const currentPath = pathname.slice(1);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: auto;
-   
-  }
-
-
-  
-
-  .nav__links__link a {
     border-radius: 0;
     border-top: 1px solid ;
     border-bottom: 1px solid;
-    border-inline-end: 1px solid;
+  }
+
+  .nav__links__link a {
     padding: 0.5em 2em;
     text-decoration: none;
     color: var(--foregroundColor);
   }
-
-
   .nav__links__link.active a {
     color: var(--backgroundColor);
   }
 
-  .nav__links__link.active {
-    background-color: var(--foregroundColor);
+  .nav__links__link:first-of-type {
+    border-inline-start: 1px solid;
+    border-radius: 2em  0 0 2em ;
   }
-
-  .nav__links__link:nth-child(1) a {
-    border-radius: 2em 0 0 2em;
-    border-inline-start: 1px solid ;
-  }
-
-
-  .nav__links__link:nth-child(3) a {
-    border-radius: 0 2em 2em 0;
-    border-inline-end: 1px solid ;
+  .nav__links__link:last-of-type {
+    border-inline-end: 1px solid;
+    border-radius:   0 2em 2em 0;
   }
   
-  .nav__links__link.active a, 
-  .nav__links__link:nth-child(1).active a,
-  .nav__links__link:nth-child(3).active a  {
-    border: none;
-  }
-
-  .active {
+  .nav__links__link.active {
+    background-color: var(--foregroundColor);
     border-radius: 2em;
+    border: 1px solid;
     margin-inline-end: 2em;
+    margin-inline-start: 2em;
+    animation: active 500ms ease-in-out backwards;
   }
-
-  /* match the prev sibiling for an active link */
-  .nav__links__link:has(+ .active)  { 
-    margin-inline-end: 2em;
+  .nav__links__link:last-of-type.active {
+    margin-inline-end: 0;
+    animation: active-last 500ms ease-in-out backwards;
   }
  
-  .nav__links__link:has(+ .active) a {
+  /* match the prev sibiling for an active link */
+  .nav__links__link:has(+ .active)  { 
     border-radius: 0 2em 2em 0;
     border-inline-end: 1px solid ;
-   
   }
 
   /* match the next sibiling to an active link */
   .active + .nav__links__link {
-    
-    animation: margin-prev 4000ms backwards;
-    
-  }
-
-  .active + .nav__links__link a{
     border-radius: 2em 0 0 2em;
     border-inline-start: 1px solid ;
-  }
+  } 
 
-
-  .nav__links__link:nth-child(1):has(+ .active) a,
-  .active + .nav__links__link:nth-child(3) a {
+    /* match the prev sibiling for an active link when it is the first or the last link */
+    .nav__links__link:first-of-type:has(+ .active), 
+    .active + .nav__links__link:last-of-type  { 
     border-radius: 2em;
   }
 
-  .nav__links__link:nth-child(1).active {
-    animation: border-end 4000ms backwards;
+
+
+  @keyframes active {
+    0% {
+      margin-inline-end: 0;
+      margin-inline-start: 0;
+      border-radius: 0;
+    }
+  30% {
+    border-radius: 2em;
+  }
+    100% {
+      margin-inline-end: 2em;
+      margin-inline-start: 2em; 
+    }
   }
 
-  @keyframes margin-next {
+  @keyframes active-last {
     0% {
-      margin: 0;
+      margin-inline-start: 0;
+      border-radius: 0;
     }
-  
+  30% {
+    border-radius: 2em;
+  }
     100% {
-      margin: margin: 0 1.5em 0 0;
+      margin-inline-start: 2em; 
     }
   }
 
