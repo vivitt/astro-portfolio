@@ -39,7 +39,6 @@ const currentPath = pathname.slice(1);
   }
 
   .nav__links__link {
-    margin: 0;
     list-style: none;
     display: flex;
     align-items: center;
@@ -47,6 +46,8 @@ const currentPath = pathname.slice(1);
     border-radius: 0;
     border-top: 1px solid ;
     border-bottom: 1px solid;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
   }
 
   .nav__links__link a {
@@ -54,6 +55,7 @@ const currentPath = pathname.slice(1);
     text-decoration: none;
     color: var(--foregroundColor);
   }
+
   .nav__links__link.active a {
     color: var(--backgroundColor);
   }
@@ -61,10 +63,13 @@ const currentPath = pathname.slice(1);
   .nav__links__link:first-of-type {
     border-inline-start: 1px solid;
     border-radius: 2em  0 0 2em ;
+    
   }
   .nav__links__link:last-of-type {
     border-inline-end: 1px solid;
     border-radius:   0 2em 2em 0;
+    animation-play-state: paused;
+    
   }
   
   .nav__links__link.active {
@@ -73,22 +78,32 @@ const currentPath = pathname.slice(1);
     border: 1px solid;
     margin-inline-end: 2em;
     margin-inline-start: 2em;
-    animation: active 500ms ease-in-out backwards;
   }
+
+  .nav__links__link:not(.active) {
+    
+  }
+
 
   .nav__links__link:first-of-type.active {
-    animation: active-first 500ms ease-in-out backwards;
+    animation: active-first 500ms ease-in-out;
   }
 
+  body:has(.projects) .nav__links__link:first-of-type.active {
+    animation: active-first-next 500ms ease-in-out;
+    background-color: red;
+  }
 
   .nav__links__link:last-of-type.active {
+    animation: active-last 500ms ease-in-out;
     margin-inline-end: 0;
-    animation: active-last 500ms ease-in-out backwards;
+    
   }
  
   .nav__links__link:not(:first-of-type):not(:last-of-type).active {
-    animation: active-mid 500ms ease-in-out backwards;
+    animation: active-mid 500ms ease-in-out;
   }
+
   /* match the prev sibiling for an active link */
   .nav__links__link:has(+ .active)  { 
     border-radius: 0 2em 2em 0;
@@ -101,16 +116,31 @@ const currentPath = pathname.slice(1);
     border-inline-start: 1px solid ;
   } 
 
-    /* match the prev sibiling for an active link when it is the first or the last link */
-    .nav__links__link:first-of-type:has(+ .active), 
-    .active + .nav__links__link:last-of-type  { 
+  /* match the prev sibiling for an active link when it is the first or the last link */
+  .nav__links__link:first-of-type:has(+ .active), 
+  .active + .nav__links__link:last-of-type  { 
     border-radius: 2em;
   }
 
-  .nav__links__link:has(+ .active).active {
-    animation: active-next 5000ms ease-in-out backwards;
+  .nav__links__link:not(:first-of-type):not(:last-of-type):has(+ .active){
   }
 
+
+
+  @keyframes active {
+    0% {
+      margin-inline-end: 0;
+      margin-inline-start: 0;
+      border-radius: 0;
+    }
+  10% {
+    border-radius: 2em;
+  }
+    100% {
+      margin-inline-end: 2em;
+      margin-inline-start: 2em; 
+    }
+  }
 
   @keyframes active-first {
     0% {
@@ -124,6 +154,17 @@ const currentPath = pathname.slice(1);
     100% {
       margin-inline-end: 2em;
       margin-inline-start: 2em; 
+    }
+  }
+
+  @keyframes active-first-next {
+    0% {
+      margin-inline-end: 2em;
+      border-radius: 2em;
+    }
+ 
+    100% {
+      margin-inline-end: 2em;
     }
   }
 
@@ -159,11 +200,9 @@ const currentPath = pathname.slice(1);
     0% {
       margin-inline-start: 2em;
       margin-inline-end: 0;
-      border-radius: 0 2em 2em 0;
+      
     }
-  30% {
-    border-radius: 2em;
-  }
+ 
     100% {
       margin-inline-start: 2em; 
       margin-inline-end: 2em;
@@ -171,14 +210,31 @@ const currentPath = pathname.slice(1);
   }
 
 
-  @keyframes margin-prev {
+  @keyframes active-prev {
     0% {
-      margin: 0;
-    
+      margin-inline-start: 2em;
+      border-radius: 2em;
+      margin-inline-end: 2em;
     }
-  
+  10% {
+    border-radius: 0 2em 2em 0;
+  }
     100% {
-      margin: margin: 0 0 0 1.5em;
+      margin-inline-start: 0; 
+      margin-inline-end: 0;
+    }
+  }
+
+  @keyframes active-prev {
+    0% {
+      margin-inline-start: 0;
+     
+      margin-inline-end: 0;
+    }
+
+    100% {
+      margin-inline-start: 2em; 
+      margin-inline-end: 2em;
     }
   }
 
