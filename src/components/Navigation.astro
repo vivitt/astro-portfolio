@@ -45,6 +45,8 @@ const currentPath = pathname.slice(1);
     border-radius: 0;
     border-top: 1px solid;
     border-bottom: 1px solid;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
   }
 
   .nav__links__link a {
@@ -52,6 +54,7 @@ const currentPath = pathname.slice(1);
     text-decoration: none;
     color: var(--color);
   }
+
   .nav__links__link.active a {
     color: var(--bgColor);
   }
@@ -88,7 +91,6 @@ const currentPath = pathname.slice(1);
     border: 1px solid;
     margin-inline-end: 2em;
     margin-inline-start: 2em;
-    animation: active 500ms ease-in-out backwards;
   }
 
   .nav__links__link:not(.active) {
@@ -107,6 +109,7 @@ const currentPath = pathname.slice(1);
   }
 
   .nav__links__link:last-of-type.active {
+    animation: active-last 500ms ease-in-out;
     margin-inline-end: 0;
   }
 
