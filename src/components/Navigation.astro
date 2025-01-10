@@ -54,7 +54,6 @@ const currentPath = pathname.slice(1);
     text-decoration: none;
     color: var(--color);
   }
-
   .nav__links__link.active a {
     color: var(--bgColor);
   }
@@ -63,8 +62,13 @@ const currentPath = pathname.slice(1);
     border-inline-start: 1px solid;
     border-radius: 2em 0 0 2em;
   }
+
   .nav__links__link.active {
     background-color: var(--color);
+  }
+  .nav__links__link:first-of-type {
+    border-inline-start: 1px solid;
+    border-radius: 2em 0 0 2em;
   }
   .nav__links__link:last-of-type {
     border-inline-end: 1px solid;
