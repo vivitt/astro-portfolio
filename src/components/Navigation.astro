@@ -54,12 +54,14 @@ const currentPath = pathname.slice(1);
     text-decoration: none;
     color: var(--color);
   }
+
   .nav__links__link.active a {
     color: var(--bgColor);
   }
 
   .nav__links__link:first-of-type {
     border-inline-start: 1px solid;
+
     border-radius: 2em 0 0 2em;
   }
 
@@ -74,6 +76,13 @@ const currentPath = pathname.slice(1);
     border-inline-end: 1px solid;
     border-radius: 0 2em 2em 0;
     animation-play-state: paused;
+
+    border-radius: 2em 0 0 2em;
+  }
+  .nav__links__link:last-of-type {
+    border-inline-end: 1px solid;
+    border-radius: 0 2em 2em 0;
+    animation-play-state: paused;
   }
 
   .nav__links__link.active {
@@ -82,6 +91,9 @@ const currentPath = pathname.slice(1);
     border: 1px solid;
     margin-inline-end: 2em;
     margin-inline-start: 2em;
+  }
+
+  .nav__links__link:not(.active) {
   }
 
   .nav__links__link:not(.active) {
@@ -141,6 +153,21 @@ const currentPath = pathname.slice(1);
     }
   }
 
+  @keyframes active {
+    0% {
+      margin-inline-end: 0;
+      margin-inline-start: 0;
+      border-radius: 0;
+    }
+    10% {
+      border-radius: 2em;
+    }
+    100% {
+      margin-inline-end: 2em;
+      margin-inline-start: 2em;
+    }
+  }
+
   @keyframes active-first {
     0% {
       margin-inline-end: 0;
@@ -153,6 +180,17 @@ const currentPath = pathname.slice(1);
     100% {
       margin-inline-end: 2em;
       margin-inline-start: 2em;
+    }
+  }
+
+  @keyframes active-first-next {
+    0% {
+      margin-inline-end: 2em;
+      border-radius: 2em;
+    }
+
+    100% {
+      margin-inline-end: 2em;
     }
   }
 
