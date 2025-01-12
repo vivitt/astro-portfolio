@@ -26,17 +26,16 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ClientRouter />
   </head>
   <body>
     <header>
       <div class="header__icons">
         <Social platform="github" username="vivitt" />
         <Social platform="linkedin" username="in/viviana-yanez" />
-        <ToggleTheme />
+        <ToggleTheme class="header__icons__toggle" />
       </div>
       <div class="header__navigation">
-        <a href="/"
+        <a href="/" data-astro-reload
           >{
             title === "Vivi's Blog" ? (
               <Image src={blogLogo} alt="Vivi's Blog" width="550" />
@@ -69,11 +68,11 @@ const { title } = Astro.props;
         <a href="https://x.com/yvivi_vi" target="_blank"><Icon name="x" />X </a>
       </div>
     </footer>
-    <script>
+    <!-- <script>
       document.querySelector(".hamburger").addEventListener("click", () => {
         document.querySelector(".nav-links").classList.toggle("expanded");
       });
-    </script>
+    </script> -->
   </body>
 </html>
 <style is:global>
@@ -83,6 +82,9 @@ const { title } = Astro.props;
     flex-flow: row nowrap;
     justify-content: end;
   }
+  .header__icons__toggle {
+    z-index: 5;
+  }
   .header__navigation {
     display: flex;
     flex-direction: column;
@@ -90,39 +92,28 @@ const { title } = Astro.props;
     align-items: center;
   }
 
-  [data-style="wipe"] {
-    animation-duration: 1.25s;
+  :root::view-transition-new(root) {
+    animation: reveal 0.5s;
+    clip-path: inset(0 0 0 0);
+    z-index: 2;
   }
 
-  [data-style="wipe"] {
-    animation-name: reveal-light;
-  }
-
-  [data-style="wipe"],
-  [data-style="wipe"][data-theme="dark"] {
+  :root::view-transition-old(root) {
+    z-index: -1;
     animation: none;
   }
 
-  [data-style="wipe"][data-theme="dark"] {
-    animation-name: reveal-dark;
-  }
-  @keyframes reveal-dark {
+  @keyframes reveal {
     from {
-      clip-path: polygon(-30% 0, -30% 0, -15% 100%, -10% 115%);
-    }
-
-    to {
-      clip-path: polygon(-30% 0, 130% 0, 115% 100%, -10% 115%);
+      clip-path: inset(var(--from));
     }
   }
 
-  @keyframes reveal-light {
-    from {
-      clip-path: polygon(130% 0, 130% 0, 115% 100%, 110% 115%);
-    }
+  [data-theme="dark"] {
+    --from: 0 0 0 100%;
+  }
 
-    to {
-      clip-path: polygon(130% 0, -30% 0, -15% 100%, 110% 115%);
-    }
+  [data-theme="light"] {
+    --from: 0 100% 0 0;
   }
 </style>

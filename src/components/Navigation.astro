@@ -7,21 +7,22 @@ const currentPath = pathname.slice(1);
   <ul class="nav__links">
     
     <li class=`${currentPath === "about/" ? "active" : ""} nav__links__link `>
-      <a href="/about/">About</a>
+      <a data-astro-reload href="/about/">About</a>
     </li>
 
     <li class=`${currentPath === "projects/" ? "active" : ""} nav__links__link `>
-      <a href="/projects/">Projects</a>
+      <a data-astro-reload href="/projects/">Projects</a>
     </li>
 
     <li class=`${currentPath === "blog/" ? "active" : ""} nav__links__link `>
-      <a href="/blog/">Blog</a>
+      <a data-astro-reload href="/blog/">Blog</a>
     </li>
    
   </ul>
 </nav>
 
 <style>
+ 
   nav {
     display: flex;
     font-family: var(--navFont);

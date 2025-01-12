@@ -24,22 +24,26 @@
 
   const element = document.documentElement;
   const toggle = document.getElementById("background");
+  const body = document.body;
+
   if (theme === "light") {
     element.classList.remove("dark");
     toggle.setAttribute("aria-checked", false);
+    element.dataset.theme = "light";
   } else {
     element.classList.add("dark");
     toggle.setAttribute("aria-checked", "true");
+    element.dataset.theme = "dark";
   }
 
   window.localStorage.setItem("theme", theme);
 
   const toggleSwitcher = () => {
     element.classList.toggle("dark");
-
     const isDark = toggle.matches("[aria-checked=true]") ? false : true;
     localStorage.setItem("theme", isDark ? "dark" : "light");
     toggle.setAttribute("aria-checked", isDark);
+    element.dataset.theme = isDark ? "dark" : "light";
   };
 
   const toggle_theme = () => {
