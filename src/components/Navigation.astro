@@ -83,6 +83,8 @@ const currentPath = pathname.slice(1);
     --from-border: 0 2em 2em 0;
   }
 
+  .nav__links__link:not(:first-of-type):not(:last-of-type) {
+  }
   .nav__links__link:not(.active) {
   }
 
@@ -98,22 +100,45 @@ const currentPath = pathname.slice(1);
     border-radius: 2em;
     --to-border: 2em;
     animation:
-      border 2s ease-in-out,
-      margins 2s ease-in-out;
+      border 2s,
+      margins 2s;
   }
 
   .nav__links__link:not(:first-of-type):not(:last-of-type).active {
+    border-radius: 2em;
+    --to-border: 2em;
+    animation:
+      border 2s,
+      margins 2s;
+  }
+
+  .nav__links__link:first-child:has(+ .active) {
+    border-radius: 2em;
+    border-inline-end: 1px solid;
+    --from-margin-end: 0;
+    --from-border: 2em 0 0 2em;
+    --to-border: 2em;
+    animation: border 2s;
+  }
+
+  .active + .nav__links__link:last-of-type {
+    border-radius: 2em;
+    border-inline-end: 1px solid;
+    --from-margin-end: 0;
+    --from-border: 0 2em 2em 0;
+    --to-border: 2em;
+    animation:
+      border 2s,
+      margins 2s;
   }
 
   /* match the prev sibiling for an active link */
   .nav__links__link:has(+ .active) {
-    border-radius: 0 2em 2em 0;
     border-inline-end: 1px solid;
-    --from-margin-end: 0;
+    --from-border: 0;
     --to-border: 0 2em 2em 0;
-    animation:
-      border 2s ease-in-out,
-      margins 2s ease-in-out;
+    border-radius: 0 2em 2em 0;
+    animation: border 2s;
   }
 
   /* match the next sibiling to an active link */
@@ -121,14 +146,18 @@ const currentPath = pathname.slice(1);
     border-radius: 2em 0 0 2em;
     border-inline-start: 1px solid;
     --from-margin-start: 0;
-    --to-border: 2em;
-    animation: border 2s ease-in-out;
+    --to-border: 2em 0 0 2em;
+    animation: border 2s;
   }
 
+  .active + .nav__links__link:not(:last-of-type) {
+    background-color: red;
+    --from-margin-start: 2em;
+  }
   /* match the prev sibiling for an active link when it is the first or the last link */
   .nav__links__link:first-of-type:has(+ .active),
   .active + .nav__links__link:last-of-type {
-    border-radius: 2em;
+    animation: border 2s;
   }
 
   @keyframes margins {
