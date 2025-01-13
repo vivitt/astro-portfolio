@@ -82,6 +82,7 @@ const { title } = Astro.props;
     display: flex;
     flex-flow: row nowrap;
     justify-content: end;
+    align-items: center;
   }
   .header__icons__toggle {
     z-index: 5;
@@ -94,7 +95,7 @@ const { title } = Astro.props;
   }
 
   :root::view-transition-new(root) {
-    animation: reveal 0.5s;
+    animation: wide-theme 0.5s;
     clip-path: inset(0 0 0 0);
     z-index: 2;
   }
@@ -104,17 +105,32 @@ const { title } = Astro.props;
     animation: none;
   }
 
-  @keyframes slide-theme {
-    from {
-      clip-path: inset(var(--from));
-    }
-  }
+
 
   [data-theme="dark"] {
-    --from: 0 0 0 100%;
+    --from: 0 100% 0 0;
+   
   }
 
   [data-theme="light"] {
-    --from: 0 100% 0 0;
+    --from: 0 0 0 100%;
+  }
+
+  @media (max-width: 500px) {
+    [data-theme="dark"] {
+      --from: 0 0  100% 0 ;
+    
+   
+  }
+
+  [data-theme="light"] {
+    --from: 100%  0 0 0;
+  }
+  }
+
+  @keyframes wide-theme {
+    from {
+      clip-path: inset(var(--from));
+    }
   }
 </style>
