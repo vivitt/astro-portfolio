@@ -39,9 +39,19 @@ const { title } = Astro.props;
         <a href="/" data-astro-reload
           >{
             title === "Vivi's Blog" ? (
-              <Image src={blogLogo} alt="Vivi's Blog" width="550" />
+              <Image
+                src={blogLogo}
+                alt="Vivi's Blog"
+                width="550"
+                transition:animate="slide"
+              />
             ) : (
-              <Image src={mainLogo} alt="viviyanez.dev" width="550" />
+              <Image
+                src={mainLogo}
+                alt="viviyanez.dev"
+                width="550"
+                transition:animate="slide"
+              />
             )
           }
         </a>

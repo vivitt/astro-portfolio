@@ -56,8 +56,7 @@ const currentPath = pathname.slice(1);
     background-color: var(--color);
     border-radius: 2em;
     border: 1px solid;
-    margin-inline-end: 2em;
-    margin-inline-start: 2em;
+
     animation: active 2s ease;
   }
 
@@ -74,16 +73,24 @@ const currentPath = pathname.slice(1);
   .nav__links__link:first-of-type {
     border-inline-start: 1px solid;
     border-radius: 2em 0 0 2em;
+    margin-inline-start: 0;
     --from-border: 2em 0 0 2em;
+    --to-margin-end: 2em;
+    --to-margin-start: 0;
   }
 
   .nav__links__link:last-of-type {
     border-inline-end: 1px solid;
     border-radius: 0 2em 2em 0;
     --from-border: 0 2em 2em 0;
+    --to-margin-end: 0;
+    --to-margin-start: 2em;
+    margin-inline-end: 0;
   }
 
   .nav__links__link:not(:first-of-type):not(:last-of-type) {
+    --to-margin-end: 2em;
+    --to-margin-start: 2em;
   }
   .nav__links__link:not(.active) {
   }
@@ -91,25 +98,19 @@ const currentPath = pathname.slice(1);
   .nav__links__link:first-of-type.active {
     border-radius: 2em;
     --to-border: 2em;
+    margin-inline-end: 2em;
     animation:
-      border 2s ease-in-out,
-      margins 2s ease-in-out;
+      border 200ms ease-in-out,
+      margins 200ms ease-in-out;
   }
 
   .nav__links__link:last-of-type.active {
     border-radius: 2em;
     --to-border: 2em;
+    margin-inline-start: 2em;
     animation:
-      border 2s,
-      margins 2s;
-  }
-
-  .nav__links__link:not(:first-of-type):not(:last-of-type).active {
-    border-radius: 2em;
-    --to-border: 2em;
-    animation:
-      border 2s,
-      margins 2s;
+      border 200ms,
+      margins 200ms;
   }
 
   .nav__links__link:first-child:has(+ .active) {
@@ -118,7 +119,7 @@ const currentPath = pathname.slice(1);
     --from-margin-end: 0;
     --from-border: 2em 0 0 2em;
     --to-border: 2em;
-    animation: border 2s;
+    animation: border 200ms;
   }
 
   .active + .nav__links__link:last-of-type {
@@ -128,36 +129,44 @@ const currentPath = pathname.slice(1);
     --from-border: 0 2em 2em 0;
     --to-border: 2em;
     animation:
-      border 2s,
-      margins 2s;
+      border 200ms,
+      margins 200ms;
   }
 
-  /* match the prev sibiling for an active link */
-  .nav__links__link:has(+ .active) {
+  .nav__links__link:not(:first-of-type):has(+ .active) {
     border-inline-end: 1px solid;
     --from-border: 0;
     --to-border: 0 2em 2em 0;
+    --to-margin-end: 2em;
+    --to-margin-start: 2em;
+    --from-margin-start: 0;
+    --from-margin-end: 2em;
     border-radius: 0 2em 2em 0;
-    animation: border 2s;
+    animation: border 200ms;
   }
 
-  /* match the next sibiling to an active link */
+  .nav__links__link:not(:first-of-type):not(:last-of-type).active {
+    border-radius: 2em;
+    --to-border: 2em;
+    margin-inline-start: 2em;
+    margin-inline-end: 2em;
+    animation:
+      border 200ms,
+      margins 200ms;
+  }
+
   .active + .nav__links__link {
     border-radius: 2em 0 0 2em;
     border-inline-start: 1px solid;
     --from-margin-start: 0;
     --to-border: 2em 0 0 2em;
-    animation: border 2s;
+    animation: border 200ms;
   }
 
-  .active + .nav__links__link:not(:last-of-type) {
-    background-color: red;
-    --from-margin-start: 2em;
-  }
   /* match the prev sibiling for an active link when it is the first or the last link */
   .nav__links__link:first-of-type:has(+ .active),
   .active + .nav__links__link:last-of-type {
-    animation: border 2s;
+    animation: border 200ms;
   }
 
   @keyframes margins {
@@ -166,8 +175,8 @@ const currentPath = pathname.slice(1);
       margin-inline-start: var(--from-margin-start);
     }
     100% {
-      margin-inline-end: 2em;
-      margin-inline-start: 2em;
+      margin-inline-end: var(--to-margin-end);
+      margin-inline-start: var(--to-margin-start);
     }
   }
   @keyframes border {
