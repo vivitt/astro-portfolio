@@ -55,33 +55,20 @@
 </script>
 
 <style>
-  * {
+
+  *{
     --container-width: 45px;
     display: flex;
     align-items: center;
-
-    --color-background: white;
-    --color-control: white;
-    --color-label: black;
-    --color-border-background: black;
-
-    --color-background-dark: black;
-    --color-control-dark: black;
-    --color-label-dark: white;
-    --color-border-background-dark: white;
-
-    --background-border: 1px solid var(--color-border);
-    --background-border-dark: 1px solid var(--color-border-dark);
   }
-
+  
   .switch__background {
-    --color: var(--color-background);
-    --color-border: var(--color-border-background);
-    background-color: var(--color);
+    color: var(--color);
+    background-color: var(--bg-color);
     display: block;
     width: var(--container-width);
     height: calc(var(--container-width) / 3);
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--color);
     border-radius: 30px;
     position: relative;
     cursor: pointer;
@@ -89,7 +76,6 @@
   }
 
   .switch__control {
-    --color: var(--color-control);
     position: absolute;
     border: none;
     --size: calc(var(--container-width) / 2);
@@ -112,8 +98,7 @@
   }
 
   [aria-checked="true"] {
-    --color: var(--color-background-dark);
-    --color-border: var(--color-border-background-dark);
+    color: var(--colorDark);
   }
   .switch__background:focus {
     outline-offset: 8px;

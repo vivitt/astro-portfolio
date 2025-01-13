@@ -3,12 +3,12 @@
   --white: #f8f9fb;
   --lilac: #819af5;
   --light-lilac: #b2c3ff;
-  --foregroundColor: var(--black);
-  --backgroundColor: var(--white);
-  --foregroundColorDark: var(--white);
-  --backgroundColorDark: var(--black);
-  --accentColor: var(--light-lilac);
-  --accentColorDark: var(--lilac);
+  --color: var(--black);
+  --bgColor: var(--white);
+  --colorDark: var(--white);
+  --bgColorDark: var(--black);
+  --accColor: var(--light-lilac);
+  --accColorDark: var(--lilac);
   --navFont: "Work Sans Variable", sans-serif;
 }
 
@@ -17,15 +17,15 @@
 }
 
 html {
-  color: var(--foregroundColor);
-  background-color: var(--backgroundColor);
+  color: var(--color);
+  background-color: var(--bgColor);
   font-family: "Work Sans Variable", sans-serif;
 }
 
 html.dark {
-  --foregroundColor: var(--foregroundColorDark);
-  --backgroundColor: var(--backgroundColorDark);
-  --accentColor: var(--accentColorDark);
+  --color: var(--colorDark);
+  --bgColor: var(--bgColorDark);
+  --accColor: var(--accentColorDark);
 }
 
 body {
@@ -69,11 +69,11 @@ footer {
   display: flex;
   justify-content: start;
   align-items: center;
-  color: var(--foregroundColor);
+  color: var(--color);
 }
 
 .footer__links [data-icon] {
   padding-inline-end: 0.3em;
   font-size: 1.2rem;
-  color: var(--foregroundColor);
+  color: var(--color);
 }

@@ -25,6 +25,7 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <ClientRouter></ClientRouter>
     <title>{title}</title>
   </head>
   <body>
@@ -103,7 +104,7 @@ const { title } = Astro.props;
     animation: none;
   }
 
-  @keyframes reveal {
+  @keyframes slide-theme {
     from {
       clip-path: inset(var(--from));
     }

@@ -5,24 +5,23 @@ const currentPath = pathname.slice(1);
 
 <nav>
   <ul class="nav__links">
-    
     <li class=`${currentPath === "about/" ? "active" : ""} nav__links__link `>
       <a data-astro-reload href="/about/">About</a>
     </li>
 
-    <li class=`${currentPath === "projects/" ? "active" : ""} nav__links__link `>
+    <li
+      class=`${currentPath === "projects/" ? "active" : ""} nav__links__link `
+    >
       <a data-astro-reload href="/projects/">Projects</a>
     </li>
 
     <li class=`${currentPath === "blog/" ? "active" : ""} nav__links__link `>
       <a data-astro-reload href="/blog/">Blog</a>
     </li>
-   
   </ul>
 </nav>
 
 <style>
- 
   nav {
     display: flex;
     font-family: var(--navFont);
@@ -36,7 +35,6 @@ const currentPath = pathname.slice(1);
     justify-content: end;
     flex-flow: nowrap;
     max-width: 80ch;
-    
   }
 
   .nav__links__link {
@@ -45,7 +43,7 @@ const currentPath = pathname.slice(1);
     align-items: center;
     justify-content: center;
     border-radius: 0;
-    border-top: 1px solid ;
+    border-top: 1px solid;
     border-bottom: 1px solid;
     margin-inline-start: 0;
     margin-inline-end: 0;
@@ -54,25 +52,26 @@ const currentPath = pathname.slice(1);
   .nav__links__link a {
     padding: 0.5em 2em;
     text-decoration: none;
-    color: var(--foregroundColor);
+    color: var(--color);
   }
 
   .nav__links__link.active a {
-    color: var(--backgroundColor);
+    color: var(--bgColor);
   }
 
   .nav__links__link:first-of-type {
     border-inline-start: 1px solid;
-    border-radius: 2em  0 0 2em ;
-    
+    border-radius: 2em 0 0 2em;
+  }
+  .nav__links__link.active {
+    background-color: var(--color);
   }
   .nav__links__link:last-of-type {
     border-inline-end: 1px solid;
-    border-radius:   0 2em 2em 0;
+    border-radius: 0 2em 2em 0;
     animation-play-state: paused;
-    
   }
-  
+
   .nav__links__link.active {
     background-color: var(--foregroundColor);
     border-radius: 2em;
@@ -82,9 +81,7 @@ const currentPath = pathname.slice(1);
   }
 
   .nav__links__link:not(.active) {
-    
   }
-
 
   .nav__links__link:first-of-type.active {
     animation: active-first 500ms ease-in-out;
@@ -98,35 +95,32 @@ const currentPath = pathname.slice(1);
   .nav__links__link:last-of-type.active {
     animation: active-last 500ms ease-in-out;
     margin-inline-end: 0;
-    
   }
- 
+
   .nav__links__link:not(:first-of-type):not(:last-of-type).active {
     animation: active-mid 500ms ease-in-out;
   }
 
   /* match the prev sibiling for an active link */
-  .nav__links__link:has(+ .active)  { 
+  .nav__links__link:has(+ .active) {
     border-radius: 0 2em 2em 0;
-    border-inline-end: 1px solid ;
+    border-inline-end: 1px solid;
   }
 
   /* match the next sibiling to an active link */
   .active + .nav__links__link {
     border-radius: 2em 0 0 2em;
-    border-inline-start: 1px solid ;
-  } 
+    border-inline-start: 1px solid;
+  }
 
   /* match the prev sibiling for an active link when it is the first or the last link */
-  .nav__links__link:first-of-type:has(+ .active), 
-  .active + .nav__links__link:last-of-type  { 
+  .nav__links__link:first-of-type:has(+ .active),
+  .active + .nav__links__link:last-of-type {
     border-radius: 2em;
   }
 
-  .nav__links__link:not(:first-of-type):not(:last-of-type):has(+ .active){
+  .nav__links__link:not(:first-of-type):not(:last-of-type):has(+ .active) {
   }
-
-
 
   @keyframes active {
     0% {
@@ -134,12 +128,12 @@ const currentPath = pathname.slice(1);
       margin-inline-start: 0;
       border-radius: 0;
     }
-  10% {
-    border-radius: 2em;
-  }
+    10% {
+      border-radius: 2em;
+    }
     100% {
       margin-inline-end: 2em;
-      margin-inline-start: 2em; 
+      margin-inline-start: 2em;
     }
   }
 
@@ -149,12 +143,12 @@ const currentPath = pathname.slice(1);
       margin-inline-start: 0;
       border-radius: 2em 0 0 2em;
     }
-  10% {
-    border-radius: 2em;
-  }
+    10% {
+      border-radius: 2em;
+    }
     100% {
       margin-inline-end: 2em;
-      margin-inline-start: 2em; 
+      margin-inline-start: 2em;
     }
   }
 
@@ -163,7 +157,7 @@ const currentPath = pathname.slice(1);
       margin-inline-end: 2em;
       border-radius: 2em;
     }
- 
+
     100% {
       margin-inline-end: 2em;
     }
@@ -175,12 +169,12 @@ const currentPath = pathname.slice(1);
       margin-inline-start: 0;
       border-radius: 0;
     }
-  10% {
-    border-radius: 2em;
-  }
+    10% {
+      border-radius: 2em;
+    }
     100% {
       margin-inline-end: 2em;
-      margin-inline-start: 2em; 
+      margin-inline-start: 2em;
     }
   }
 
@@ -189,11 +183,11 @@ const currentPath = pathname.slice(1);
       margin-inline-start: 0;
       border-radius: 0 2em 2em 0;
     }
-  40% {
-    border-radius: 2em;
-  }
+    40% {
+      border-radius: 2em;
+    }
     100% {
-      margin-inline-start: 2em; 
+      margin-inline-start: 2em;
     }
   }
 
@@ -201,15 +195,13 @@ const currentPath = pathname.slice(1);
     0% {
       margin-inline-start: 2em;
       margin-inline-end: 0;
-      
     }
- 
+
     100% {
-      margin-inline-start: 2em; 
+      margin-inline-start: 2em;
       margin-inline-end: 2em;
     }
   }
-
 
   @keyframes active-prev {
     0% {
@@ -217,11 +209,11 @@ const currentPath = pathname.slice(1);
       border-radius: 2em;
       margin-inline-end: 2em;
     }
-  10% {
-    border-radius: 0 2em 2em 0;
-  }
+    10% {
+      border-radius: 0 2em 2em 0;
+    }
     100% {
-      margin-inline-start: 0; 
+      margin-inline-start: 0;
       margin-inline-end: 0;
     }
   }
@@ -229,37 +221,35 @@ const currentPath = pathname.slice(1);
   @keyframes active-prev {
     0% {
       margin-inline-start: 0;
-     
+
       margin-inline-end: 0;
     }
 
     100% {
-      margin-inline-start: 2em; 
+      margin-inline-start: 2em;
       margin-inline-end: 2em;
     }
   }
 
-  @keyframes border-end{
+  @keyframes border-end {
     0% {
       border-radius: 2em 0 0 2em;
     }
-  
+
     100% {
       border-radius: 2em;
     }
   }
 
-  @keyframes border-start{
+  @keyframes border-start {
     0% {
-      border-radius: 0 0 2em 2em ;
+      border-radius: 0 0 2em 2em;
     }
-  
+
     100% {
       border-radius: 2em;
     }
   }
   @media screen and (max-width: 600px) {
   }
-  
-
 </style>
