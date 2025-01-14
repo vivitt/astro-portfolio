@@ -104,6 +104,12 @@ const currentPath = pathname.slice(1);
       border 500ms ease-in-out,
       margins 500ms ease-in-out;
   }
+  .nav__links__link:first-of-type:not(.active) {
+    animation:
+      border 500ms ease-in-out reverse,
+      margins 500ms ease-in-out reverse;
+    background-color: lightcoral;
+  }
 
   .nav__links__link:last-of-type.active {
     border-radius: 2em;
