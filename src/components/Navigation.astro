@@ -1,14 +1,11 @@
 ---
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
-
-
-
 ---
 
 <nav>
-  <ul class="nav__links "  >
-    <li class=`${currentPath === "" ? "hidden" : ""} nav__links__link ` >
+  <ul class="nav__links">
+    <li class=`${currentPath === "" ? "hidden" : ""} nav__links__link `>
       <a data-astro-reload href="/">Home</a>
     </li>
     <li class=`${currentPath === "about/" ? "active" : ""} nav__links__link `>
@@ -28,11 +25,6 @@ const currentPath = pathname.slice(1);
 </nav>
 
 <style>
-  li.nav__links__link:first-of-type.hidden {
-    display: none;
-  }
-
-
   nav {
     display: flex;
     font-family: var(--navFont);
@@ -48,8 +40,6 @@ const currentPath = pathname.slice(1);
     max-width: 80ch;
   }
 
- 
-
   .nav__links__link {
     animation: none;
     list-style: none;
@@ -61,23 +51,24 @@ const currentPath = pathname.slice(1);
     border-bottom: 1px solid;
     margin-inline-start: 0;
     margin-inline-end: 0;
-    
     --from-margin-end: 0;
     --from-margin-start: 0;
   }
 
-  .nav__links__link:focus {
-    outline-style: groove;
+  li.nav__links__link:first-of-type.hidden {
+    display: none;
   }
 
-  li.nav__links__link:first-of-type.hidden + li{
+  li.nav__links__link:first-of-type.hidden + li {
     border-inline-start: 1px solid;
     border-radius: 2em 0 0 2em;
     margin-inline-start: 0;
     --from-border: 2em 0 0 2em;
     --to-margin-end: 2em;
     --to-margin-start: 0;
+    animation: none;
   }
+
   .nav__links__link.active {
     background-color: var(--color);
     border-radius: 2em;
@@ -91,15 +82,21 @@ const currentPath = pathname.slice(1);
     color: var(--color);
   }
 
+  .nav__links__link a:hover {
+    text-decoration: underline;
+  }
+
   .nav__links__link.active a {
     color: var(--bgColor);
   }
 
-  .nav__links__link:first-of-type:not(.active) {
+  .nav__links__link:not(.active) {
     animation:
-      border 300ms ease-in-out reverse ,
-      margins 300ms ease-in-out reverse ;
-    background-color: lightcoral;
+      border 300ms reverse,
+      margins 300ms reverse;
+    --from-margin-start: 0;
+    --from-margin-end: 0;
+    --from-border: 2em;
   }
 
   .nav__links__link:first-child:not(:has(+ .active)) {
@@ -110,15 +107,6 @@ const currentPath = pathname.slice(1);
     --to-margin-end: 2em;
     --to-margin-start: 0;
   }
-
-
-
-  .nav__links__link:first-child:has(+ .active).active {
-    --from-margin-end: 2em;
-    animation: none;
-  }
-
- 
 
   .nav__links__link:last-of-type {
     border-inline-end: 1px solid;
@@ -134,26 +122,23 @@ const currentPath = pathname.slice(1);
     --to-margin-start: 2em;
     --from-border: 0;
   }
-  .nav__links__link:not(.active) {
-  }
 
   .nav__links__link:first-of-type.active {
     border-radius: 2em;
     margin-inline-end: 2em;
     animation:
-      border 500ms ease-in-out,
-      margins 500ms ease-in-out;
+      border 200ms,
+      margins 200ms;
   }
-  
 
   .nav__links__link:last-of-type.active {
     border-radius: 2em;
     margin-inline-start: 2em;
-    --from-border: 2em;
+    --from-border: 0;
     --to-border: 2em;
     animation:
-      border 500ms,
-      margins 500ms;
+      border 200ms,
+      margins 200ms;
   }
 
   .nav__links__link:not(:first-of-type):not(:last-of-type).active {
@@ -162,8 +147,8 @@ const currentPath = pathname.slice(1);
     margin-inline-start: 2em;
     margin-inline-end: 2em;
     animation:
-      border 500ms,
-      margins 500ms;
+      border 200ms,
+      margins 200ms;
   }
 
   .nav__links__link:first-child:has(+ .active) {
@@ -173,7 +158,6 @@ const currentPath = pathname.slice(1);
     --to-margin-end: 2em;
     --from-border: 2em;
     --to-border: 2em;
-    background-color: aqua;
     animation: none;
   }
 
@@ -196,11 +180,10 @@ const currentPath = pathname.slice(1);
     --from-margin-start: 0;
     --from-margin-end: 2em;
     border-radius: 0 2em 2em 0;
-    background-color: green;
   }
 
-  .nav__links__link:has(+ .active) {
-    border-radius: 2em 0 0 2em;
+  .nav__links__link:first-of-type:has(+ .active) {
+    border-radius: 2em;
     border-inline-start: 1px solid;
     --from-margin-start: 0;
     --to-border: 2em 0 0 2em;
@@ -208,6 +191,7 @@ const currentPath = pathname.slice(1);
   .active + .nav__links__link {
     border-radius: 2em 0 0 2em;
     border-inline-start: 1px solid;
+
     --from-margin-end: 0;
     --to-border: 2em 0 0 2em;
   }
@@ -238,5 +222,4 @@ const currentPath = pathname.slice(1);
 
   @media screen and (max-width: 600px) {
   }
-
 </style>
