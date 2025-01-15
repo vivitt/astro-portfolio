@@ -15,6 +15,9 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+const date = new Date()
+let year = date.getFullYear();
 ---
 
 <!doctype html>
@@ -77,6 +80,9 @@ const { title } = Astro.props;
         </a>
 
         <a href="https://x.com/yvivi_vi" target="_blank"><Icon name="x" />X </a>
+      </div>
+      <div class="footer__text">
+        <p>Viviana Yanez {year} | Made with ♥︎</p>
       </div>
     </footer>
     <!-- <script>

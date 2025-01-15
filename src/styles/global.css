@@ -58,6 +58,9 @@ footer {
   padding: 2em 5em;
   border-top: 1px solid;
   margin-top: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .footer__links {
@@ -76,4 +79,8 @@ footer {
   padding-inline-end: 0.3em;
   font-size: 1.2rem;
   color: var(--color);
+}
+
+.footer__text {
+
 }
