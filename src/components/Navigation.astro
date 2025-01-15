@@ -5,31 +5,30 @@ const currentPath = pathname.slice(1);
 
 
 ---
-<script is:inline>
-  const links = document.querySelector('.nav__links').children
 
-  const removeNoAnimClass = () => links.map((el) => el.classList.remove('.no-animation'))
-  nav.addEventListener("click", removeNoAnimClass);
-</script>
 <nav>
   <ul class="nav__links "  >
-    <li class=`${currentPath === "about/" ? "active" : ""} nav__links__link no-animation`>
+    <li class=`${currentPath === "" ? "active" : ""} nav__links__link `>
+      <a data-astro-reload href="/">Home</a>
+    </li>
+    <li class=`${currentPath === "about/" ? "active" : ""} nav__links__link `>
       <a data-astro-reload href="/about/">About</a>
     </li>
 
     <li
-      class=`${currentPath === "projects/" ? "active" : ""} nav__links__link no-animation`
+      class=`${currentPath === "projects/" ? "active" : ""} nav__links__link `
     >
       <a data-astro-reload href="/projects/">Projects</a>
     </li>
 
-    <li class=`${currentPath === "blog/" ? "active" : ""} nav__links__link no-animation `>
+    <li class=`${currentPath === "blog/" ? "active" : ""} nav__links__link`>
       <a data-astro-reload href="/blog/">Blog</a>
     </li>
   </ul>
 </nav>
 
 <style>
+
   nav {
     display: flex;
     font-family: var(--navFont);
@@ -62,7 +61,7 @@ const currentPath = pathname.slice(1);
     --from-margin-start: 0;
   }
 
-  .nav__links__link.no-animation  {
+  .nav__links__link.  {
     animation: none
   }
 
@@ -83,10 +82,10 @@ const currentPath = pathname.slice(1);
     color: var(--bgColor);
   }
 
-  .nav__links__link:first-of-type:not(.active):not(.no-animation) {
+  .nav__links__link:first-of-type:not(.active) {
     animation:
-      border 500ms ease-in-out reverse ,
-      margins 500ms ease-in-out reverse ;
+      border 300ms ease-in-out reverse ,
+      margins 300ms ease-in-out reverse ;
     background-color: lightcoral;
   }
 
@@ -106,6 +105,8 @@ const currentPath = pathname.slice(1);
     --from-margin-end: 2em;
     animation: none;
   }
+
+ 
 
   .nav__links__link:last-of-type {
     border-inline-end: 1px solid;
@@ -136,6 +137,8 @@ const currentPath = pathname.slice(1);
   .nav__links__link:last-of-type.active {
     border-radius: 2em;
     margin-inline-start: 2em;
+    --from-border: 2em;
+    --to-border: 2em;
     animation:
       border 500ms,
       margins 500ms;
@@ -167,9 +170,8 @@ const currentPath = pathname.slice(1);
     border-inline-end: 1px solid;
     --from-margin-end: 0;
     --from-margin-start: 2em;
-    --from-border: 0 2em 2em 0;
+    --from-border: 2em;
     --to-border: 2em;
-    background-color: red;
     animation: none;
   }
 
@@ -196,7 +198,6 @@ const currentPath = pathname.slice(1);
     border-inline-start: 1px solid;
     --from-margin-end: 0;
     --to-border: 2em 0 0 2em;
-    background-color: blueviolet;
   }
 
   /* match the prev sibiling for an active link when it is the first or the last link */
