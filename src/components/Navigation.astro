@@ -8,7 +8,7 @@ const currentPath = pathname.slice(1);
 
 <nav>
   <ul class="nav__links "  >
-    <li class=`${currentPath === "" ? "hidden" : ""} nav__links__link `>
+    <li class=`${currentPath === "" ? "hidden" : ""} nav__links__link ` >
       <a data-astro-reload href="/">Home</a>
     </li>
     <li class=`${currentPath === "about/" ? "active" : ""} nav__links__link `>
@@ -51,6 +51,7 @@ const currentPath = pathname.slice(1);
  
 
   .nav__links__link {
+    animation: none;
     list-style: none;
     display: flex;
     align-items: center;
@@ -60,17 +61,16 @@ const currentPath = pathname.slice(1);
     border-bottom: 1px solid;
     margin-inline-start: 0;
     margin-inline-end: 0;
-    background-color: var(--bgColor);
+    
     --from-margin-end: 0;
     --from-margin-start: 0;
   }
 
-  .nav__links__link {
-    animation: none
+  .nav__links__link:focus {
+    outline-style: groove;
   }
 
   li.nav__links__link:first-of-type.hidden + li{
-    
     border-inline-start: 1px solid;
     border-radius: 2em 0 0 2em;
     margin-inline-start: 0;
