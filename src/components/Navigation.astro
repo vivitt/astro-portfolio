@@ -1,21 +1,29 @@
 ---
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
----
 
+
+
+---
+<script is:inline>
+  const links = document.querySelector('.nav__links').children
+
+  const removeNoAnimClass = () => links.map((el) => el.classList.remove('.no-animation'))
+  nav.addEventListener("click", removeNoAnimClass);
+</script>
 <nav>
-  <ul class="nav__links">
-    <li class=`${currentPath === "about/" ? "active" : ""} nav__links__link `>
+  <ul class="nav__links "  >
+    <li class=`${currentPath === "about/" ? "active" : ""} nav__links__link no-animation`>
       <a data-astro-reload href="/about/">About</a>
     </li>
 
     <li
-      class=`${currentPath === "projects/" ? "active" : ""} nav__links__link `
+      class=`${currentPath === "projects/" ? "active" : ""} nav__links__link no-animation`
     >
       <a data-astro-reload href="/projects/">Projects</a>
     </li>
 
-    <li class=`${currentPath === "blog/" ? "active" : ""} nav__links__link `>
+    <li class=`${currentPath === "blog/" ? "active" : ""} nav__links__link no-animation `>
       <a data-astro-reload href="/blog/">Blog</a>
     </li>
   </ul>
@@ -37,6 +45,8 @@ const currentPath = pathname.slice(1);
     max-width: 80ch;
   }
 
+ 
+
   .nav__links__link {
     list-style: none;
     display: flex;
@@ -52,11 +62,14 @@ const currentPath = pathname.slice(1);
     --from-margin-start: 0;
   }
 
+  .nav__links__link.no-animation  {
+    animation: none
+  }
+
   .nav__links__link.active {
     background-color: var(--color);
     border-radius: 2em;
     border: 1px solid;
-    animation: active 500ms ease;
     --to-border: 2em;
   }
 
@@ -70,6 +83,13 @@ const currentPath = pathname.slice(1);
     color: var(--bgColor);
   }
 
+  .nav__links__link:first-of-type:not(.active):not(.no-animation) {
+    animation:
+      border 500ms ease-in-out reverse ,
+      margins 500ms ease-in-out reverse ;
+    background-color: lightcoral;
+  }
+
   .nav__links__link:first-child:not(:has(+ .active)) {
     border-inline-start: 1px solid;
     border-radius: 2em 0 0 2em;
@@ -78,6 +98,13 @@ const currentPath = pathname.slice(1);
     --to-margin-end: 2em;
     --to-margin-start: 0;
     background-color: yellow;
+  }
+
+
+
+  .nav__links__link:first-child:has(+ .active).active {
+    --from-margin-end: 2em;
+    animation: none;
   }
 
   .nav__links__link:last-of-type {
@@ -104,12 +131,7 @@ const currentPath = pathname.slice(1);
       border 500ms ease-in-out,
       margins 500ms ease-in-out;
   }
-  .nav__links__link:first-of-type:not(.active) {
-    animation:
-      border 500ms ease-in-out reverse,
-      margins 500ms ease-in-out reverse;
-    background-color: lightcoral;
-  }
+  
 
   .nav__links__link:last-of-type.active {
     border-radius: 2em;
@@ -203,4 +225,5 @@ const currentPath = pathname.slice(1);
 
   @media screen and (max-width: 600px) {
   }
+
 </style>
