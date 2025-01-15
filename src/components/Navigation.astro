@@ -61,6 +61,7 @@ const currentPath = pathname.slice(1);
 
   li.nav__links__link:first-of-type.hidden {
     display: none;
+    --from-margin-start: 8em;
   }
 
   li.nav__links__link:first-of-type.hidden + li {
@@ -145,8 +146,8 @@ const currentPath = pathname.slice(1);
     padding-inline-end: 2em;
     margin-inline-end: 2em;
     animation:
-      border 200ms,
-      margins 200ms;
+      border 2000ms,
+      margins 2000ms;
   }
 
   .nav__links__link:last-of-type.active {
@@ -156,8 +157,8 @@ const currentPath = pathname.slice(1);
     padding-inline-end: 2em;
     --to-border: 2em;
     animation:
-      border 200ms,
-      margins 200ms;
+      border 2000ms,
+      margins 2000ms;
   }
 
   .nav__links__link:not(:first-of-type):not(:last-of-type).active {
@@ -168,8 +169,8 @@ const currentPath = pathname.slice(1);
     margin-inline-start: 2em;
     margin-inline-end: 2em;
     animation:
-      border 200ms,
-      margins 200ms;
+      border 2000ms,
+      margins 2000ms;
   }
 
   .nav__links__link:first-child:has(+ .active) {
@@ -236,21 +237,17 @@ const currentPath = pathname.slice(1);
     0% {
       padding-inline-end: var(--from-padding-end);
       padding-inline-start: var(--from-padding-start);
-      margin-inline-end: var(--from-margin-end);
-      margin-inline-start: var(--from-margin-start);
     }
     100% {
       padding-inline-end: var(--to-padding-end);
       padding-inline-start: var(--to-padding-start);
-      margin-inline-end: var(--from-margin-end);
-      margin-inline-start: var(--from-margin-start);
     }
   }
   @keyframes border {
-    0% {
+    10% {
       border-radius: var(--from-border);
     }
-    100% {
+    80% {
       border-radius: var(--to-border);
     }
   }
