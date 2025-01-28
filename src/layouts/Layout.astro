@@ -16,7 +16,7 @@ interface Props {
 
 const { title } = Astro.props;
 
-const date = new Date()
+const date = new Date();
 let year = date.getFullYear();
 ---
 
@@ -30,6 +30,34 @@ let year = date.getFullYear();
     <meta name="generator" content={Astro.generator} />
     <ClientRouter />
     <title>{title}</title>
+    <script is:inline>
+      function applyTheme() {
+        const theme = (() => {
+          if (
+            typeof localStorage !== "undefined" &&
+            localStorage.getItem("theme")
+          ) {
+            return localStorage.getItem("theme") ?? "light";
+          }
+          if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            return "dark";
+          }
+          return "light";
+        })();
+        if (theme === "light") {
+          element.classList.remove("dark");
+          toggle.setAttribute("aria-checked", false);
+          element.dataset.theme = "light";
+        } else {
+          element.classList.add("dark");
+          toggle.setAttribute("aria-checked", "true");
+          element.dataset.theme = "dark";
+        }
+      }
+
+      document.addEventListener("astro:after-swap", applyTheme);
+      applyTheme();
+    </script>
   </head>
   <body transition:animate="fade">
     <header>
@@ -39,22 +67,12 @@ let year = date.getFullYear();
         <ToggleTheme class="header__icons__toggle" />
       </div>
       <div class="header__navigation">
-        <a href="/" data-astro-reload
+        <a href="/"
           >{
             title === "Vivi's Blog" ? (
-              <Image
-                src={blogLogo}
-                alt="Vivi's Blog"
-                width="550"
-                transition:animate="fade"
-              />
+              <Image src={blogLogo} alt="Vivi's Blog" width="550" />
             ) : (
-              <Image
-                src={mainLogo}
-                alt="viviyanez.dev"
-                width="550"
-                transition:animate="fade"
-              />
+              <Image src={mainLogo} alt="viviyanez.dev" width="550" />
             )
           }
         </a>
@@ -85,11 +103,6 @@ let year = date.getFullYear();
         <p>Viviana Yanez {year} | Made with ♥︎</p>
       </div>
     </footer>
-    <!-- <script>
-      document.querySelector(".hamburger").addEventListener("click", () => {
-        document.querySelector(".nav-links").classList.toggle("expanded");
-      });
-    </script> -->
   </body>
 </html>
 <style is:global>
@@ -140,9 +153,9 @@ let year = date.getFullYear();
   }
 
   @media (prefers-reduced-motion) {
-    :root::view-transition-new(root) {
+    /* :root::view-transition-new(root) {
       animation: none;
-    }
+    } */
   }
 
   @keyframes wide-theme {

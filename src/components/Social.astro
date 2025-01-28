@@ -1,17 +1,22 @@
 ---
-import { Icon } from 'astro-icon/components'
+import { Icon } from "astro-icon/components";
 
 const { platform, username } = Astro.props;
 ---
 
-<a href={`https://www.${platform}.com/${username}`} target="_blank">
-  <Icon name={platform} /></a>
+<a
+  href={`https://www.${platform}.com/${username}`}
+  target="_blank"
+  aria-label=`${platform}`
+>
+  <Icon aria-hidden name={platform} /></a
+>
 <style>
   a {
     padding: 0.7rem;
   }
-[data-icon] {
+  [data-icon] {
     font-size: 1.7rem;
     color: var(--color);
-}
+  }
 </style>
