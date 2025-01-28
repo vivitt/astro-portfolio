@@ -1,9 +1,8 @@
 ---
 title: "React Hooks: a look into useState"
-date: 2024-03-25
-author: Viviana Yanez
+pubDate: 2024-03-25
+author: "Viviana Yanez"
 description: "There are some React Hooks that I have been using for a while and others that are completely news for me, but I am still using this opportunity to review the most popular React hooks to gain a deeper understanding about it."
-layout: ../../layouts/MarkdownPostLayout.astro
 image:
   url: "https://docs.astro.build/assets/rose.webp"
   alt: "The Astro logo on a dark background with a pink glow."

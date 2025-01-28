@@ -8,7 +8,7 @@ const { title, url, tags, date } = Astro.props;
   <a class="blog-summary__link" href={url}>{title} </a>
   <ul>
     {
-      tags?.map((tag) => (
+      tags?.map((tag: string) => (
         <li>
           <Tag tag={tag}>{tag}</Tag>
         </li>

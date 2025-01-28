@@ -1,8 +1,7 @@
 ---
 title: "A fully accessible checkbox styled with Tailwind"
-date: 2024-04-11
-author: Viviana Yanez
-layout: ../../layouts/MarkdownPostLayout.astro
+pubDate: 2024-04-11
+author: "Viviana Yanez"
 image:
   url: "https://docs.astro.build/assets/rose.webp"
   alt: "The Astro logo on a dark background with a pink glow."

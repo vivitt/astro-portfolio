@@ -6,7 +6,6 @@ import { formatPostDate } from "../utils/date";
 const date = formatPostDate(frontmatter.date).date;
 import Layout from "../layouts/Layout.astro";
 import Tag from "../components/Tag.astro";
-const pageTitle = "Blog";
 ---
 
 <Layout title={frontmatter.title}>
@@ -20,6 +19,6 @@ const pageTitle = "Blog";
     <slot />
   </article>
   <div class="tags">
-    {frontmatter?.tags.map((tag) => <Tag tag={tag} />)}
+    {frontmatter?.tags.map((tag: string) => <Tag tag={tag} />)}
   </div>
 </Layout>
