@@ -1,15 +1,16 @@
 ---
 title: "A fully accessible checkbox styled with Tailwind"
 pubDate: 2024-04-11
-author: "Viviana Yanez"
-image:
-  url: "https://docs.astro.build/assets/rose.webp"
-  alt: "The Astro logo on a dark background with a pink glow."
-tags: ["accessibility", "react", "frontend"]
 description: "I am working in a React and Tailwind app. Last week, I worked on implementing the styling of the UI for a view that included a list of items, each of which included a checkbox to change its status."
+author: "Viviana Yanez"
+id: 23
+link: ""
+isBlogPost: true
 ---
 
 I am working in a React and Tailwind app. Last week, I worked on implementing the styling of the UI for a view that included a list of items, each of which included a checkbox to change its status.
+
+---
 
 It was a pretty interesting challenge because to adapt to the design specs, I needed to completely change the appearance of the checkbox. However, I wanted to do this without affecting its functionality, that means, keeping it fully accessible and interactable.
 
@@ -61,6 +62,7 @@ The SVG element is the visual replacement for the checkbox, so I applied some cl
           <span className="sr-only">{`Mark ${name} as purchased`}</span>
         </label>
         <span>{name}</span>
+
 
 And the visual result:
 

@@ -1,15 +1,15 @@
 ---
 title: "React Hooks: a look into useState"
 pubDate: 2024-03-25
-author: "Viviana Yanez"
 description: "There are some React Hooks that I have been using for a while and others that are completely news for me, but I am still using this opportunity to review the most popular React hooks to gain a deeper understanding about it."
-image:
-  url: "https://docs.astro.build/assets/rose.webp"
-  alt: "The Astro logo on a dark background with a pink glow."
+author: "Viviana Yanez"
+link: ""
 tags: ["react", "frontend"]
 ---
 
 There are some React Hooks that I have been using for a while and others that are completely news for me, but I am still using this opportunity to review the most popular React hooks to gain a deeper understanding about it.
+
+---
 
 I certainly already have been using useState but I wanted to re read about it, as I feel that I can have now a much more deeper understanding of concepts that when I started learning React.
 
