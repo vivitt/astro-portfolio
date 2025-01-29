@@ -67,15 +67,14 @@ let year = date.getFullYear();
         <ToggleTheme class="header__icons__toggle" />
       </div>
       <div class="header__navigation">
-        <a href="/"
-          >{
-            title === "Vivi's Blog" ? (
-              <Image src={blogLogo} alt="Vivi's Blog" width="550" />
-            ) : (
-              <Image src={mainLogo} alt="viviyanez.dev" width="550" />
-            )
-          }
-        </a>
+        {
+          title === "Vivi's Blog" ? (
+            <Image src={blogLogo} alt="Vivi's Blog" width="550" />
+          ) : (
+            <Image src={mainLogo} alt="viviyanez.dev" width="550" />
+          )
+        }
+
         <Navigation />
       </div>
     </header>
