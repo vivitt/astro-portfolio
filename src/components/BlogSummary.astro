@@ -1,15 +1,22 @@
 ---
 import { formatPostDate } from "../utils/date";
 import Tag from "./Tag.astro";
-const { title, url, tags, date } = Astro.props;
+
+const { post } = Astro.props;
 ---
 
 <li class="blog-summary">
-  <p>{formatPostDate(date).date}</p>
-  <a class="blog-summary__link" href={url}>{title} </a>
+  <p>{formatPostDate(post.data.pubDate).date}</p>
+  <a
+    class="blog-summary__link"
+    href={post.data.link !== "" ? post.data.link : "/posts/" + post.id}
+    target={post.data.link !== "" ? "_blank" : "_self"}
+    >{post.data.title}
+  </a>
+
   <ul>
     {
-      tags?.map((tag: string) => (
+      post.data.tags?.map((tag: string) => (
         <li>
           <Tag tag={tag}>{tag}</Tag>
         </li>

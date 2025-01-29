@@ -9,16 +9,7 @@ const allBlogPosts = await getCollection("blog");
 <Layout title="Vivi's Blog">
   <h1>Blog</h1>
   <ul>
-    {
-      allBlogPosts.map((post) => (
-        <BlogSummary
-          date={post.data.pubDate}
-          url={post.data.link ? post.data.link : "/posts/" + post.id}
-          title={post.data.title}
-          tags={post.data.tags}
-        />
-      ))
-    }
+    {allBlogPosts.map((post) => <BlogSummary post={post} />)}
   </ul>
 </Layout>
 
