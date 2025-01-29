@@ -2,6 +2,7 @@
 title: "Participating in The Collab Lab: Week #1"
 pubDate: 2024-02-08
 author: "Viviana Yanez"
+layout: "../../layouts/BlogPostLayout.astro"
 
 link: "https://dev.to/vivitt/participating-in-the-collab-lab-week-1-3gg6"
 

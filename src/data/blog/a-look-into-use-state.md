@@ -3,6 +3,8 @@ title: "React Hooks: a look into useState"
 pubDate: 2024-03-25
 description: "There are some React Hooks that I have been using for a while and others that are completely news for me, but I am still using this opportunity to review the most popular React hooks to gain a deeper understanding about it."
 author: "Viviana Yanez"
+layout: "../../layouts/BlogPostLayout.astro"
+
 link: ""
 tags: ["react", "frontend"]
 ---

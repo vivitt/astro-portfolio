@@ -4,6 +4,7 @@ pubDate: 2024-03-07
 author: "Viviana Yanez"
 
 description: "I have already finished week 4 in [The Collab Lab](https://the-collab-lab.codes/). I am glad to see the project taking shape, with the issues becoming more complex. As a team, we have still managed to deliver the new features on time."
+layout: "../../layouts/BlogPostLayout.astro"
 ---
 
 I have already finished week 4 in [The Collab Lab](https://the-collab-lab.codes/). I am glad to see the project taking shape, with the issues becoming more complex. As a team, we have still managed to deliver the new features on time.

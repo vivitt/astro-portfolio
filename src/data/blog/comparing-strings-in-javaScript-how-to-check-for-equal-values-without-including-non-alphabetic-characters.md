@@ -3,6 +3,8 @@ title: "Comparing Strings in JavaScript: How to check for Equal Normalized Value
 pubDate: 2024-03-22
 description: "Last week, I contributed to the implementation of a feature that prevent users from submitting input values that already exist in the database."
 author: "Viviana Yanez"
+layout: "../../layouts/BlogPostLayout.astro"
+
 link: ""
 ---
 

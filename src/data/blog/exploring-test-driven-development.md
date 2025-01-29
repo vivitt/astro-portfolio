@@ -3,8 +3,9 @@ title: "Learning TDD: “The TDD Companion” by Scott L Bain"
 pubDate: 2023-11-07
 description: "This book takes a useful hands-on approach to Test Driven Development (TDD), and I had a great time reading it. So, here are the main takeaways and highlights."
 author: "Viviana Yanez"
+layout: "../../layouts/BlogPostLayout.astro"
+
 link: "https://viviyanez.hashnode.dev/exploring-test-driven-development-the-tdd-companion-by-scott-l-bain"
-isBlogPost: true
 tags: ["books", "TDD", "softwareEngineering"]
 ---
 

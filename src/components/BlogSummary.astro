@@ -1,10 +1,11 @@
 ---
+import { formatPostDate } from "../utils/date";
 import Tag from "./Tag.astro";
 const { title, url, tags, date } = Astro.props;
 ---
 
 <li class="blog-summary">
-  <p>{date}</p>
+  <p>{formatPostDate(date).date}</p>
   <a class="blog-summary__link" href={url}>{title} </a>
   <ul>
     {

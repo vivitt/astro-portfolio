@@ -4,6 +4,8 @@ pubDate: 2024-02-16
 author: "Viviana Yanez"
 description: "Second week participating in [The Collab Lab](https://the-collab-lab.codes/).
 We are building a smart shopping list application using React and Firebase. This week, I paired with another team member to add a new feature to allow users to submit a list name and create a new shopping list."
+layout: "../../layouts/BlogPostLayout.astro"
+
 ---
 
 Second week participating in [The Collab Lab](https://the-collab-lab.codes/).

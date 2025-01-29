@@ -3,9 +3,12 @@ title: "Participating in The Collab Lab: Week #7"
 pubDate: 2024-03-25
 author: "Viviana Yanez"
 
-excerpt: "We are pretty close to the end of our Collab Lab project 🤯.
+description: "We are pretty close to the end of our Collab Lab project 🤯.
 
 Since we started, I worked each week pairing with another developer on an issue assigned to us. Usually, it was a new feature to add, and it was great that the complexity was growing at a very nice pace, so it kept us really engaged with the project."
+
+layout: "../../layouts/BlogPostLayout.astro"
+
 ---
 
 We are pretty close to the end of our Collab Lab project 🤯.

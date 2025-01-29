@@ -5,6 +5,8 @@ author: "Viviana Yanez"
 
 description: "This is week number 3 for my Collab Lab project. 
 Since week 1, I have been contributing by adding different features to our app. I've had the opportunity to pair with all the developers in the team on these issues."
+layout: "../../layouts/BlogPostLayout.astro"
+
 ---
 
 This is week number 3 for my Collab Lab project.

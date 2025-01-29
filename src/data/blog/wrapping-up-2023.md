@@ -2,6 +2,7 @@
 title: "Wrapping up the year: My 2023 tech journey"
 pubDate: 2023-12-26
 author: Viviana Yanez
+layout: "../../layouts/BlogPostLayout.astro"
 
 description: As we reach the last week of 2023, it is a nice time to reflect on the significant achievements of the year
 ---

@@ -3,9 +3,9 @@ title: "A fully accessible checkbox styled with Tailwind"
 pubDate: 2024-04-11
 description: "I am working in a React and Tailwind app. Last week, I worked on implementing the styling of the UI for a view that included a list of items, each of which included a checkbox to change its status."
 author: "Viviana Yanez"
-id: 23
+layout: "../../layouts/BlogPostLayout.astro"
+
 link: ""
-isBlogPost: true
 ---
 
 I am working in a React and Tailwind app. Last week, I worked on implementing the styling of the UI for a view that included a list of items, each of which included a checkbox to change its status.
@@ -62,7 +62,6 @@ The SVG element is the visual replacement for the checkbox, so I applied some cl
           <span className="sr-only">{`Mark ${name} as purchased`}</span>
         </label>
         <span>{name}</span>
-
 
 And the visual result:
 

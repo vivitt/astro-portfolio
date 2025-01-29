@@ -1,5 +1,6 @@
 ---
 title: "A beginner's guide to understanding SOLID principles"
+layout: "../../layouts/BlogPostLayout.astro"
 pubDate: 2023-10-31
 description: "I have been reviewing the SOLID principles and wanted to share some notes collecting the main concepts I've been learning."
 author: "Viviana Yanez"

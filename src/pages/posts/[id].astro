@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Tag from "../../components/Tag.astro";
+import { formatPostDate } from "../../utils/date";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title}>
+  <article class="">
+    <header>
+      <img />
+      <h1>{post?.data?.title}</h1>
+      <span>{formatPostDate(post?.data?.pubDate).date}</span>
+    </header>
+
+    <Content />
+
+    <div class="tags">
+      {
+        post?.data?.tags &&
+          post?.data?.tags.map((tag: string) => <Tag tag={tag} />)
+      }
+    </div>
+  </article>
+</Layout>

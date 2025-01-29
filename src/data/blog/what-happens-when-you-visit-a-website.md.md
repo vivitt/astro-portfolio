@@ -2,6 +2,7 @@
 title: "What Happens When You Visit a Website? How the Web Works Explained"
 pubDate: 2024-11-15
 author: Viviana Yanez
+layout: "../../layouts/BlogPostLayout.astro"
 
 link: "https://www.freecodecamp.org/news/what-happens-when-you-visit-a-website"
 

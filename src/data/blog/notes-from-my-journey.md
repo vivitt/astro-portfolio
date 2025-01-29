@@ -2,6 +2,7 @@
 title: "Notes from my journey as a Software Engineering intern on the Growth team"
 pubDate: 2023-07-18
 author: "Viviana Yanez"
+layout: "../../layouts/BlogPostLayout.astro"
 
 link: "https://diff.wikimedia.org/2023/07/18/notes-from-my-journey-as-a-software-engineering-intern-on-the-growth-team/"
 

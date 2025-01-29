@@ -3,6 +3,8 @@ title: "Adding generated cover images to my blog posts using the Canvas API"
 pubDate: 2024-02-09
 description: "I have created a customized cover template for my blog posts, which includes a background image with the title and date of the post."
 author: "Viviana Yanez"
+layout: "../../layouts/BlogPostLayout.astro"
+
 tags: ["frontend", "javascript", "canvasAPI"]
 link: ""
 ---

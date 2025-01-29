@@ -2,6 +2,7 @@
 title: "React Hooks: When Not to Use useEffects"
 pubDate: 2024-02-15
 author: Viviana Yanez
+layout: "../../layouts/BlogPostLayout.astro"
 
 link: "https://dev.to/vivitt/react-hooks-when-not-to-use-useeffects-1bbb"
 

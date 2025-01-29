@@ -4,9 +4,11 @@ pubDate: 2024-03-22
 author: "Viviana Yanez"
 
 link: "https://dev.to/vivitt/participating-in-the-collab-lab-week-5-6-4ngc"
-excerpt: "Those past weeks have been a bit busy on my side, so I am summarizing both in this new blog entry.
+description: "Those past weeks have been a bit busy on my side, so I am summarizing both in this new blog entry.
 
 ✨ Our shopping list app's functionality is now almost completed, and we are really close to starting work on the UI styling."
+layout: "../../layouts/BlogPostLayout.astro"
+
 ---
 
 Those past weeks have been a bit busy on my side, so I am summarizing both in this new blog entry.

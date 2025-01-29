@@ -2,6 +2,7 @@
 title: "The prefers-contrast and forced-colors CSS media features"
 pubDate: 2024-05-14
 author: Viviana Yanez
+layout: "../../layouts/BlogPostLayout.astro"
 
 description: "Last week, I learnt about the possibility of a background image disappearing from the UI Windows High Contrast Mode."
 tags: ["a11y", "frontend"]

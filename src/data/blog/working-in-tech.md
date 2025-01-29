@@ -2,6 +2,7 @@
 title: "Working in Tech: Going beyond coding"
 pubDate: 2022-08-09
 author: Viviana Yanez
+layout: "../../layouts/BlogPostLayout.astro"
 
 link: https://medium.com/allwomen-alumni/working-in-tech-going-beyond-coding-c4eb767376a6
 ---

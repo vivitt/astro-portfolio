@@ -3,6 +3,7 @@ title: "Learning about Date objects in JS"
 pubDate: 2024-03-04
 description: "Date is a JavaScript built-in object that represents a specific moment in time. It encapsulates an integral number that represents milliseconds since the midnight at the beginning of January 1, 1970, UTC."
 author: "Viviana Yanez"
+layout: "../../layouts/BlogPostLayout.astro"
 
 link: "https://dev.to/vivitt/learning-about-date-objects-in-js-56l1"
 ---

@@ -2,8 +2,9 @@
 title: "Participating in The Collab Lab: Wrapping up"
 pubDate: 2024-04-12
 author: "Viviana Yanez"
+layout: "../../layouts/BlogPostLayout.astro"
 
-excerpt: "During the last week my team successfully shipped the fully functional web app, and as a wrap up I want to share some final thoughts on this amazing experience."
+description: "During the last week my team successfully shipped the fully functional web app, and as a wrap up I want to share some final thoughts on this amazing experience."
 ---
 
 During the last week my team successfully shipped the fully functional web app that we have been working on since February.
