@@ -8,9 +8,9 @@ export async function getStaticPaths() {
 
   const uniqueTags = [...new Set(posts.map((post) => post.data.tags).flat())];
   return uniqueTags.map((tag) => {
-    const filteredPosts = posts.filter((post) =>
-      post.data?.tags?.includes(tag)
-    );
+    const filteredPosts =
+      posts.filter((post) => post.data.tags && post.data.tags.includes(tag)) ||
+      [];
     return {
       params: { tag },
       props: { posts: filteredPosts },
@@ -22,13 +22,9 @@ const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
-<Layout title={tag}>
-  <p>Posts tagged with {tag}</p>
+<Layout title={`Posts tagged with ${tag}`}>
+  <h2>Posts tagged with {tag}</h2>
   <ul>
-    {
-      posts.map((post) => (
-        <BlogPost url={post.data.link} title={post.data.title} />
-      ))
-    }
+    {posts.map((post) => <BlogPost post={post} />)}
   </ul>
 </Layout>

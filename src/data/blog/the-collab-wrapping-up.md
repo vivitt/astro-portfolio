@@ -2,8 +2,7 @@
 title: "Participating in The Collab Lab: Wrapping up"
 pubDate: 2024-04-12
 author: "Viviana Yanez"
-layout: "../../layouts/BlogPostLayout.astro"
-
+tags: ["theCollabLab"]
 description: "During the last week my team successfully shipped the fully functional web app, and as a wrap up I want to share some final thoughts on this amazing experience."
 ---
 

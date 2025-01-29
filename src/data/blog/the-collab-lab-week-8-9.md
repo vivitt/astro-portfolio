@@ -2,8 +2,7 @@
 title: "Participating in The Collab Lab: Week #8 & #9"
 pubDate: 2024-04-09
 author: "Viviana Yanez"
-layout: "../../layouts/BlogPostLayout.astro"
-
+tags: ["theCollabLab"]
 description: "During the final weeks of the project, we focused on improving the user interface's look of our app. We collected some inspiration in a mood board and then started by creating some mockups for the different views in our app."
 ---
 

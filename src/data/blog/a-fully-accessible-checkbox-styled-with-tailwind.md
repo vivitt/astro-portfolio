@@ -4,7 +4,7 @@ pubDate: 2024-04-11
 description: "I am working in a React and Tailwind app. Last week, I worked on implementing the styling of the UI for a view that included a list of items, each of which included a checkbox to change its status."
 author: "Viviana Yanez"
 layout: "../../layouts/BlogPostLayout.astro"
-tags: ["accessibility", "frontend", "css", "tailwind"]
+tags: ["a11y", "frontend", "css", "tailwind"]
 link: ""
 ---
 

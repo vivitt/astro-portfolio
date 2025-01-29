@@ -4,7 +4,7 @@ pubDate: 2024-02-22
 description: "I am currently working on a client-side application using React and Firebase, and I am taking the opportunity to delve deeper into React hooks and patterns."
 author: "Viviana Yanez"
 layout: "../../layouts/BlogPostLayout.astro"
-
+tags: ["react"]
 link: "https://dev.to/vivitt/react-hooks-when-to-use-usememo-5cc"
 ---
 

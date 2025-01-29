@@ -14,7 +14,7 @@ const blog = defineCollection({
         url: z.string(),
       })
       .optional(),
-    layout: z.string(),
+    layout: z.string().optional(),
 
     link: z.string().optional(),
     pubDate: z.coerce.date(),
