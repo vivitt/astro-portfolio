@@ -9,7 +9,11 @@ const allBlogPosts = await getCollection("blog");
 <Layout title="Vivi's Blog">
   <h1>Blog</h1>
   <ul>
-    {allBlogPosts.map((post) => <BlogSummary post={post} />)}
+    {
+      allBlogPosts
+        .sort((a, b) => b.data.pubDate - a.data.pubDate)
+        .map((post) => <BlogSummary post={post} />)
+    }
   </ul>
 </Layout>
 
