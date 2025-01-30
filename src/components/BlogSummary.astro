@@ -9,7 +9,9 @@ const { post } = Astro.props;
   <p>{formatPostDate(post.data.pubDate).date}</p>
   <a
     class="blog-summary__link"
-    href={post.data.link !== "" ? post.data.link : "/posts/" + post.id}
+    href={post.data.link === "" || !post.data.link
+      ? "/posts/" + post.id
+      : post.data.link}
     target={post.data.link !== "" ? "_blank" : "_self"}
     >{post.data.title}
   </a>

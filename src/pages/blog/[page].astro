@@ -1,0 +1,29 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import BlogSummary from "../../components/BlogSummary.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths({ paginate }) {
+  const allBlogPosts = await getCollection("blog");
+  allBlogPosts.sort((a, b) => Number(b.data.pubDate) - Number(a.data.pubDate));
+  return paginate(allBlogPosts, { pageSize: 6 });
+}
+const { page } = Astro.props as {
+  page: { data: Array<{ data: { pubDate: string } }> };
+};
+---
+
+<Layout title="Vivi's Blog">
+  <h1>Blog</h1>
+  <ul>
+    {page.data.map((post) => <BlogSummary post={post} />)}
+  </ul>
+</Layout>
+
+<style>
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+</style>
