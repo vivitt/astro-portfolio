@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import BlogSummary from "../../components/BlogSummary.astro";
+import { getCollection } from "astro:content";
+
+const allBlogPosts = await getCollection("blog");
+---
+
+<Layout title="Vivi's Blog">
+  <h1>Blog</h1>
+  <ul>
+    {
+      allBlogPosts
+        .sort((a, b) => Number(b.data.pubDate) - Number(a.data.pubDate))
+        .map((post) => <BlogSummary post={post} />)
+    }
+  </ul>
+</Layout>
+
+<style>
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+</style>
