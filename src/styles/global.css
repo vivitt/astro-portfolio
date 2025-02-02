@@ -16,6 +16,15 @@
   box-sizing: border-box;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
 html {
   color: var(--color);
   background-color: var(--bgColor);
@@ -82,5 +91,4 @@ footer {
 }
 
 .footer__text {
-
 }

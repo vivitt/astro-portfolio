@@ -2,7 +2,9 @@
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 
-const blogPathReg = /(blog)\/*[0-9]*/
+const blogPathReg = /(blog)\/*[0-9]*/;
+
+const postsPathReg = /(posts)\/*[\S+]*/;
 ---
 
 <nav>
@@ -10,18 +12,17 @@ const blogPathReg = /(blog)\/*[0-9]*/
     <li class=`${currentPath === "" ? "hidden" : ""} nav__links__link `>
       <a href="/">Home</a>
     </li>
-    <li class=`${currentPath === "about" ? "active" : ""} nav__links__link `>
-      <a href="/about">About</a>
-    </li>
-
-    <li
-      class=`${currentPath === "projects" ? "active" : ""} nav__links__link `
-    >
+    <li class=`${currentPath === "projects" ? "active" : ""} nav__links__link `>
       <a href="/projects">Projects</a>
     </li>
 
-    <li class=`${currentPath.match(blogPathReg) ? "active" : ""} nav__links__link`>
+    <li
+      class=`${currentPath.match(blogPathReg) || currentPath.match(postsPathReg) ? "active" : ""} nav__links__link`
+    >
       <a href="/blog/1">Blog</a>
+    </li>
+    <li class=`${currentPath === "about" ? "active" : ""} nav__links__link `>
+      <a href="/about">About</a>
     </li>
   </ul>
 </nav>

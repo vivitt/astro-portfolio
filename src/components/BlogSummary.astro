@@ -6,25 +6,32 @@ const { post } = Astro.props;
 ---
 
 <li class="blog-summary">
-  <p>{formatPostDate(post.data.pubDate).date}</p>
-  <a
-    class="blog-summary__link"
-    href={post.data.link === "" || !post.data.link
-      ? "/posts/" + post.id
-      : post.data.link}
-    target={post.data.link !== "" ? "_blank" : "_self"}
-    >{post.data.title}
-  </a>
+  <article>
+    <p>{formatPostDate(post.data.pubDate).date}</p>
 
-  <ul>
-    {
-      post.data.tags?.map((tag: string) => (
-        <li>
-          <Tag tag={tag}>{tag}</Tag>
-        </li>
-      ))
-    }
-  </ul>
+    <a
+      class="blog-summary__link"
+      href={post.data.link === "" || !post.data.link
+        ? "/posts/" + post.id
+        : post.data.link}
+      target={post.data.link !== "" ? "_blank" : "_self"}
+      ><h3>{post.data.title}</h3>
+    </a>
+
+    <p>{post.data.description}</p>
+    <section>
+      <h4 class="visually-hidden">Posts tagged with:</h4>
+      <ul>
+        {
+          post.data.tags?.map((tag: string) => (
+            <li>
+              <Tag tag={tag}>{tag}</Tag>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </article>
 </li>
 
 <style>
@@ -35,7 +42,7 @@ const { post } = Astro.props;
     margin: 0;
   }
   .blog-summary {
-    border-top: 1px solid;
+    border-bottom: 1px solid;
     padding: 2em 0 1.2em 0;
     margin: 0 0.2em;
     display: flex;
@@ -44,5 +51,9 @@ const { post } = Astro.props;
   .blog-summary__link {
     color: var(--foregroundColor);
     margin: 0 0 1em 0;
+  }
+
+  .blog-summary:last-of-type {
+    border-bottom: none;
   }
 </style>

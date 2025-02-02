@@ -3,7 +3,7 @@ const { tag } = Astro.props;
 ---
 
 <span class="tag">
-  <a href={`/tags/${tag}/`}> {tag} </a>
+  <a href={`/tags/${tag}/`} aria-hidden> {tag} </a>
 </span>
 
 <style>

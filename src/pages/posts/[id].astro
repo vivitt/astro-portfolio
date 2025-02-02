@@ -17,20 +17,20 @@ const { Content } = await render(post);
 ---
 
 <Layout title={post.data.title}>
-  <article class="">
+  <main>
     <header>
       <img />
       <h1>{post?.data?.title}</h1>
       <span>{formatPostDate(post?.data?.pubDate).date}</span>
+      <div class="tags">
+        <h4 class="visually-hidden">Posts tagged with:</h4>
+        {
+          post?.data?.tags &&
+            post?.data?.tags.map((tag: string) => <Tag tag={tag} />)
+        }
+      </div>
     </header>
 
     <Content />
-
-    <div class="tags">
-      {
-        post?.data?.tags &&
-          post?.data?.tags.map((tag: string) => <Tag tag={tag} />)
-      }
-    </div>
-  </article>
+  </main>
 </Layout>
