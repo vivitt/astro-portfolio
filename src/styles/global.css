@@ -1,8 +1,8 @@
 :root {
   --black: #1c1c1c;
   --white: #f8f9fb;
-  --lilac: #819af5;
-  --light-lilac: #b2c3ff;
+  --lilac: #3a446b;
+  --light-lilac: #cdd8fd;
   --color: var(--black);
   --bgColor: var(--white);
   --colorDark: var(--white);
@@ -34,7 +34,7 @@ html {
 html.dark {
   --color: var(--colorDark);
   --bgColor: var(--bgColorDark);
-  --accColor: var(--accentColorDark);
+  --accColor: var(--accColorDark);
 }
 
 body {
