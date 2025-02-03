@@ -2,8 +2,7 @@
 const { tag } = Astro.props;
 ---
 
-<span class="tag">
-  <a href={`/tags/${tag}/`} aria-hidden># {tag} </a>
+<span class="tag">#&nbsp;<a href={`/tags/${tag}/`} aria-hidden>{tag}</a>
 </span>
 
 <style>
@@ -17,14 +16,15 @@ const { tag } = Astro.props;
     background-color: var(--accColor);
     display: inline-flex;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
   }
-  .tag a {
+  .tag, .tag a {
     font-size: 0.6em;
     color: var(--foregroundColor);
     text-decoration: none;
   }
   span.tag:hover {
     border: 1px solid ;
-  
   }
 </style>
