@@ -3,7 +3,7 @@ const { content } = Astro.props;
 ---
 
 <li class="link-card">
-	<a href={content.data.url}></a>
+	<a href={content.data.url}>{content.data.title}</a>
 </li>
 <style>
 	.link-card {
