@@ -1,0 +1,25 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import BlogSummary from "../../components/BlogSummary.astro";
+import { getCollection } from "astro:content";
+import Card from "../../components/Card.astro";
+
+const projects = await getCollection("projects");
+---
+
+<Layout title="My projects">
+  <main>
+    <h1 class="visually-hidden">Some of the stuff I created</h1>
+    <ul>
+      {projects.map((project) => <Card content={project} />)}
+    </ul>
+  </main>
+</Layout>
+
+<style>
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+</style>

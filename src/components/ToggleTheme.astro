@@ -15,6 +15,7 @@
   const element = document.documentElement;
   const toggle = document.getElementById("background");
 
+
   const theme = (() => {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
       return localStorage.getItem("theme") ?? "light";
@@ -38,7 +39,7 @@
   }
 
   document.addEventListener("astro:after-swap", applyTheme);
-  applyTheme();
+  applyTheme()
 
   window.localStorage.setItem("theme", theme);
 

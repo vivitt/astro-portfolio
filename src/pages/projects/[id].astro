@@ -1,0 +1,39 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+import Tag from "../../components/Tag.astro";
+
+
+export async function getStaticPaths() {
+  const posts = await getCollection("projects");
+  return posts.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<Layout title={project.data.title}>
+  <main>
+    <header>
+      <img src={project.data.image.url} alt={project.data.image.alt}/>
+      
+     
+      <h1>{project?.data?.title}</h1>
+      
+      <div class="tags">
+        <h4 class="visually-hidden">This project was created with:</h4>
+        {
+          project?.data?.technologies &&
+            project?.data?.technologies.map((tech: string) => <Tag tag={tech} />)
+        }
+      </div>
+    </header>
+
+    <Content />
+  </main>
+</Layout>
+

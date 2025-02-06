@@ -30,36 +30,8 @@ let year = date.getFullYear();
     <meta name="generator" content={Astro.generator} />
     <ClientRouter />
     <title>{title}</title>
-    <script is:inline>
-      function applyTheme() {
-        const theme = (() => {
-          if (
-            typeof localStorage !== "undefined" &&
-            localStorage.getItem("theme")
-          ) {
-            return localStorage.getItem("theme") ?? "light";
-          }
-          if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            return "dark";
-          }
-          return "light";
-        })();
-        if (theme === "light") {
-          element.classList.remove("dark");
-          toggle.setAttribute("aria-checked", false);
-          element.dataset.theme = "light";
-        } else {
-          element.classList.add("dark");
-          toggle.setAttribute("aria-checked", "true");
-          element.dataset.theme = "dark";
-        }
-      }
-
-      document.addEventListener("astro:after-swap", applyTheme);
-      applyTheme();
-    </script>
   </head>
-  <body transition:animate="fade">
+  <body >
     <header>
       <div class="header__icons">
         <Social platform="github" username="vivitt" />
