@@ -41,9 +41,13 @@ let year = date.getFullYear();
       <div class="header__navigation">
         {
           title === "Vivi's Blog" ? (
+            <a>
             <Image src={blogLogo} alt="Vivi's Blog" width="550" />
+          </a>
           ) : (
+            <a href="/">
             <Image src={mainLogo} alt="viviyanez.dev" width="550" />
+          </a>
           )
         }
 
