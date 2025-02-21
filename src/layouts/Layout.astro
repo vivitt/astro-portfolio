@@ -30,15 +30,16 @@ let year = date.getFullYear();
     <meta name="generator" content={Astro.generator} />
     <ClientRouter />
     <title>{title}</title>
+
   </head>
   <body >
     <header>
       <div class="header__icons">
         <Social platform="github" username="vivitt" />
         <Social platform="linkedin" username="in/viviana-yanez" />
-        <ToggleTheme class="header__icons__toggle" />
+        <ToggleTheme class="header__icons__toggle" transition:persist />
       </div>
-      <div class="header__navigation">
+      <div class="header__navigation" >
         {
           title === "Vivi's Blog" ? (
             <a>
@@ -98,7 +99,7 @@ let year = date.getFullYear();
     align-items: center;
   }
 
-  :root::view-transition-new(root) {
+  /* :root::view-transition-new(root) {
     animation: wide-theme 0.5s;
     clip-path: inset(0 0 0 0);
     z-index: 2;
@@ -115,9 +116,9 @@ let year = date.getFullYear();
 
   [data-theme="light"] {
     --from: 0 0 0 100%;
-  }
+  } */
 
-  @media (max-width: 500px) {
+  /* @media (max-width: 500px) {
     [data-theme="dark"] {
       --from: 0 0 100% 0;
     }
@@ -125,17 +126,17 @@ let year = date.getFullYear();
     [data-theme="light"] {
       --from: 100% 0 0 0;
     }
-  }
+  } */
 
-  @media (prefers-reduced-motion) {
-    /* :root::view-transition-new(root) {
+  /* @media (prefers-reduced-motion) {
+    :root::view-transition-new(root) {
       animation: none;
-    } */
-  }
+    }
+  } */
 
-  @keyframes wide-theme {
+  /* @keyframes wide-theme {
     from {
       clip-path: inset(var(--from));
     }
-  }
+  } */
 </style>

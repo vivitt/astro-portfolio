@@ -3,7 +3,7 @@ const { content } = Astro.props;
 ---
 
 <li class="link-card">
-	<a href={"/projects/" + content.id}>{content.data.title}</a>
+	<a href={"/projects/" + content.id} transition:animate="slide" >{content.data.title}</a>
 </li>
 <style>
 	.link-card {

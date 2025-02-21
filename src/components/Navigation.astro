@@ -11,19 +11,19 @@ const projectsPathReg = /(projects)\/*[\S+]*/;
 <nav >
   <ul class="nav__links">
     <!-- <li class=`${currentPath === "" ? "hidden" : ""} nav__links__link `>
-      <a href="/" data-astro-reload>Home</a>
+      <a href="/" >Home</a>
     </li> -->
     <li class=`${currentPath.match(projectsPathReg) ? "active" : ""} nav__links__link `>
-      <a href="/projects" data-astro-reload>Projects</a>
+      <a href="/projects" >Projects</a>
     </li>
 
     <li
       class=`${currentPath.match(blogPathReg) || currentPath.match(postsPathReg) ? "active" : ""} nav__links__link`
     >
-      <a href="/blog/1" data-astro-reload>Blog</a>
+      <a href="/blog/1" >Blog</a>
     </li>
     <li class=`${currentPath === "about" ? "active" : ""} nav__links__link `>
-      <a href="/about" data-astro-reload>About</a>
+      <a href="/about" >About</a>
     </li>
   </ul>
 </nav>
@@ -51,8 +51,7 @@ const projectsPathReg = /(projects)\/*[\S+]*/;
     align-items: center;
     justify-content: center;
     border-radius: 0;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
+    
     padding-inline-start: 0;
     padding-inline-end: 0;
     --from-padding-end: 0;
@@ -61,31 +60,6 @@ const projectsPathReg = /(projects)\/*[\S+]*/;
     margin-inline-end: 0;
     --from-margin-end: 0;
     --from-margin-start: 0;
-  }
-
-  li.nav__links__link:first-of-type.hidden {
-    display: none;
-    --from-margin-start: 8em;
-  }
-
-  li.nav__links__link:first-of-type.hidden + li {
-    border-inline-start: 1px solid;
-    border-radius: 2em 0 0 2em;
-    padding-inline-start: 0;
-    margin-inline-start: 0;
-    --from-border: 2em 0 0 2em;
-    --to-padding-end: 2em;
-    --to-padding-start: 0;
-    --to-margin-end: 2em;
-    --to-margin-start: 0;
-    animation: none;
-  }
-
-  .nav__links__link.active {
-    background-color: var(--color);
-    border-radius: 2em;
-    border: 1px solid;
-    --to-border: 2em;
   }
 
   .nav__links__link a {
@@ -96,166 +70,5 @@ const projectsPathReg = /(projects)\/*[\S+]*/;
 
   .nav__links__link a:hover {
     text-decoration: underline;
-  }
-
-  .nav__links__link.active a {
-    color: var(--bgColor);
-  }
-
-  .nav__links__link:not(.active) {
-    animation:
-      border 300ms reverse,
-      margins 300ms reverse;
-    --from-padding-start: 0;
-    --from-padding-end: 0;
-    --from-margin-start: 0;
-    --from-margin-end: 0;
-    --from-border: 2em;
-  }
-
-  .nav__links__link:first-child:not(:has(+ .active)) {
-    border-inline-start: 1px solid;
-    border-radius: 2em 0 0 2em;
-    padding-inline-start: 0;
-    margin-inline-start: 0;
-    --from-border: 2em 0 0 2em;
-    --to-padding-end: 2em;
-    --to-padding-start: 0;
-    --to-margin-end: 2em;
-    --to-margin-start: 0;
-  }
-
-  .nav__links__link:last-of-type {
-    border-inline-end: 1px solid;
-    border-radius: 0 2em 2em 0;
-    --from-border: 0 2em 2em 0;
-    --to-padding-end: 0;
-    --to-padding-start: 2em;
-    --to-margin-end: 0;
-    --to-margin-start: 2em;
-    padding-inline-end: 0;
-    margin-inline-end: 0;
-  }
-
-  .nav__links__link:not(:first-of-type):not(:last-of-type) {
-    --to-padding-end: 2em;
-    --to-padding-start: 2em;
-    --to-margin-end: 2em;
-    --to-margin-start: 2em;
-    --from-border: 0;
-  }
-
-  .nav__links__link:first-of-type.active {
-    border-radius: 2em;
-    padding-inline-end: 2em;
-    margin-inline-end: 2em;
-    animation:
-      border 300ms,
-      margins 300ms;
-  }
-
-  .nav__links__link:last-of-type.active {
-    border-radius: 2em;
-    padding-inline-start: 2em;
-    margin-inline-start: 2em;
-    padding-inline-end: 2em;
-    --to-border: 2em;
-    animation:
-      border 300ms,
-      margins 300ms;
-  }
-
-  .nav__links__link:not(:first-of-type):not(:last-of-type).active {
-    border-radius: 2em;
-    --to-border: 2em;
-    padding-inline-start: 2em;
-    padding-inline-end: 2em;
-    margin-inline-start: 2em;
-    margin-inline-end: 2em;
-    animation:
-      border 300ms,
-      margins 300ms;
-  }
-
-  .nav__links__link:first-child:has(+ .active) {
-    border-radius: 2em;
-    border-inline-end: 1px solid;
-    --from-padding-end: 2em;
-    --to-padding-end: 2em;
-    --from-margin-end: 2em;
-    --to-margin-end: 2em;
-    --from-border: 2em;
-    --to-border: 2em;
-    animation: none;
-  }
-
-  .active + .nav__links__link:last-of-type {
-    border-radius: 2em;
-    border-inline-end: 1px solid;
-    --from-padding-end: 0;
-    --from-padding-start: 2em;
-    --from-margin-end: 0;
-    --from-margin-start: 2em;
-    --from-border: 2em;
-    --to-border: 2em;
-    animation: none;
-  }
-
-  .nav__links__link:not(:first-of-type):has(+ .active) {
-    border-inline-end: 1px solid;
-    --from-border: 0 2em 2em 0;
-    --to-border: 0 2em 2em 0;
-    --to-padding-end: 2em;
-    --to-padding-start: 2em;
-    --from-padding-start: 0;
-    --from-padding-end: 2em;
-    --to-margin-end: 2em;
-    --to-margin-start: 2em;
-    --from-margin-start: 0;
-    --from-margin-end: 2em;
-    border-radius: 0 2em 2em 0;
-  }
-
-  .nav__links__link:first-of-type:has(+ .active) {
-    border-radius: 2em;
-    border-inline-start: 1px solid;
-    --from-padding-start: 0;
-    --from-margin-start: 0;
-    --to-border: 2em 0 0 2em;
-  }
-  .active + .nav__links__link {
-    border-radius: 2em 0 0 2em;
-    border-inline-start: 1px solid;
-    --from-margin-end: 0;
-    --from-padding-end: 0;
-    --to-border: 2em 0 0 2em;
-    --from-border: 2em 0 0 2em;
-  }
-
-  /* match the prev sibiling for an active link when it is the first or the last link */
-  .nav__links__link:first-of-type:has(+ .active),
-  .active + .nav__links__link:last-of-type {
-  }
-
-  @keyframes margins {
-    0% {
-      padding-inline-end: var(--from-padding-end);
-      padding-inline-start: var(--from-padding-start);
-    }
-    100% {
-      padding-inline-end: var(--to-padding-end);
-      padding-inline-start: var(--to-padding-start);
-    }
-  }
-  @keyframes border {
-    10% {
-      border-radius: var(--from-border);
-    }
-    80% {
-      border-radius: var(--to-border);
-    }
-  }
-
-  @media screen and (max-width: 600px) {
   }
 </style>
