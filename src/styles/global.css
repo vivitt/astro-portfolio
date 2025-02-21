@@ -9,7 +9,7 @@
   --bgColorDark: var(--black);
   --accColor: var(--light-lilac);
   --accColorDark: var(--lilac);
-  --navFont: "Work Sans Variable", sans-serif;
+  --navFont: 'Inclusive Sans', sans-serif;
 }
 
 * {
@@ -28,7 +28,6 @@
 html {
   color: var(--color);
   background-color: var(--bgColor);
-  font-family: "Work Sans Variable", sans-serif;
 }
 
 html.dark {
@@ -39,7 +38,7 @@ html.dark {
 
 body {
   margin: 0;
-  font-family: "Work Sans Variable", sans-serif;
+  font-family: 'Inclusive Sans', sans-serif;
   padding: 0;
   line-height: 1.5;
 }
