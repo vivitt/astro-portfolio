@@ -27,7 +27,6 @@ const pages = Array.from({length: page.size}, (el, index) => el = index + 1 )
       {page.data.map((post) => <BlogSummary post={post} />)}
     </ul>
     <nav aria-label="pagination">
-
       <ul>
         <li>    <a href={page.url.prev}> <Icon name="arrow-back" /></a>
         </li>
@@ -35,8 +34,6 @@ const pages = Array.from({length: page.size}, (el, index) => el = index + 1 )
 
         <li>   <a href={page.url.next}> <Icon name="play-arrow" /> </a></li>
       </ul>
-  
-   
     </nav>
   </main>
 
