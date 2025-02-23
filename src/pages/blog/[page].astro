@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import BlogSummary from "../../components/BlogSummary.astro";
 import { getCollection } from "astro:content";
-import { Icon } from "astro-icon/components";
+import Pagination from "../../components/Pagination.astro";
 
 
 export async function getStaticPaths({ paginate }) {
@@ -11,30 +11,18 @@ export async function getStaticPaths({ paginate }) {
   return paginate(allBlogPosts, { pageSize: 6 });
 }
 const { page} = Astro.props as {
-  page: { data: Array<{ data: { pubDate: string } }> },
-
+  page: { data: Array<{ data: { pubDate: string }}>}
 };
-
-const pages = Array.from({length: page.size}, (el, index) => el = index + 1 )
-
 
 ---
 
 <Layout title="Vivi's Blog">
-  <main>
+  <main >
     <h1 class="visually-hidden">Vivi's Blog</h1>
-    <ul>
+    <ul >
       {page.data.map((post) => <BlogSummary post={post} />)}
     </ul>
-    <nav aria-label="pagination">
-      <ul>
-        <li>    <a href={page.url.prev}> <Icon name="arrow-back" /></a>
-        </li>
-        {pages.map((page) => <li><a href={`/blog/${page}`}> {page}</a></li>)}
-
-        <li>   <a href={page.url.next}> <Icon name="play-arrow" /> </a></li>
-      </ul>
-    </nav>
+    <Pagination page={page}></Pagination>
   </main>
 
 </Layout>

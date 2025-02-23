@@ -1,18 +1,71 @@
 ---
-const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1);
+import { Icon } from "astro-icon/components";
 
-const blogPathReg = /(blog)\/*[0-9]*/;
-
-const postsPathReg = /(posts)\/*[\S+]*/;
-const projectsPathReg = /(projects)\/*[\S+]*/;
+const { page} = Astro.props as {
+  page: { data: Array<{ data: { pubDate: string }}>, start: number, end: number, size: number, currentPage: number, url: {
+    current: string, next: string | undefined, prev: string | undefined
+  }  },
+};
 ---
 
-<div>
-    <button> <span>\<</span> </button>
-    <button> <span>\></span> </button>
-</div>
+<nav aria-label="pagination" class="blog__pagination">
+  <ul class="blog__pagination__controls">
+    <li class="blog__pagination__controls__link">    <a href={page.url.prev}> <Icon name="arrow-back" /></a>
+    </li>
+    {Array.from({length: page.size}, (el, index) => el = index+1).map((p) => <li class={`blog__pagination__controls__link blog__pagination__controls__link--page ${p === page.currentPage ?'blog__pagination__controls__link--current' :''}`}><a href={`/blog/${p}`} aria-current={`${p === page.currentPage}`}> {p}</a></li>)}
+
+    <li class="blog__pagination__controls__link">   <a href={page.url.next}> <Icon name="play-arrow" /> </a></li>
+  </ul>
+</nav>
 
 <style>
+  .blog__pagination__controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .blog__pagination__controls__link {
+    padding: 0.7rem;
+    
+  }
+
+  .blog__pagination__controls__link a {
+    text-decoration: none;
+    color: var(--color);
+    padding: 0.2em 0.5em;
+    border-radius: 100%;
+    
+  }
+
+  .blog__pagination__controls__link--current a  {
+    background-color: var(--accColor);
+    cursor: default;
+  }
+ 
+  [data-icon] {
+    font-size: 1.7rem;
+    color: var(--color);
+  }
+    .tag {
+    font-family: var(--navFont);
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    border-radius: 2em;
+    padding: 0.2em 1em;
+    margin-inline-end: 0.3em;
+    background-color: var(--accColor);
+    display: inline-flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+  }
+  .tag, .tag a {
+    font-size: 0.6em;
+    color: var(--foregroundColor);
+    text-decoration: none;
+  }
+  span.tag:hover {
+    border: 1px solid ;
+  }
 
 </style>
