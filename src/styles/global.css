@@ -1,14 +1,14 @@
 :root {
   --black: #1c1c1c;
   --white: #f8f9fb;
-  --lilac: #3a446b;
+  --lilac: #7384cb;
   --light-lilac: #cdd8fd;
   --color: var(--black);
   --bgColor: var(--white);
   --colorDark: var(--white);
   --bgColorDark: var(--black);
-  --accColor: var(--light-lilac);
-  --accColorDark: var(--lilac);
+  --accColor: var(--lilac);
+  --accColorDark: var(--light-lilac);
   --navFont: 'Inclusive Sans', sans-serif;
 }
 
