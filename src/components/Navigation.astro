@@ -63,7 +63,8 @@ const projectsPathReg = /(projects)\/*[\S+]*/;
 
   .nav__links__link a {
     font-size: 1.2em;
-    padding: 0.2em;
+    padding-bottom: 0.2em;
+    padding-inline-end: 0.4em;
     margin: 0 1em;
     text-decoration: none;
     color: var(--color);
@@ -74,24 +75,23 @@ const projectsPathReg = /(projects)\/*[\S+]*/;
     background-image: linear-gradient(to right, var(--light-lilac)
     0%, var(--lilac) 100%);
     background-repeat: no-repeat;
-    background-position: 90% 0 20% 100%;
+    background-position: 0 90%;
     background-size: 0% 0.2em;
   }
 
 .active a {
-  background-size: 100% 0.2em;
+  background-size: 95% 0.2em;
    
     
 }
-.nav__links__link:not(.active) a:hover {
- 
-    animation: wide 500ms forwards;
-  }
 
+  .nav__links__link:not(.active) a {
+    animation: wide 400ms forwards;
+  }
  
 
   @keyframes wide {
    from{ background-size: 0% 0.2em;}
-   to{  background-size: 100% 0.2em;}
+   to{  background-size: 95% 0.2em;}
   }
 </style>
