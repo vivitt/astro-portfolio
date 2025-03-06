@@ -40,6 +40,7 @@ let year = date.getFullYear();
         <ToggleTheme class="header__icons__toggle" transition:persist />
       </div>
       <div class="header__navigation" >
+        <div class="header__navigation__shine"></div>
         {
           title === "Vivi's Blog" ? (
             <a>
@@ -99,6 +100,27 @@ let year = date.getFullYear();
     align-items: center;
   }
 
+
+  .header__navigation__shine {
+      color: white;
+      width: 100%;
+      height: 100%;
+      -webkit-mask-image: url('../images/logos/logo-viviyanez.png');
+  mask-image: url('../images/logos/logo-viviyanez.png');
+  mask-repeat: no-repeat;
+    }
+
+  .header__navigation__shine::after {
+      position: absolute;
+      content: "";
+      width: 10%;
+      height: 50%;
+      clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+      animation: move 4s infinite ease-in-out;
+      background: 	
+      linear-gradient(5deg, rgba(222, 220, 216, 0.2), rgba(241, 223, 193, 0.2)), 	url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+
+    }
   /* :root::view-transition-new(root) {
     animation: wide-theme 0.5s;
     clip-path: inset(0 0 0 0);
@@ -139,4 +161,24 @@ let year = date.getFullYear();
       clip-path: inset(var(--from));
     }
   } */
+
+
+  @keyframes move {
+      0% {
+        -webkit-transform: translate(-900px,0);
+        opacity: 0;
+       
+      
+      }
+      25% {
+        opacity: 1;
+
+      }
+     
+    
+      100% {
+        -webkit-transform: translate(900px,0);
+
+      }
+    }
 </style>

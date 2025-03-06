@@ -1,14 +1,17 @@
 :root {
-  --black: #1c1c1c;
-  --white: #f8f9fb;
+  --black: #000000;
+  --white: #ffffff;
+  --dark-grey: #191919;
+  --dusty-white: #f3f2f1;
   --lilac: #7384cb;
   --light-lilac: #cdd8fd;
   --color: var(--black);
-  --bgColor: var(--white);
+  --bgColor: var(--dusty-white);
+  --bgColorBase: var(--white);
   --colorDark: var(--white);
-  --bgColorDark: var(--black);
-  --accColor: var(--lilac);
-  --accColorDark: var(--light-lilac);
+  --bgColorDark: var(--dark-grey);
+  --accColor: var(--light-lilac);
+  --accColorDark: var(--lilac);
   --navFont: 'Inclusive Sans', sans-serif;
 }
 
@@ -28,12 +31,16 @@
 html {
   color: var(--color);
   background-color: var(--bgColor);
+  /* background: var(--bgColor);
+  background: -webkit-linear-gradient(to bottom, var(--bgColorBase), var(--bgColor));
+  background: linear-gradient(to bottom, var(--bgColorBase), var(--bgColor)); */
 }
 
 html.dark {
   --color: var(--colorDark);
   --bgColor: var(--bgColorDark);
   --accColor: var(--accColorDark);
+  --bgColorBase: var(--black);
 }
 
 body {
@@ -69,6 +76,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: var(--bgColorBase);
 }
 
 .footer__links {

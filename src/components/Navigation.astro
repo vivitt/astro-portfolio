@@ -76,23 +76,19 @@ const projectsPathReg = /(projects)\/*[\S+]*/;
     0%, var(--lilac) 100%);
     background-repeat: no-repeat;
     background-position: 0 90%;
-    background-size: 0% 0.2em;
-  }
+    background-size: 0% 0.08em;  }
 
 .active a {
-  background-size: 95% 0.2em;
+  background-size: 100% 0.08em;
    
     
 }
 .nav__links__link:not(.active) a:hover {
-    animation: wide 400ms forwards;
+    animation: wide 200ms forwards;
   }
 
-
- 
-
   @keyframes wide {
-   from{ background-size: 0% 0.2em;}
-   to{  background-size: 95% 0.2em;}
+   from{ background-size: 0% 0.08em;}
+   to{  background-size: 100% 0.08em;}
   }
 </style>
