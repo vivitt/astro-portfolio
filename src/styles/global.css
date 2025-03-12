@@ -2,7 +2,7 @@
   --black: #000000;
   --white: #ffffff;
   --dark-grey: #191919;
-  --dusty-white: #f3f2f1;
+  --dusty-white: #fbfaf9;
   --lilac: #7384cb;
   --light-lilac: #cdd8fd;
   --color: var(--black);
@@ -12,7 +12,7 @@
   --bgColorDark: var(--dark-grey);
   --accColor: var(--light-lilac);
   --accColorDark: var(--lilac);
-  --navFont: 'Inclusive Sans', sans-serif;
+  --navFont: "Inclusive Sans", sans-serif;
 }
 
 * {
@@ -45,7 +45,7 @@ html.dark {
 
 body {
   margin: 0;
-  font-family: 'Inclusive Sans', sans-serif;
+  font-family: "Inclusive Sans", sans-serif;
   padding: 0;
   line-height: 1.5;
 }
