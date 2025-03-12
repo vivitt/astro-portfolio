@@ -1,20 +1,49 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const identities = [
+'frontend developer', 'lifelong learner', 
+]
 ---
 
 <Layout title="Viviana Yanez Creative Frontend Developer">
   <main>
     <h1 class="visually-hidden">Viviana Yanez Web Developer</h1>
-    <div class="home">
-      <p>
-        I'm a frontend developer passionate about crafting beautiful,
+    <div class="hero" >
+      <p class="hero__text">
+        I'm a 
+        <span data-splitting >{identities}</span> 
+        
+       passionate about crafting beautiful,
         accessible, and inclusive web experiences.
       </p>
     </div>
+    <script >
+      import Splitting from 'splitting';
+      Splitting();
+    </script>
   </main>
 </Layout>
 
-<style lang="scss">
 
-  
+<style lang="scss">
+.hero {
+&__text {
+  font-size: 2em;
+}
+}
+.splitting.chars.words {
+
+ 
+  animation: slide-in 1s cubic-bezier(.5, 0, .5, 1) both;
+  animation-delay: calc(60ms * var(--char-index));
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-1em) rotate(-0.5deg);
+    opacity: 0;
+  }
+}
+
 </style>
