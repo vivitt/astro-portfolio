@@ -61,19 +61,32 @@ let year = date.getFullYear();
     <footer class="footer">
       <div class="footer__links">
         <p>Find me on:</p>
-        <a href="https://www.linkedin.com/in/viviana-yanez/" target="_blank"
-          ><Icon name="linkedin" />LinkedIn
-        </a>
 
-        <a href="https://github.com/vivitt" target="_blank"
-          ><Icon name="github" />GitHub
+        <div class="footer__links__link">
+          <Icon name="linkedin" />
+        <a href="https://www.linkedin.com/in/viviana-yanez/" target="_blank" class="footer__links__link__text"
+          >LinkedIn
         </a>
+      </div>
 
-        <a href="https://bsky.app/profile/viviyanez.bsky.social" target="_blank"
-          ><Icon name="bsky" />Bluesky
+      <div class="footer__links__link">
+        <Icon name="github" />
+        <a href="https://github.com/vivitt" target="_blank" class="footer__links__link__text"
+          >GitHub
         </a>
+      </div>
+       
+      <div class="footer__links__link"><Icon name="bsky" />
+        <a href="https://bsky.app/profile/viviyanez.bsky.social" target="_blank" class="footer__links__link__text"
+          >Bluesky
+        </a>
+      </div>
 
-        <a href="https://x.com/yvivi_vi" target="_blank"><Icon name="x" />X </a>
+      <div class="footer__links__link"><Icon name="x" />
+        <a href="https://x.com/yvivi_vi"  target="_blank" class="footer__links__link__text"
+          >X
+        </a>
+      </div>
       </div>
       <div class="footer__text">
         <p>Viviana Yanez {year} | Made with ♥︎</p>
@@ -82,6 +95,7 @@ let year = date.getFullYear();
   </body>
 </html>
 <style lang="scss">
+  @use '../styles/mixins';
   .header {
     display: flex;
     flex-direction: column;
@@ -129,6 +143,7 @@ let year = date.getFullYear();
       }
     }
   }
+
   .footer {
     padding: 2em 5em;
     border-top: 1px solid;
@@ -141,19 +156,34 @@ let year = date.getFullYear();
     &__links {
       display: flex;
       flex-direction: column;
-    }
 
-    &__links a {
-      display: flex;
-      justify-content: start;
-      align-items: center;
-      color: var(--color);
-    }
+      & [data-icon] {
+        padding-inline-end: 0.3em;
+        font-size: 1.2rem;
+        color: var(--color);
+      }
+    
+      &__link {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        color: var(--color);
+        cursor: pointer;
 
-    &__links [data-icon] {
-      padding-inline-end: 0.3em;
-      font-size: 1.2rem;
-      color: var(--color);
+        &__text {
+          
+          @include mixins.underline-link;
+          @include mixins.reset-link; 
+          background-size: 0 0.1em;
+          background-position: 0 100%;
+          &:hover, &:focus {
+            animation: underline-link 200ms forwards;
+          }
+        }
+        &:hover, &:focus {
+          animation: highlight-link 200ms forwards;
+        }
+      }
     }
   }
 

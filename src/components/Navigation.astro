@@ -68,13 +68,11 @@ const projectsPathReg = /(projects)\/*[\S+]*/;
             padding-bottom: 0.2em;
             padding-inline-end: 0.4em;
             margin: 0 1em;
-            text-decoration: none;
-            color: var(--color);
+            @include mixins.reset-link;
             @include mixins.underline-link;
             &:hover, &:focus {
-              animation: highlight-link 200ms forwards;
-              font-weight: bold;
-              transform: scale(1.1);
+              animation: highlight-link 200ms forwards, underline-link 200ms forwards, ;
+              font-weight: bold;  
             }
           }
 

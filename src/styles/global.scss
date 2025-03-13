@@ -69,7 +69,6 @@ html {
 @keyframes highlight-link {
   0% {
     rotate: 0;
-    background-size: 0% 0.2em;
   }
   20%{
     transform: scale(1);
@@ -79,15 +78,25 @@ html {
      transform: scale(1.1);
   }
   90% {
-    
+    transform: scale(1);
     rotate: -2deg;
   }
   100% {
     rotate: 0deg;
-    background-size: 95% 0.1em;
+    
   }
 }
 
+@keyframes underline-link {
+  0% {
+    
+    background-size: 0% 0.2em;
+  }
+  
+  100% {
+    background-size: 95% 0.1em;
+  }
+}
 
 /* 
 
