@@ -1,12 +1,8 @@
+@use 'mixins';
+
 $breakpoints: (phone: 400px, 
                tablet: 600px, 
                desktop: 900px) !default;
-
-@mixin reset-list {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-              }
 
 
 :root {
@@ -64,7 +60,7 @@ html {
     }
 
     ul {
-      @include reset-list;
+      @include mixins.reset-list;
     }
   }
   

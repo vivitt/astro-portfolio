@@ -33,6 +33,7 @@ const projectsPathReg = /(projects)\/*[\S+]*/;
 
 
 <style lang="scss">
+  @use '../styles/mixins';
   .nav {
     display: flex;
     font-family: var(--navFont);
@@ -69,25 +70,7 @@ const projectsPathReg = /(projects)\/*[\S+]*/;
             margin: 0 1em;
             text-decoration: none;
             color: var(--color);
-            text-shadow:
-              0.05em 0 0 var(--bgColor),
-              -0.05em 0 0 var(--bgColor),
-              0 0.05em 0 var(--bgColor),
-              0 -0.05em 0 var(--bgColor),
-              0.1em 0 0 var(--bgColor),
-              -0.1em 0 0 var(--bgColor),
-              0 0.1em 0 var(--bgColor),
-              0 -0.1em 0 var(--bgColor);
-            background-image: linear-gradient(
-              to right,
-              var(--color) 0%,
-              var(--color) 100%
-            );
-            background-repeat: no-repeat;
-            background-position: 0 80%;
-            background-size: 0% 0.1em;
-            animation: none;
-            transform: scale(1);
+            @include mixins.underline-link;
             &:hover, &:focus {
               animation: highlight-link 200ms forwards;
               font-weight: bold;

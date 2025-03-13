@@ -12,36 +12,47 @@ const { page} = Astro.props as {
   <ul class="blog__pagination__controls">
     <li class="blog__pagination__controls__link">    <a href={page.url.prev}> <Icon name="arrow-back" /></a>
     </li>
-    {Array.from({length: page.size}, (el, index) => el = index+1).map((p) => <li class={`blog__pagination__controls__link blog__pagination__controls__link--page ${p === page.currentPage ?'blog__pagination__controls__link--current' :''}`}><a href={`/blog/${p}`} aria-current={`${p === page.currentPage}`}> {p}</a></li>)}
+    {Array.from({length: 4}, (el, index) => el = index+1).map((p) => <li class={`blog__pagination__controls__link blog__pagination__controls__link--page ${p === page.currentPage ?'blog__pagination__controls__link--current' :''}`}><a href={`/blog/${p}`} aria-current={`${p === page.currentPage}`}> {p}</a></li>)}
 
+    <li class={`blog__pagination__controls__link blog__pagination__controls__link--page ${page.currentPage === page.lastPage ?'blog__pagination__controls__link--current' :''}`}><a href={`/blog/${page.lastPage}`} aria-current={`${page.lastPage}`}> {page.lastPage}</a></li>
     <li class="blog__pagination__controls__link">   <a href={page.url.next}> <Icon name="play-arrow" /> </a></li>
   </ul>
 </nav>
 
-<style>
-  .blog__pagination__controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .blog__pagination__controls__link {
-    padding: 0.7rem;
-    
-  }
+<style lang="scss">
+  @use '../styles/mixins';
+  .blog__pagination {
+    &__controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+        
+      &__link {
+          padding: 0.7rem;
 
-  .blog__pagination__controls__link a {
-    text-decoration: none;
-    color: var(--color);
-    padding: 0.2em 0.5em;
-    border-radius: 100%;
-    
-  }
+        a {
+          text-decoration: none;
+          color: var(--color);
+          padding: 0.2em 0.5em;
+          border-radius: 100%;
+          @include mixins.underline-link;
+          
+          &:hover, &:focus {
+              animation: highlight-link 200ms forwards;
+              font-weight: bold;
+              transform: scale(1.1);
+            }
+        }
 
-  .blog__pagination__controls__link--current a  {
-    background-color: var(--accColor);
-    cursor: default;
-  }
- 
+
+
+        &--current a  {
+          background-color: var(--accColor);
+          cursor: default;
+        }
+      }
+    }
+  } 
   [data-icon] {
     font-size: 1.7rem;
     color: var(--color);
