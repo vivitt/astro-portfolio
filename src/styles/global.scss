@@ -8,6 +8,7 @@ $breakpoints: (phone: 400px,
                 list-style: none;
               }
 
+@mixin 
 :root {
   --black: #000000;
   --white: #ffffff;
@@ -64,7 +65,6 @@ html {
         width: 90%;
         background-color: red;
       }
-    
     }
 
 
