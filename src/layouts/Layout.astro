@@ -1,6 +1,6 @@
 ---
-import '@fontsource/inclusive-sans';
-import "../styles/global.css";
+import "@fontsource/inclusive-sans";
+import "../styles/global.scss";
 import { Image } from "astro:assets";
 import mainLogo from "../images/logos/logo-viviyanez.png";
 import blogLogo from "../images/logos/blog-viviyanez.png";
@@ -30,26 +30,25 @@ let year = date.getFullYear();
     <meta name="generator" content={Astro.generator} />
     <ClientRouter />
     <title>{title}</title>
-
   </head>
   <body transition:name="slide">
-    <header>
+    <header class="header">
       <div class="header__icons">
         <Social platform="github" username="vivitt" />
         <Social platform="linkedin" username="in/viviana-yanez" />
         <ToggleTheme class="header__icons__toggle" transition:persist />
       </div>
-      <div class="header__navigation" >
+      <div class="header__navigation">
         <div class="header__navigation__shine"></div>
         {
           title === "Vivi's Blog" ? (
             <a>
-            <Image src={blogLogo} alt="Vivi's Blog" width="550" />
-          </a>
+              <Image src={blogLogo} alt="Vivi's Blog" width="550" />
+            </a>
           ) : (
             <a href="/">
-            <Image src={mainLogo} alt="viviyanez.dev" width="550" />
-          </a>
+              <Image src={mainLogo} alt="viviyanez.dev" width="550" />
+            </a>
           )
         }
 
@@ -59,7 +58,7 @@ let year = date.getFullYear();
 
     <slot />
 
-    <footer>
+    <footer class="footer">
       <div class="footer__links">
         <p>Find me on:</p>
         <a href="https://www.linkedin.com/in/viviana-yanez/" target="_blank"
@@ -82,45 +81,82 @@ let year = date.getFullYear();
     </footer>
   </body>
 </html>
-<style is:global>
-  .header__icons {
-    width: 150vh;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: end;
-    align-items: center;
-  }
-  .header__icons__toggle {
-    z-index: 5;
-  }
-  .header__navigation {
+<style lang="scss">
+  .header {
     display: flex;
     flex-direction: column;
-    justify-content: end;
     align-items: center;
-  }
+    justify-content: space-between;
 
+    &__icons {
+      width: 150vh;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: end;
+      align-items: center;
+      &__toggle {
+        z-index: 5;
+      }
+    }
 
-  .header__navigation__shine {
+    &__navigation {
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      align-items: center;
+    }
+    .header__navigation__shine {
       color: white;
       width: 100%;
       height: 100%;
-      -webkit-mask-image: url('../images/logos/logo-viviyanez.png');
-  mask-image: url('../images/logos/logo-viviyanez.png');
-  mask-repeat: no-repeat;
+      -webkit-mask-image: url("../images/logos/logo-viviyanez.png");
+      mask-image: url("../images/logos/logo-viviyanez.png");
+      mask-repeat: no-repeat;
+
+      &::after {
+        position: absolute;
+        content: "";
+        width: 10%;
+        height: 50%;
+        clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+        animation: move 4s infinite ease-in-out;
+        background: linear-gradient(
+            5deg,
+            rgba(222, 220, 216, 0.2),
+            rgba(241, 223, 193, 0.2)
+          ),
+          url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+    }
+  }
+  .footer {
+    padding: 2em 5em;
+    border-top: 1px solid;
+    margin-top: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bgColorBase);
+
+    &__links {
+      display: flex;
+      flex-direction: column;
     }
 
-  .header__navigation__shine::after {
-      position: absolute;
-      content: "";
-      width: 10%;
-      height: 50%;
-      clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
-      animation: move 4s infinite ease-in-out;
-      background: 	
-      linear-gradient(5deg, rgba(222, 220, 216, 0.2), rgba(241, 223, 193, 0.2)), 	url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-
+    &__links a {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      color: var(--color);
     }
+
+    &__links [data-icon] {
+      padding-inline-end: 0.3em;
+      font-size: 1.2rem;
+      color: var(--color);
+    }
+  }
+
   /* :root::view-transition-new(root) {
     animation: wide-theme 0.5s;
     clip-path: inset(0 0 0 0);
@@ -162,23 +198,17 @@ let year = date.getFullYear();
     }
   } */
 
-
   @keyframes move {
-      0% {
-        -webkit-transform: translate(-900px,0);
-        opacity: 0;
-       
-      
-      }
-      25% {
-        opacity: 1;
-
-      }
-     
-    
-      100% {
-        -webkit-transform: translate(900px,0);
-
-      }
+    0% {
+      -webkit-transform: translate(-900px, 0);
+      opacity: 0;
     }
+    25% {
+      opacity: 1;
+    }
+
+    100% {
+      -webkit-transform: translate(900px, 0);
+    }
+  }
 </style>

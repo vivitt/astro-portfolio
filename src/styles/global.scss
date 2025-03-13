@@ -1,3 +1,13 @@
+$breakpoints: (phone: 400px, 
+               tablet: 600px, 
+               desktop: 900px) !default;
+
+@mixin reset-list {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+              }
+
 :root {
   --black: #000000;
   --white: #ffffff;
@@ -34,28 +44,39 @@ html {
   /* background: var(--bgColor);
   background: -webkit-linear-gradient(to bottom, var(--bgColorBase), var(--bgColor));
   background: linear-gradient(to bottom, var(--bgColorBase), var(--bgColor)); */
+
+  .dark {
+    --color: var(--colorDark);
+    --bgColor: var(--bgColorDark);
+    --accColor: var(--accColorDark);
+    --bgColorBase: var(--black);
+  }
+  body {
+    margin: 0 auto;
+    font-family: "Inclusive Sans", sans-serif;
+    padding: 0;
+    line-height: 1.5;
+    width: 80%;
+    max-width: 1200px;
+
+    @include media(">phone", "<tablet") {
+      body {
+        width: 90%;
+        background-color: red;
+      }
+    
+    }
+
+
+    ul {
+      @include reset-list;
+    }
+  }
 }
 
-html.dark {
-  --color: var(--colorDark);
-  --bgColor: var(--bgColorDark);
-  --accColor: var(--accColorDark);
-  --bgColorBase: var(--black);
-}
 
-body {
-  margin: 0;
-  font-family: "Inclusive Sans", sans-serif;
-  padding: 0;
-  line-height: 1.5;
-}
 /* 
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
+
 
 header div {
   display: flex;
@@ -69,39 +90,8 @@ main {
   font-size: 1.3em;
 }
 
-footer {
-  padding: 2em 5em;
-  border-top: 1px solid;
-  margin-top: 5em;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--bgColorBase);
-}
 
-.footer__links {
-  display: flex;
-  flex-direction: column;
-}
 
-.footer__links a {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  color: var(--color);
-}
 
-.footer__links [data-icon] {
-  padding-inline-end: 0.3em;
-  font-size: 1.2rem;
-  color: var(--color);
-}
 
-.footer__text {
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-} */
+ */
