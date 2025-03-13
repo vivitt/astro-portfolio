@@ -5,26 +5,18 @@ const { tag } = Astro.props;
 <span class="tag">#&nbsp;<a href={`/tags/${tag}/`} aria-hidden>{tag}</a>
 </span>
 
-<style>
+<style lang="scss">
+  @use '../styles/mixins';
   .tag {
-    font-family: var(--navFont);
-    text-transform: uppercase;
-    border: 1px solid transparent;
-    border-radius: 2em;
-    padding: 0.2em 1em;
-    margin-inline-end: 0.3em;
-    background-color: var(--accColor);
-    display: inline-flex;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-  }
-  .tag, .tag a {
+    @include mixins.tag;
     font-size: 0.6em;
-    color: var(--foregroundColor);
-    text-decoration: none;
+    a {
+      @include mixins.reset-link;
+    }
+   
+    &:hover {
+      border: 1px solid ;
+    }
   }
-  span.tag:hover {
-    border: 1px solid ;
-  }
+  
 </style>

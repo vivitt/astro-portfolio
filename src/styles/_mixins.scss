@@ -31,3 +31,17 @@ background-size: 0% 0.1em;
 animation: none;
 }
 
+@mixin tag {
+  font-family: var(--navFont);
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: 2em;
+  padding: 0.2em 1em;
+  margin-inline-end: 0.3em;
+  background-color: var(--accColor);
+  display: inline-flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  
+}
