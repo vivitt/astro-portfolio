@@ -8,94 +8,99 @@ const postsPathReg = /(posts)\/*[\S+]*/;
 const projectsPathReg = /(projects)\/*[\S+]*/;
 ---
 
-<nav>
+<nav class="nav">
   <ul class="nav__links">
     <!-- <li class=`${currentPath === "" ? "hidden" : ""} nav__links__link `>
       <a href="/" >Home</a>
     </li> -->
     <li
-      class=`${currentPath.match(projectsPathReg) ? "active" : ""} nav__links__link `
+      class=`${currentPath.match(projectsPathReg) ? "active" : ""} nav__links__link`
     >
-      <a href="/projects">Projects</a>
+      <a class="nav__links__link__text" href="/projects">Projects</a>
     </li>
 
     <li
       class=`${currentPath.match(blogPathReg) || currentPath.match(postsPathReg) ? "active" : ""} nav__links__link`
     >
-      <a href="/blog/1">Blog</a>
+      <a class="nav__links__link__text" href="/blog/1">Blog</a>
     </li>
     <li class=`${currentPath === "about" ? "active" : ""} nav__links__link `>
-      <a href="/about">About</a>
+      <a  class="nav__links__link__text" href="/about">About</a>
     </li>
   </ul>
 </nav>
 
-<style>
-  nav {
+
+
+<style lang="scss">
+  .nav {
     display: flex;
     font-family: var(--navFont);
     text-transform: uppercase;
     width: 100%;
     justify-content: end;
-  }
 
-  .nav__links {
-    display: flex;
-    justify-content: end;
-    flex-flow: nowrap;
-    max-width: 80ch;
-  }
+    &__links {
+      display: flex;
+      justify-content: end;
+      flex-flow: nowrap;
+      max-width: 80ch;
 
-  .nav__links__link {
-    animation: none;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0;
-    padding-inline-start: 0;
-    padding-inline-end: 0;
-    --from-padding-end: 0;
-    --from-padding-start: 0;
-    margin-inline-start: 0;
-    margin-inline-end: 0;
-    --from-margin-end: 0;
-    --from-margin-start: 0;
-  }
+        &__link {
+          animation: none;
+          list-style: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 0;
+          padding-inline-start: 0;
+          padding-inline-end: 0;
+          --from-padding-end: 0;
+          --from-padding-start: 0;
+          margin-inline-start: 0;
+          margin-inline-end: 0;
+          --from-margin-end: 0;
+          --from-margin-start: 0;
 
-  .nav__links__link a {
-    font-size: 1.2em;
-    padding-bottom: 0.2em;
-    padding-inline-end: 0.4em;
-    margin: 0 1em;
-    text-decoration: none;
-    color: var(--color);
-    text-shadow:
-      0.05em 0 0 var(--bgColor),
-      -0.05em 0 0 var(--bgColor),
-      0 0.05em 0 var(--bgColor),
-      0 -0.05em 0 var(--bgColor),
-      0.1em 0 0 var(--bgColor),
-      -0.1em 0 0 var(--bgColor),
-      0 0.1em 0 var(--bgColor),
-      0 -0.1em 0 var(--bgColor);
-    background-image: linear-gradient(
-      to right,
-      var(--color) 0%,
-      var(--color) 100%
-    );
-    background-repeat: no-repeat;
-    background-position: 0 90%;
-    background-size: 0% 0.1em;
-  }
+          &__text {
+            font-size: 1.2em;
+            padding-bottom: 0.2em;
+            padding-inline-end: 0.4em;
+            margin: 0 1em;
+            text-decoration: none;
+            color: var(--color);
+            text-shadow:
+              0.05em 0 0 var(--bgColor),
+              -0.05em 0 0 var(--bgColor),
+              0 0.05em 0 var(--bgColor),
+              0 -0.05em 0 var(--bgColor),
+              0.1em 0 0 var(--bgColor),
+              -0.1em 0 0 var(--bgColor),
+              0 0.1em 0 var(--bgColor),
+              0 -0.1em 0 var(--bgColor);
+            background-image: linear-gradient(
+              to right,
+              var(--color) 0%,
+              var(--color) 100%
+            );
+            background-repeat: no-repeat;
+            background-position: 0 90%;
+            background-size: 0% 0.1em;
+            animation: none;
 
-  .active a {
-    background-size: 95% 0.1em;
-    font-weight: bold;
-  }
-  .nav__links__link:not(.active) a:hover {
-    animation: wide 200ms forwards;
-    font-weight: bold;
+            &:hover {
+              animation: wide 200ms forwards;
+              font-weight: bold;
+            }
+          }
+
+        .active &__text {
+          animation: none;
+          background-size: 95% 0.1em;
+          font-weight: bold;
+        }
+      }
+    }
   }
 
   @keyframes wide {
