@@ -87,10 +87,11 @@ const projectsPathReg = /(projects)\/*[\S+]*/;
             background-position: 0 90%;
             background-size: 0% 0.1em;
             animation: none;
-
-            &:hover {
-              animation: wide 200ms forwards;
+            transform: scale(1);
+            &:hover, &:focus {
+              animation: highlight-link 200ms forwards;
               font-weight: bold;
+              transform: scale(1.1);
             }
           }
 
@@ -98,17 +99,10 @@ const projectsPathReg = /(projects)\/*[\S+]*/;
           animation: none;
           background-size: 95% 0.1em;
           font-weight: bold;
+          transform: scale(1.1);
         }
       }
     }
   }
 
-  @keyframes wide {
-    from {
-      background-size: 0% 0.1em;
-    }
-    to {
-      background-size: 95% 0.1em;
-    }
-  }
 </style>

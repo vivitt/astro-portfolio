@@ -70,6 +70,28 @@ html {
   
 }
 
+@keyframes highlight-link {
+  0% {
+    rotate: 0;
+    background-size: 0% 0.2em;
+  }
+  20%{
+    transform: scale(1);
+    rotate: -4deg;
+  }
+  60% {
+     transform: scale(1.1);
+  }
+  90% {
+    
+    rotate: -2deg;
+  }
+  100% {
+    rotate: 0deg;
+    background-size: 95% 0.1em;
+  }
+}
+
 
 /* 
 
