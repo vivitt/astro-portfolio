@@ -2,8 +2,6 @@
 import { blogPathReg, postsPathReg, projectsPathReg } from "../utils/pathRegex";
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
-
-
 ---
 
 <nav class="nav">
@@ -23,15 +21,13 @@ const currentPath = pathname.slice(1);
       <a class="nav__links__link__text" href="/blog/1">Blog</a>
     </li>
     <li class=`${currentPath === "about" ? "active" : ""} nav__links__link `>
-      <a  class="nav__links__link__text" href="/about">About</a>
+      <a class="nav__links__link__text" href="/about">About</a>
     </li>
   </ul>
 </nav>
 
-
-
 <style lang="scss">
-  @use '../styles/mixins';
+  @use "../styles/mixins";
   .nav {
     display: flex;
     font-family: var(--navFont);
@@ -45,34 +41,37 @@ const currentPath = pathname.slice(1);
       flex-flow: nowrap;
       max-width: 80ch;
 
-        &__link {
-          animation: none;
-          list-style: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 0;
-          padding-inline-start: 0;
-          padding-inline-end: 0;
-          --from-padding-end: 0;
-          --from-padding-start: 0;
-          margin-inline-start: 0;
-          margin-inline-end: 0;
-          --from-margin-end: 0;
-          --from-margin-start: 0;
+      &__link {
+        animation: none;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0;
+        padding-inline-start: 0;
+        padding-inline-end: 0;
+        --from-padding-end: 0;
+        --from-padding-start: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        --from-margin-end: 0;
+        --from-margin-start: 0;
 
-          &__text {
-            font-size: 1.2em;
-            padding-bottom: 0.2em;
-            padding-inline-end: 0.4em;
-            margin: 0 1em;
-            @include mixins.reset-link;
-            @include mixins.underline-link;
-            &:hover, &:focus {
-              animation: highlight-link 200ms forwards, underline-link 200ms forwards, ;
-              font-weight: bold;  
-            }
+        &__text {
+          font-size: 1.2em;
+          padding-bottom: 0.2em;
+          padding-inline-end: 0.4em;
+          margin: 0 1em;
+          @include mixins.reset-link;
+          @include mixins.underline-link;
+          &:hover,
+          &:focus {
+            animation:
+              highlight-link 200ms forwards,
+              underline-link 200ms forwards;
+            font-weight: bold;
           }
+        }
 
         .active &__text {
           animation: none;
@@ -83,5 +82,4 @@ const currentPath = pathname.slice(1);
       }
     }
   }
-
 </style>

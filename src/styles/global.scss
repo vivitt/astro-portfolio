@@ -35,6 +35,13 @@ $breakpoints: (phone: 400px,
   white-space: nowrap;
 }
 
+.dark {
+  --color: var(--colorDark);
+  --bgColor: var(--bgColorDark);
+  --accColor: var(--accColorDark);
+  --bgColorBase: var(--black);
+}
+
 html {
   color: var(--color);
   background-color: var(--bgColor);
@@ -42,12 +49,6 @@ html {
   background: -webkit-linear-gradient(to bottom, var(--bgColorBase), var(--bgColor));
   background: linear-gradient(to bottom, var(--bgColorBase), var(--bgColor)); */
 
-  .dark {
-    --color: var(--colorDark);
-    --bgColor: var(--bgColorDark);
-    --accColor: var(--accColorDark);
-    --bgColorBase: var(--black);
-  }
   body {
     margin: 0;
     font-family: "Inclusive Sans", sans-serif;

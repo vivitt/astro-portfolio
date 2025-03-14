@@ -4,27 +4,24 @@ import BlogSummary from "../../components/BlogSummary.astro";
 import { getCollection } from "astro:content";
 import Pagination from "../../components/Pagination.astro";
 
-
 export async function getStaticPaths({ paginate }) {
   const allBlogPosts = await getCollection("blog");
   allBlogPosts.sort((a, b) => Number(b.data.pubDate) - Number(a.data.pubDate));
   return paginate(allBlogPosts, { pageSize: 10 });
 }
-const { page} = Astro.props as {
-  page: { data: Array<{ data: { pubDate: string }}>}
+const { page } = Astro.props as {
+  page: { data: Array<{ data: { pubDate: string } }> };
 };
-
 ---
 
 <Layout title="Vivi's Blog">
-  <main >
+  <main>
     <h1 class="visually-hidden">Vivi's Blog</h1>
-    <ul >
+    <ul>
       {page.data.map((post) => <BlogSummary post={post} />)}
     </ul>
-    <Pagination page={page}></Pagination>
+    <Pagination page={page} />
   </main>
-
 </Layout>
 
 <style>

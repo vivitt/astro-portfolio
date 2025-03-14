@@ -1,27 +1,63 @@
 ---
 import { Icon } from "astro-icon/components";
 
-const { page} = Astro.props as {
-  page: { data: Array<{ data: { pubDate: string }}>, start: number, end: number, size: number, lastPage: number,currentPage: number, url: {
-    current: string, next: string | undefined, prev: string | undefined
-  }  },
+const { page } = Astro.props as {
+  page: {
+    data: Array<{ data: { pubDate: string } }>;
+    start: number;
+    end: number;
+    size: number;
+    lastPage: number;
+    currentPage: number;
+    url: {
+      current: string;
+      next: string | undefined;
+      prev: string | undefined;
+    };
+  };
 };
-
 ---
 
 <nav aria-label="pagination" class="blog__pagination">
   <ul class="blog__pagination__controls">
-
-    <li class=`blog__pagination__controls__listItem ${page.currentPage === 1 ?'blog__pagination__controls__listItem--disabled' :''}`>
-      <a href={page.url.prev} class="blog__pagination__controls__listItem__link">
+    <li
+      class=`blog__pagination__controls__listItem ${page.currentPage === 1 ?'blog__pagination__controls__listItem--disabled' :''}`
+    >
+      <a
+        href={page.url.prev}
+        class="blog__pagination__controls__listItem__link"
+      >
         <Icon name="arrow-back" />
       </a>
     </li>
-    
-    {Array.from({length: page.lastPage}, (el, index) => el = index+1).map((p) => <li class={`blog__pagination__controls__listItem ${p === page.currentPage ?'blog__pagination__controls__listItem--current' :''}`}><a class="blog__pagination__controls__listItem__link blog__pagination__controls__listItem__link--number"  href={`/blog/${p}`} aria-current={`${p === page.currentPage}`}> {p}</a></li>)}
 
-    <li class=`blog__pagination__controls__listItem ${page.currentPage === page.lastPage ?'blog__pagination__controls__listItem--disabled' :''}`>
-      <a href={page.url.next} class="blog__pagination__controls__listItem__link">
+    {
+      Array.from(
+        { length: page.lastPage },
+        (el, index) => (el = index + 1)
+      ).map((p) => (
+        <li
+          class={`blog__pagination__controls__listItem ${p === page.currentPage ? "blog__pagination__controls__listItem--current" : ""}`}
+        >
+          <a
+            class="blog__pagination__controls__listItem__link blog__pagination__controls__listItem__link--number"
+            href={`/blog/${p}`}
+            aria-current={`${p === page.currentPage}`}
+          >
+            {" "}
+            {p}
+          </a>
+        </li>
+      ))
+    }
+
+    <li
+      class=`blog__pagination__controls__listItem ${page.currentPage === page.lastPage ?'blog__pagination__controls__listItem--disabled' :''}`
+    >
+      <a
+        href={page.url.next}
+        class="blog__pagination__controls__listItem__link"
+      >
         <Icon name="play-arrow" />
       </a>
     </li>
@@ -29,18 +65,19 @@ const { page} = Astro.props as {
 </nav>
 
 <style lang="scss">
-  @use '../styles/mixins';
+  @use "../styles/mixins";
 
   .blog__pagination {
     &__controls {
       display: flex;
       justify-content: center;
       align-items: center;
-      
+
       &__listItem {
         padding: 1rem;
-        &:hover , &:focus {
-            animation: highlight-link 200ms forwards;   
+        &:hover,
+        &:focus {
+          animation: highlight-link 200ms forwards;
         }
 
         &--disabled {
@@ -48,7 +85,6 @@ const { page} = Astro.props as {
           &:hover {
             animation: none;
           }
-          
         }
         &__link {
           @include mixins.reset_link;
@@ -62,13 +98,14 @@ const { page} = Astro.props as {
         }
         &__link--number {
           font-size: 1.5em;
-          &:hover , &:focus {
-            animation: highlight-link 200ms forwards, underline-link 200ms forwards;   
+          &:hover,
+          &:focus {
+            animation:
+              highlight-link 200ms forwards,
+              underline-link 200ms forwards;
           }
         }
-  
       }
     }
-  } 
-
+  }
 </style>

@@ -11,16 +11,11 @@
   <span id="control" class="switch__control" role="img" id="control"> </span>
 </button>
 
-<script is:inline data-astro-rerun>
-
-  
-  const element = document.documentElement;
-  const toggle = document.getElementById("background");
-
-
+<script is:inline>
   const theme = (() => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme") ?? "light";
+    const localStorageTheme = localStorage?.getItem("theme") ?? "";
+    if (["dark", "light"].includes(localStorageTheme)) {
+      return localStorageTheme;
     }
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       return "dark";
@@ -28,35 +23,32 @@
     return "light";
   })();
 
-  function applyTheme() {
-    if (theme === "light") {
-      element.classList.remove("dark");
-      toggle?.setAttribute("aria-checked", 'false');
-      element.dataset.theme = "light";
-    } else {
-      element.classList.add("dark");
-      toggle?.setAttribute("aria-checked", "true");
-      element.dataset.theme = "dark";
-    }
+  if (theme === "light") {
+    document.documentElement.classList.remove("dark");
+    document
+      .getElementById("background")
+      ?.setAttribute("aria-checked", "false");
+  } else {
+    document.documentElement.classList.add("dark");
+    document.getElementById("background")?.setAttribute("aria-checked", "true");
   }
 
-  document.addEventListener("astro:after-swap", applyTheme);
- 
-  applyTheme()
   window.localStorage.setItem("theme", theme);
-  const toggleSwitcher = () => {
+
+  const handleToggleClick = () => {
+    const element = document.documentElement;
     element.classList.toggle("dark");
-    const isDark = toggle?.matches("[aria-checked=true]") ? false : true;
+
+    const isDark = element.classList.contains("dark");
     localStorage.setItem("theme", isDark ? "dark" : "light");
-    toggle?.setAttribute("aria-checked", `${isDark}`);
-    element.dataset.theme = isDark ? "dark" : "light";
+    document.getElementById("background")?.setAttribute("aria-checked", isDark);
   };
 
-
-  document.addEventListener('astro:page-load', () => {
-    toggle?.addEventListener("click", toggleSwitcher);
-});
-  
+  document.addEventListener("astro:page-load", () => {
+    document
+      .getElementById("background")
+      ?.addEventListener("click", handleToggleClick);
+  });
 </script>
 
 <style>

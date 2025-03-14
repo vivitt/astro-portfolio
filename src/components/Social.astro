@@ -5,22 +5,22 @@ const { platform, username } = Astro.props;
 ---
 
 <a
-class="social-icon"
+  class="social-icon"
   href={`https://www.${platform}.com/${username}`}
   target="_blank"
   aria-label=`${platform}`
 >
   <Icon aria-hidden name={platform} /></a
 >
-<style lang="scss"> 
-
+<style lang="scss">
   .social-icon {
     padding: 0.7rem;
-    
-    &:hover , &:focus {
-        animation: highlight-link 200ms forwards;   
-        }
-    
+
+    &:hover,
+    &:focus {
+      animation: highlight-link 200ms forwards;
+    }
+
     [data-icon] {
       font-size: 1.7rem;
       color: var(--color);
