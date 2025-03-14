@@ -138,7 +138,7 @@ let year = date.getFullYear();
       justify-content: end;
       align-items: center;
       &__toggle {
-        z-index: 5;
+        z-index: 3;
       }
 
       &__navigation {
@@ -158,6 +158,7 @@ let year = date.getFullYear();
     align-items: center;
     justify-content: space-between;
     background-color: var(--bgColorBase);
+    z-index: 1;
 
     &__links {
       display: flex;
@@ -191,21 +192,6 @@ let year = date.getFullYear();
           animation: highlight-link 200ms forwards;
         }
       }
-    }
-  }
-
-
-  @keyframes move {
-    0% {
-      -webkit-transform: translate(-900px, 0);
-      opacity: 0;
-    }
-    25% {
-      opacity: 1;
-    }
-
-    100% {
-      -webkit-transform: translate(900px, 0);
     }
   }
 </style>

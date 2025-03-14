@@ -1,9 +1,10 @@
-@use 'mixins';
+@use "mixins";
 
-$breakpoints: (phone: 400px, 
-               tablet: 600px, 
-               desktop: 900px) !default;
-
+$breakpoints: (
+  phone: 400px,
+  tablet: 600px,
+  desktop: 900px,
+) !default;
 
 :root {
   --black: #000000;
@@ -42,12 +43,13 @@ $breakpoints: (phone: 400px,
   --bgColorBase: var(--black);
 }
 
+.remove-text-shadows a {
+  @include mixins.reset-underline;
+}
+
 html {
   color: var(--color);
   background-color: var(--bgColor);
-  /* background: var(--bgColor);
-  background: -webkit-linear-gradient(to bottom, var(--bgColorBase), var(--bgColor));
-  background: linear-gradient(to bottom, var(--bgColorBase), var(--bgColor)); */
 
   body {
     margin: 0;
@@ -64,19 +66,18 @@ html {
       @include mixins.reset-list;
     }
   }
-  
 }
 
 @keyframes highlight-link {
   0% {
     rotate: 0;
   }
-  20%{
+  20% {
     transform: scale(1);
     rotate: -3deg;
   }
   60% {
-     transform: scale(1.1);
+    transform: scale(1.1);
   }
   90% {
     transform: scale(1);
@@ -84,28 +85,26 @@ html {
   }
   100% {
     rotate: 0deg;
-    
   }
 }
 
 @keyframes underline-link {
   0% {
-    
     background-size: 0% 0.2em;
   }
-  
+
   100% {
     background-size: 95% 0.1em;
   }
 }
 
-:root::view-transition-new(root) {
-  animation: wide-theme 0.5s;
+::view-transition-new(root) {
+  animation: wide-theme 500ms;
   clip-path: inset(0 0 0 0);
   z-index: 2;
 }
 
-:root::view-transition-old(root) {
+::view-transition-old(root) {
   z-index: -1;
   animation: none;
 }
