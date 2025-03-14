@@ -65,6 +65,10 @@ html {
     ul {
       @include mixins.reset-list;
     }
+
+    a {
+      color: var(--color);
+    }
   }
 }
 
