@@ -99,23 +99,43 @@ html {
   }
 }
 
-/* 
-
-
-header div {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+:root::view-transition-new(root) {
+  animation: wide-theme 0.5s;
+  clip-path: inset(0 0 0 0);
+  z-index: 2;
 }
 
-main {
-  width: 90vh;
-  margin: 3em auto 0;
-  font-size: 1.3em;
+:root::view-transition-old(root) {
+  z-index: -1;
+  animation: none;
 }
 
+[data-theme="dark"] {
+  --from: 0 100% 0 0;
+}
 
+[data-theme="light"] {
+  --from: 0 0 0 100%;
+}
 
+@media (max-width: 500px) {
+  [data-theme="dark"] {
+    --from: 0 0 100% 0;
+  }
 
+  [data-theme="light"] {
+    --from: 100% 0 0 0;
+  }
+}
 
- */
+@media (prefers-reduced-motion) {
+  :root::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+@keyframes wide-theme {
+  from {
+    clip-path: inset(var(--from));
+  }
+}

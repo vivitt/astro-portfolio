@@ -35,7 +35,6 @@ let year = date.getFullYear();
     <meta name="generator" content={Astro.generator} />
     <ClientRouter />
     <title>{title}</title>
-    <script is:inline></script>
   </head>
   <body transition:name="slide">
     <header class="header">
@@ -148,31 +147,9 @@ let year = date.getFullYear();
         justify-content: end;
         align-items: center;
       }
-      .header__navigation__shine {
-        color: white;
-        width: 100%;
-        height: 100%;
-        -webkit-mask-image: url("../images/logos/logo-viviyanez.png");
-        mask-image: url("../images/logos/logo-viviyanez.png");
-        mask-repeat: no-repeat;
-
-        &::after {
-          position: absolute;
-          content: "";
-          width: 10%;
-          height: 50%;
-          clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
-          animation: move 4s infinite ease-in-out;
-          background: linear-gradient(
-              5deg,
-              rgba(222, 220, 216, 0.2),
-              rgba(241, 223, 193, 0.2)
-            ),
-            url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-      }
     }
   }
+
   .footer {
     padding: 2em 5em;
     border-top: 1px solid;
@@ -217,46 +194,6 @@ let year = date.getFullYear();
     }
   }
 
-  /* :root::view-transition-new(root) {
-    animation: wide-theme 0.5s;
-    clip-path: inset(0 0 0 0);
-    z-index: 2;
-  }
-
-  :root::view-transition-old(root) {
-    z-index: -1;
-    animation: none;
-  }
-
-  [data-theme="dark"] {
-    --from: 0 100% 0 0;
-  }
-
-  [data-theme="light"] {
-    --from: 0 0 0 100%;
-  } */
-
-  /* @media (max-width: 500px) {
-    [data-theme="dark"] {
-      --from: 0 0 100% 0;
-    }
-
-    [data-theme="light"] {
-      --from: 100% 0 0 0;
-    }
-  } */
-
-  /* @media (prefers-reduced-motion) {
-    :root::view-transition-new(root) {
-      animation: none;
-    }
-  } */
-
-  /* @keyframes wide-theme {
-    from {
-      clip-path: inset(var(--from));
-    }
-  } */
 
   @keyframes move {
     0% {
