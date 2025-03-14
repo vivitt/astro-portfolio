@@ -2,81 +2,74 @@
 import { Icon } from "astro-icon/components";
 
 const { page} = Astro.props as {
-  page: { data: Array<{ data: { pubDate: string }}>, start: number, end: number, size: number, currentPage: number, url: {
+  page: { data: Array<{ data: { pubDate: string }}>, start: number, end: number, size: number, lastPage: number,currentPage: number, url: {
     current: string, next: string | undefined, prev: string | undefined
   }  },
 };
+
+
 ---
 
 <nav aria-label="pagination" class="blog__pagination">
   <ul class="blog__pagination__controls">
-    <li class="blog__pagination__controls__link">    <a href={page.url.prev}> <Icon name="arrow-back" /></a>
-    </li>
-    {Array.from({length: 4}, (el, index) => el = index+1).map((p) => <li class={`blog__pagination__controls__link blog__pagination__controls__link--page ${p === page.currentPage ?'blog__pagination__controls__link--current' :''}`}><a href={`/blog/${p}`} aria-current={`${p === page.currentPage}`}> {p}</a></li>)}
 
-    <li class={`blog__pagination__controls__link blog__pagination__controls__link--page ${page.currentPage === page.lastPage ?'blog__pagination__controls__link--current' :''}`}><a href={`/blog/${page.lastPage}`} aria-current={`${page.lastPage}`}> {page.lastPage}</a></li>
-    <li class="blog__pagination__controls__link">   <a href={page.url.next}> <Icon name="play-arrow" /> </a></li>
+    <li class=`blog__pagination__controls__listItem ${page.currentPage === 1 ?'blog__pagination__controls__listItem--disabled' :''}`>
+      <a href={page.url.prev} class="blog__pagination__controls__listItem__link">
+        <Icon name="arrow-back" />
+      </a>
+    </li>
+    
+    {Array.from({length: page.lastPage}, (el, index) => el = index+1).map((p) => <li class={`blog__pagination__controls__listItem ${p === page.currentPage ?'blog__pagination__controls__listItem--current' :''}`}><a class="blog__pagination__controls__listItem__link blog__pagination__controls__listItem__link--number"  href={`/blog/${p}`} aria-current={`${p === page.currentPage}`}> {p}</a></li>)}
+
+    <li class=`blog__pagination__controls__listItem ${page.currentPage === page.lastPage ?'blog__pagination__controls__listItem--disabled' :''}`>
+      <a href={page.url.next} class="blog__pagination__controls__listItem__link">
+        <Icon name="play-arrow" />
+      </a>
+    </li>
   </ul>
 </nav>
 
 <style lang="scss">
   @use '../styles/mixins';
+
   .blog__pagination {
     &__controls {
       display: flex;
       justify-content: center;
       align-items: center;
-        
-      &__link {
-          padding: 0.7rem;
+      
+      &__listItem {
+        padding: 1rem;
+        &:hover , &:focus {
+            animation: highlight-link 200ms forwards;   
+        }
 
-        a {
-          text-decoration: none;
-          color: var(--color);
-          padding: 0.2em 0.5em;
-          border-radius: 100%;
-          @include mixins.underline-link;
+        &--disabled {
+          cursor: normal;
+          &:hover {
+            animation: none;
+          }
           
-          &:hover, &:focus {
-              animation: highlight-link 200ms forwards;
-              font-weight: bold;
-              transform: scale(1.1);
-            }
         }
-
-
-
-        &--current a  {
-          background-color: var(--accColor);
-          cursor: default;
+        &__link {
+          @include mixins.reset_link;
+          @include mixins.underline-link;
+          background-size: 0 0.1em;
+          background-position: 0 100%;
+          [data-icon] {
+            font-size: 1.8rem;
+            color: var(--color);
+          }
         }
+        &__link--number {
+          font-size: 1.5em;
+          &:hover , &:focus {
+            animation: highlight-link 200ms forwards, underline-link 200ms forwards;   
+          }
+        }
+  
       }
     }
   } 
-  [data-icon] {
-    font-size: 1.7rem;
-    color: var(--color);
-  }
-    .tag {
-    font-family: var(--navFont);
-    text-transform: uppercase;
-    border: 1px solid transparent;
-    border-radius: 2em;
-    padding: 0.2em 1em;
-    margin-inline-end: 0.3em;
-    background-color: var(--accColor);
-    display: inline-flex;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-  }
-  .tag, .tag a {
-    font-size: 0.6em;
-    color: var(--foregroundColor);
-    text-decoration: none;
-  }
-  span.tag:hover {
-    border: 1px solid ;
-  }
 
 </style>

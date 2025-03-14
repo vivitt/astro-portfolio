@@ -8,7 +8,7 @@ import Pagination from "../../components/Pagination.astro";
 export async function getStaticPaths({ paginate }) {
   const allBlogPosts = await getCollection("blog");
   allBlogPosts.sort((a, b) => Number(b.data.pubDate) - Number(a.data.pubDate));
-  return paginate(allBlogPosts, { pageSize: 6 });
+  return paginate(allBlogPosts, { pageSize: 10 });
 }
 const { page} = Astro.props as {
   page: { data: Array<{ data: { pubDate: string }}>}
