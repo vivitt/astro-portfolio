@@ -1,11 +1,9 @@
 ---
+import { blogPathReg, postsPathReg, projectsPathReg } from "../utils/pathRegex";
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 
-const blogPathReg = /(blog)\/*[0-9]*/;
 
-const postsPathReg = /(posts)\/*[\S+]*/;
-const projectsPathReg = /(projects)\/*[\S+]*/;
 ---
 
 <nav class="nav">

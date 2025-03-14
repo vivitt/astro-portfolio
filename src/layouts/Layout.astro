@@ -9,11 +9,17 @@ import Social from "../components/Social.astro";
 import ToggleTheme from "../components/ToggleTheme.astro";
 import { Icon } from "astro-icon/components";
 import { ClientRouter } from "astro:transitions";
+import { blogPathReg, postsPathReg } from "../utils/pathRegex";
+
 
 interface Props {
   title: string;
 }
 
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+
+console.log(currentPath)
 const { title } = Astro.props;
 
 const date = new Date();
@@ -41,7 +47,7 @@ let year = date.getFullYear();
       <div class="header__navigation">
         <div class="header__navigation__shine"></div>
         {
-          title === "Vivi's Blog" ? (
+          currentPath.match(postsPathReg) || currentPath.match(blogPathReg) ? (
             <a>
               <Image src={blogLogo} alt="Vivi's Blog" width="550" />
             </a>
