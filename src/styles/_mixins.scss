@@ -100,4 +100,10 @@ $breakpoints: (
 @mixin nav-link {
   text-transform: uppercase;
   font-family: var(--navFont);
+  font-weight: normal;
+}
+
+@mixin active-link($line-length, $line-width) {
+  font-weight: bold;
+  background-size: $line-length $line-width;
 }

@@ -27,25 +27,19 @@ const currentPath = pathname.slice(1);
   @use "../styles/mixins";
 
   .nav {
-
-          background-color: green;
-          flex-grow: 1;
-          width: 100%;
-          display: flex;
-          flex-flow: row nowrap;
-          justify-content: flex-end;
-          align-items: center;
-        
+    flex-grow: 1;
     display: flex;
-    
- 
-    
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+
+    display: flex;
 
     &__links {
       display: flex;
       justify-content: end;
       flex-flow: nowrap;
-      max-width: 80ch;
+      
 
       &__link {
         animation: none;
@@ -73,8 +67,8 @@ const currentPath = pathname.slice(1);
 
         .active &__text {
           animation: none;
-          background-size: 95% 0.1em;
-          font-weight: bold;
+          @include mixins.active-link(95%, 0.1em);
+
           transform: scale(1.1);
         }
       }
