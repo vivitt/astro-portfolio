@@ -6,13 +6,13 @@ $breakpoints: (
 ) !default;
 
 @mixin phone {
-  @media (max-width:  #{map.get($breakpoints, tablet-1)}) {
+  @media (max-width:  #{map.get($breakpoints, tablet)}) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media (min-width:  #{map.get($breakpoints, tablet)}) and (max-width:  #{map.get($breakpoints, desktop-1)}) {
+  @media (max-width:  #{map.get($breakpoints, desktop)}) {
     @content;
   }
 }

@@ -142,29 +142,45 @@ let year = date.getFullYear();
         display: flex;
         justify-content: flex-end;
         align-items: center;
+
         &__toggle {
           z-index: 3;
         }
       }
+
       &__navigation {
         width: 100%;
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
         align-items: center;
-        gap: 8em;
-
+        gap: 4em;
+        @include mixins.tablet {
+          flex-direction: column;
+          gap: 0;
+        }
 
         &__logo {
           flex-grow: 2;
           picture > img {
-            max-width: 100%;
+            max-width: 80%;
             min-width: 400px;
             height: auto;
+            @include mixins.phone {
+              min-width: 320px;
+            }
           }
-        }
-
+          picture {
+            @include mixins.tablet {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+          }
+          }
         
+        }
       }
     }
 

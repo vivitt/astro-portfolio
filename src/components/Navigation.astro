@@ -32,14 +32,17 @@ const currentPath = pathname.slice(1);
     flex-flow: row nowrap;
     justify-content: flex-end;
     align-items: center;
-
     display: flex;
-
+    @include mixins.tablet {
+      margin: 0 0 0 auto;
+    }
+    @include mixins.phone {
+      margin: 0 auto;
+    }
     &__links {
       display: flex;
       justify-content: end;
       flex-flow: nowrap;
-      
 
       &__link {
         animation: none;
