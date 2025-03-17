@@ -54,7 +54,7 @@ let year = date.getFullYear();
       <div class="header__navigation">
         {
           currentPath.match(postsPathReg) || currentPath.match(blogPathReg) ? (
-            <a>
+            <a class="header__navigation__logo">
               <Picture
                 formats={["avif", "webp"]}
                 src={blogLogo}
@@ -62,7 +62,7 @@ let year = date.getFullYear();
               />
             </a>
           ) : (
-            <a href="/">
+            <a href="/" class="header__navigation__logo">
               <Picture
                 formats={["avif", "webp"]}
                 src={mainLogo}
@@ -147,21 +147,24 @@ let year = date.getFullYear();
         }
       }
       &__navigation {
-        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
 
-        a > picture > img {
-          max-width: 100%;
-          min-width: 380px;
-          height: auto;
+        border: 2px yellow solid;
+
+        &__logo {
+          background-color: red;
+          flex-grow: 4;
+          picture > img {
+            max-width: 100%;
+            min-width: 400px;
+            height: auto;
+          }
         }
 
-        nav {
-          width: 100%;
-          display: flex;
-          flex-flow: row nowrap;
-          justify-content: flex-end;
-          align-items: center;
-        }
+        
       }
     }
 

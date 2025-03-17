@@ -27,11 +27,19 @@ const currentPath = pathname.slice(1);
   @use "../styles/mixins";
 
   .nav {
+
+          background-color: green;
+          flex-grow: 1;
+          width: 100%;
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: flex-end;
+          align-items: center;
+        
     display: flex;
-    font-family: var(--navFont);
-    text-transform: uppercase;
-    width: 100%;
-    justify-content: end;
+    
+ 
+    
 
     &__links {
       display: flex;
@@ -45,6 +53,7 @@ const currentPath = pathname.slice(1);
         display: flex;
         align-items: center;
         justify-content: center;
+        @include mixins.nav-link;
 
         &__text {
           font-size: 1.2em;
