@@ -1,49 +1,74 @@
-@mixin reset-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
+@use "sass:map";
+$breakpoints: (
+  phone: 400px,
+  tablet: 600px,
+  desktop: 1200px,
+) !default;
 
-  @mixin reset-link {
-    color: var(--color);
-    text-decoration: none;
+@mixin phone {
+  @media (max-width:  #{map.get($breakpoints, tablet-1)}) {
+    @content;
   }
+}
+
+@mixin tablet {
+  @media (min-width:  #{map.get($breakpoints, tablet)}) and (max-width:  #{map.get($breakpoints, desktop-1)}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{map.get($breakpoints, desktop)}) {
+    @content;
+  }
+}
+
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin reset-link {
+  color: var(--color);
+  text-decoration: none;
+}
 
 @mixin underline-link {
-text-decoration: none;
-text-shadow:
-  0.05em 0 0 var(--bgColor),
-  -0.05em 0 0 var(--bgColor),
-  0 0.05em 0 var(--bgColor),
-  0 -0.05em 0 var(--bgColor),
-  0.1em 0 0 var(--bgColor),
-  -0.1em 0 0 var(--bgColor),
-  0 0.1em 0 var(--bgColor),
-  0 -0.1em 0 var(--bgColor);
-background-image: linear-gradient(
-  to right,
-  var(--color) 0%,
-  var(--color) 100%
-);
-background-repeat: no-repeat;
-background-position: 0 80%;
-background-size: 0% 0.1em;
-animation: none;
+  text-decoration: none;
+  text-shadow:
+    0.05em 0 0 var(--bgColor),
+    -0.05em 0 0 var(--bgColor),
+    0 0.05em 0 var(--bgColor),
+    0 -0.05em 0 var(--bgColor),
+    0.1em 0 0 var(--bgColor),
+    -0.1em 0 0 var(--bgColor),
+    0 0.1em 0 var(--bgColor),
+    0 -0.1em 0 var(--bgColor);
+  background-image: linear-gradient(
+    to right,
+    var(--color) 0%,
+    var(--color) 100%
+  );
+  background-repeat: no-repeat;
+  background-position: 0 80%;
+  background-size: 0% 0.1em;
+  animation: none;
 }
 
 @mixin reset-underline {
   text-decoration: none;
   text-shadow:
-  0.05em 0 0 transparent,
-  -0.05em 0 0 transparent,
-  0 0.05em 0 transparent,
-  0 -0.05em 0 transparent,
-  0.1em 0 0 transparent,
-  -0.1em 0 0 transparent,
-  0 0.1em 0 transparent,
-  0 -0.1em 0 transparent !important;
+    0.05em 0 0 transparent,
+    -0.05em 0 0 transparent,
+    0 0.05em 0 transparent,
+    0 -0.05em 0 transparent,
+    0.1em 0 0 transparent,
+    -0.1em 0 0 transparent,
+    0 0.1em 0 transparent,
+    0 -0.1em 0 transparent !important;
   animation: none;
-  }
+}
 
 @mixin tag {
   font-family: var(--navFont);
@@ -57,5 +82,17 @@ animation: none;
   cursor: pointer;
   justify-content: center;
   align-items: center;
-  
+}
+
+@mixin margin-x-l {
+  margin: 0 4em;
+}
+
+@mixin margin-y-l {
+  margin: 4em 0;
+}
+
+@mixin max-w {
+  width: 80%;
+  margin: 0 auto;
 }

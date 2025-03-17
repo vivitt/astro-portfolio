@@ -1,7 +1,7 @@
 ---
 import "@fontsource/inclusive-sans";
 import "../styles/global.scss";
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import mainLogo from "../images/logos/logo-viviyanez.png";
 import blogLogo from "../images/logos/blog-viviyanez.png";
 import Navigation from "../components/Navigation.astro";
@@ -52,15 +52,22 @@ let year = date.getFullYear();
         <ToggleTheme />
       </div>
       <div class="header__navigation">
-        <div class="header__navigation__shine"></div>
         {
           currentPath.match(postsPathReg) || currentPath.match(blogPathReg) ? (
             <a>
-              <Image src={blogLogo} alt="Vivi's Blog" width="550" />
+              <Picture
+                formats={["avif", "webp"]}
+                src={blogLogo}
+                alt="Vivi's Blog"
+              />
             </a>
           ) : (
             <a href="/">
-              <Image src={mainLogo} alt="viviyanez.dev" width="550" />
+              <Picture
+                formats={["avif", "webp"]}
+                src={mainLogo}
+                alt="viviyanez.dev"
+              />
             </a>
           )
         }
@@ -123,73 +130,82 @@ let year = date.getFullYear();
 </html>
 <style lang="scss">
   @use "../styles/mixins";
+
   body {
-    width: 100%;
-  }
-  .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-
-    &__icons {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: end;
-      align-items: center;
-      &__toggle {
-        z-index: 3;
-      }
-
-      &__navigation {
-        display: flex;
-        flex-direction: column;
-        justify-content: end;
-        align-items: center;
-      }
-    }
-  }
-
-  .footer {
-    padding: 2em 5em;
-    border-top: 1px solid;
-    margin-top: 5em;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--bgColorBase);
-    z-index: 1;
-
-    &__links {
+    .header {
+      @include mixins.max-w;
       display: flex;
       flex-direction: column;
 
-      & [data-icon] {
-        padding-inline-end: 0.3em;
-        font-size: 1.2rem;
-        color: var(--color);
-      }
-
-      &__link {
+      &__icons {
+        width: 100%;
         display: flex;
-        justify-content: start;
+        justify-content: flex-end;
         align-items: center;
-        color: var(--color);
-        cursor: pointer;
+        &__toggle {
+          z-index: 3;
+        }
+      }
+      &__navigation {
+        width: 100%;
 
-        &__text {
-          @include mixins.underline-link;
-          @include mixins.reset-link;
-          background-size: 0 0.1em;
-          background-position: 0 100%;
+        a > picture > img {
+          max-width: 100%;
+          min-width: 380px;
+          height: auto;
+        }
+
+        nav {
+          width: 100%;
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: flex-end;
+          align-items: center;
+        }
+      }
+    }
+
+    .footer {
+      padding: 2em 5em;
+      border-top: 1px solid;
+      margin-top: 5em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var(--bgColorBase);
+      z-index: 1;
+
+      &__links {
+        display: flex;
+        flex-direction: column;
+
+        & [data-icon] {
+          padding-inline-end: 0.3em;
+          font-size: 1.2rem;
+          color: var(--color);
+        }
+
+        &__link {
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          color: var(--color);
+          cursor: pointer;
+
+          &__text {
+            @include mixins.underline-link;
+            @include mixins.reset-link;
+            background-size: 0 0.1em;
+            background-position: 0 100%;
+            &:hover,
+            &:focus {
+              animation: underline-link 200ms forwards;
+            }
+          }
           &:hover,
           &:focus {
-            animation: underline-link 200ms forwards;
+            animation: highlight-link 200ms forwards;
           }
-        }
-        &:hover,
-        &:focus {
-          animation: highlight-link 200ms forwards;
         }
       }
     }

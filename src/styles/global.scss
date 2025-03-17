@@ -1,10 +1,14 @@
 @use "mixins";
 
-$breakpoints: (
-  phone: 400px,
-  tablet: 600px,
-  desktop: 900px,
-) !default;
+
+@media (prefers-reduced-motion) {
+  :root::view-transition-new(root) {
+    animation: none;
+  }
+  :root {
+    animation: none !important;
+  }
+}
 
 :root {
   --black: #000000;
@@ -50,7 +54,7 @@ $breakpoints: (
 html {
   color: var(--color);
   background-color: var(--bgColor);
-
+  min-width: 400px;
   body {
     margin: 0;
     font-family: "Inclusive Sans", sans-serif;
@@ -58,8 +62,7 @@ html {
     line-height: 1.5;
 
     main {
-      width: 80%;
-      margin: 0 auto;
+      @include mixins.max-w;
     }
 
     ul {
@@ -128,12 +131,6 @@ html {
 
   [data-theme="light"] {
     --from: 100% 0 0 0;
-  }
-}
-
-@media (prefers-reduced-motion) {
-  :root::view-transition-new(root) {
-    animation: none;
   }
 }
 
