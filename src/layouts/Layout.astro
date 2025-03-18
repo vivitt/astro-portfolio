@@ -194,6 +194,12 @@ let year = date.getFullYear();
       background-color: var(--bgColorBase);
       z-index: 1;
 
+      @include mixins.phone {
+        padding: 2em;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
       &__links {
         display: flex;
         flex-direction: column;
