@@ -1,107 +1,135 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import vivitt from "../images/vivitt.png";
+import vivitt from "../images/projects/guess-who.png";
 const pageTitle = "About Me";
 ---
 
 <Layout title={pageTitle}>
-  <main>
-    <h1>A bit more about me</h1>
-    <div class="about__intro">
-      <Image
-        class="about__intro__image"
-        src={vivitt}
-        alt="Viviana is smiling at the camera in a black and white selfie."
-        width="150"
-      />
+  <main class="about">
+    <h1 class="visually-hidden">About me</h1>
 
-      <p class="about__intro__text">
-        <span aria-hidden="true">👋🏽</span> Hello! I am Viviana.
+    <div class="about__text">
+      <h2>Hello there!</h2>
+      <div class="about__text__intro">
+        <Image
+          class="about__text__intro--image"
+          src={vivitt}
+          alt="Viviana is smiling at the camera in a black and white selfie."
+        />
+        <div class="about__text__intro--text">
+          <p>
+            I am Viviana, a creative web developer with a background in
+            audiovisual & visual communication.
+          </p>
+          <p>
+            I care about crafting inclusive, accessible, and beautiful web
+            experiences with a user-centric approach.
+          </p>
+          <p>
+            Passionate about coding and the web platform, I love the
+            intersection between design and engineering and my interests also
+            include open source, creativity, arts and culture, technical
+            writing, knowledge sharing, and everything in between.
+          </p>
+        </div>
+      </div>
+      <h2>Background</h2>
+      <p>
+        I wrote my first lines of code while working as a 2D character animator
+        and loved it. First learned HTML and CSS and eventially decided to fully
+        transition my career into software development.
       </p>
-      <p class="about__intro__text">
-        I am a creative web developer with a background in audiovisual
-        communication.
+      <p>
+        Thanks to my background, I grew as a collaborative team player, used to
+        taking ownership of my work while working within a team towards a common
+        goal. I deeply care about what I create, but I learned early in my
+        career not to get too attached to a piece of work and to stay open to
+        changes. Adapting quickly to new environments and tasks is one of my
+        strengths.
       </p>
-      <p class="about__intro__text">
-        I care about crafting enjoyable experiences that make the web more
-        accessible and inclusive.
+
+      <h2>Breaking Into Tech</h2>
+      <p>
+        After graduating from a bootcamp in the MERN stack, I completed a
+        software engineering internship at the Wikimedia Foundation, where I
+        worked on a project I worked on a project oriented towards increasing
+        the adoption of Vue.js and Wikimedia Design System Codex on Wikipedia's
+        frontend. I refactored and tested several Object-Oriented JavaScript
+        user interfaces and published the blog post <a
+          href="https://diff.wikimedia.org/2023/06/13/how-to-create-your-own-reusable-dialog-with-codex/"
+          target="_blank">How to create your own reusable dialog with Codex</a
+        >. See here <a
+          href="https://github.com/wikimedia/mediawiki-extensions-GrowthExperiments/commits?author=vivitt"
+          target="_blank">my contributions</a
+        > or <a href="/cv/Viviana_Yanez-frontend_developer.pdf" target="_blank"
+          >download my CV</a
+        >.
+      </p>
+
+      <p>
+        I also participated in <a
+          href="https://the-collab-lab.codes/"
+          target="_blank">The Collab Lab</a
+        > as a frontend developer, where I worked on a smaller project using React
+        and Firebase with an amazing team of developers and mentors. It was a great
+        opportunity to take on a lot of ownership over the team planning and design.
+      </p>
+
+      <h2>What I'm Working On</h2>
+      <p>
+        Until now, I’ve mostly focused on frontend tools and frameworks but I’m
+        always eager to explore new stacks.
+      </p><p>
+        I’m comfortable coding with JavaScript and TypeScript, and have used
+        React, Vue, Astro and Next.js. I really enjoy writing CSS, both with and
+        without preprocessors. Recently, I’ve spent time learning about web
+        security and web fundamentals.
+      </p>
+      <p>
+        Thanks a bunch for your visit, and please feel free to reach out on my
+        socials. I’m always happy to exchange experiences, learnings, and
+        thoughts.
       </p>
     </div>
-    <p>
-      <span aria-hidden="true">👩🏽‍💻</span> I wrote my first lines of code while working
-      as a 2D character animator and loved it. Eventually, I decided to fully transition
-      my career into software development.
-    </p>
-
-    <p>
-      <span aria-hidden="true">⚽️</span> I am a collaborative team player who can
-      quickly adapt to new environments and tasks. During the last months, I completed
-      a software engineering internship at the Wikimedia Foundation and participated
-      as a frontend developer at The Collab Lab. See <a
-        class="about__link"
-        href="https://github.com/wikimedia/mediawiki-extensions-GrowthExperiments/commits?author=vivitt"
-        target="_blank">my contributions</a
-      > or <a
-        class="about__link"
-        href="/cv/Viviana_Yanez-frontend_developer.pdf"
-        target="_blank">download my CV</a
-      >.
-    </p>
-
-    <p>
-      <span aria-hidden="true">👀</span> My interests include creativity, culture,
-      technical writing, knowledge sharing, and everything in between. <span
-        aria-hidden="true">🎨</span
-      > I love the intersection between design and engineering, and my work always
-      takes a user-centric approach.
-    </p>
-
-    <p>
-      <span aria-hidden="true">💌</span> Thanks for your visit! Please feel free
-      to reach out on <a
-        class="about__link"
-        href="https://www.linkedin.com/in/viviana-yanez/"
-        target="_blank">Linkedin</a
-      >, I am always happy to exchange experiences, learnings, and thoughts.
-    </p>
   </main>
 </Layout>
 
-<style>
-  .about__intro {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(6, fr);
-    gap: 1em;
-    align-items: start;
-  }
-  .about__intro__image {
-    grid-columns: 1/2;
-    grid-row: 2/5;
-  }
-  .about__intro__text {
-    grid-column: 2/5;
-    padding: 0;
-    margin: 0;
-    line-height: 1.5em;
-    font-size: 1.1em;
-  }
-  .about__intro__text:nth-of-type(1) {
-    grid-column: 1/5;
-    grid-row: 1/2;
-    font-size: 1.5em;
-  }
-  .about__intro__text:nth-of-type(2) {
-    grid-column: 2/5;
-    grid-row: 2/3;
-  }
-  .about__intro__text:nth-of-type(3) {
-    grid-column: 2/5;
-    grid-row: 3/4;
-  }
+<style lang="scss">
+  @use "../styles/mixins";
 
-  .about__link {
-    color: var(--foregroundColor);
+  .about {
+    &__text {
+      &__intro {
+        display: grid;
+        padding: 0;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        &--image {
+          height: auto;
+          width: 80%;
+          margin: 0 0 auto auto;
+          grid-column: 2/5;
+          grid-row: 1/4;
+
+          @include mixins.tablet {
+            grid-column: 1/5;
+            width: 90%;
+            justify-self: center;
+            grid-row: 2/4;
+          }
+        }
+        &--text {
+          grid-column: 1/3;
+          grid-row: 1/4;
+          @include mixins.tablet {
+            grid-row: 1/3;
+            grid-column: 1/5;
+          }
+        }
+      }
+      padding: 2em;
+      font-size: 1.1em;
+    }
   }
 </style>

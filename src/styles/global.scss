@@ -63,6 +63,7 @@ html {
 
     main {
       @include mixins.max-w;
+      margin-top: 2em;
     }
 
     ul {
