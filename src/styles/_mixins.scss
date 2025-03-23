@@ -103,6 +103,15 @@ $breakpoints: (
   font-weight: normal;
 }
 
+@mixin blog-title-link {
+  background-image: linear-gradient(
+    to right,
+    var(--light-lilac) 0%,
+    var(--lilac) 100%
+  );
+  background-size: 100% 0.1em;
+  background-position: 0 100%;
+}
 @mixin active-link($line-length, $line-width) {
   font-weight: bold;
   background-size: $line-length $line-width;

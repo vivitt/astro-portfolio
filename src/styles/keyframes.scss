@@ -1,0 +1,44 @@
+@keyframes highlight-link {
+  0% {
+    rotate: 0;
+  }
+  20% {
+    transform: scale(1);
+    rotate: -3deg;
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  90% {
+    transform: scale(1);
+    rotate: -2deg;
+  }
+  100% {
+    rotate: 0deg;
+  }
+}
+
+@keyframes underline-link {
+  0% {
+    background-size: 0% 0.2em;
+  }
+
+  100% {
+    background-size: 95% 0.1em;
+  }
+}
+
+@keyframes wide-theme {
+  from {
+    clip-path: inset(var(--from));
+  }
+}
+
+@keyframes scale-background {
+    from{
+        background-size: 100%;
+    }
+    to {
+        background-size: 110%;
+    }
+}

@@ -1,56 +1,80 @@
 ---
+import { Image } from "astro:assets";
+import Tag from "./Tag.astro";
 const { content } = Astro.props;
-
-const backgroundImage = content.data.image.url
 ---
 
-<li class="link-card">
-	<a href={"/projects/" + content.id}  ></a>
-	<div class="link-card--image" >
-	{content.data.title}
-</div></a>
+<li class="project-card" transition:animate="fade">
+  <div class="project-card__image">
+    <Image
+      src={content.data.image.image}
+      alt="See project"
+      class="project-card__image"
+    />
+  </div>
+  <div class="project-card__content">
+    <h3>
+      <a class="project-card__content__title" href={"/projects/" + content.id}
+        >{content.data.title}
+      </a>
+    </h3>
+    <p class="project-card__content__description">{content.data.description}</p>
+    <section>
+      <p class="visually-hidden">Posts tagged with:</p>
+      <ul class="project-card__content__tags">
+        {
+          content.data.tags?.map((tag: string) => (
+            <li>
+              <Tag tag={tag}>{tag}</Tag>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <a class="project-card__content__link" href={"/projects/" + content.id}
+      >View project
+    </a>
+  </div>
 </li>
-<style define:vars={{ backgroundImage} }>
-	
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 1px;
-		background-color: #23262d;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	}
-	.link-card__image {
-		background-image: url(var(--backgroundImage));
-	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
-		color: white;
-		background-color: #23262d;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
-	}
+
+<style lang="scss">
+  @use "../styles/mixins";
+  .project-card {
+    border-bottom: 1px solid;
+    padding: 0 0 1.2em 0;
+    margin: 0 0.2em;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    &__image {
+      img {
+        max-width: 100%;
+        width: 500px;
+        height: auto;
+      }
+    }
+
+    &__content {
+      color: var(--color);
+      margin: 0 0 1em 0;
+      text-decoration: none;
+      @include mixins.underline-link;
+      @include mixins.blog-title-link;
+      &:hover,
+      &:focus {
+        transform: scale(2);
+        transition: all 2ms;
+      }
+
+      &__tags {
+        display: flex;
+      }
+    }
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
 </style>

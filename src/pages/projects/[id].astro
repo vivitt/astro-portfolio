@@ -1,8 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { Image } from 'astro:assets';
 import { getCollection, render } from "astro:content";
 import Tag from "../../components/Tag.astro";
-
+import { Icon } from "astro-icon/components";
 
 export async function getStaticPaths() {
   const posts = await getCollection("projects");
@@ -17,12 +18,13 @@ const { Content } = await render(project);
 ---
 
 <Layout title={project.data.title}>
-  <main>
+  <main class="project">
     <header>
-      <img src={project.data.image.url} alt={project.data.image.alt}/>
+      <h1>{project?.data?.title}</h1>
+      <Image src={project.data.image.image} alt={project.data.image.alt}/>
       
      
-      <h1>{project?.data?.title}</h1>
+      
       
       <div class="tags">
         <h4 class="visually-hidden">This project was created with:</h4>
@@ -34,6 +36,29 @@ const { Content } = await render(project);
     </header>
 
     <Content />
+    <div class="project__link"><span aria-hidden><Icon name="arrow-back" /></span><a href="/projects">  Back to all projects</a></div>
   </main>
 </Layout>
+<style lang="scss">
+  @use "../../styles/mixins";
+  .project {
+    img {
+    max-width: 70%;
+    height: auto;
+  }
+  &__link {
+    display: flex;
+    align-items: flex-end;
+    padding: 2em 0 0 0;
+    a {
+   font-size: 1.2em;
+   @include mixins.underline-link;
+   @include mixins.blog-title-link;
+   background-position: 0 85%;
+ }
+  }
+ 
 
+  }
+ 
+</style>

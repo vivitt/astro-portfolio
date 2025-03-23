@@ -1,5 +1,5 @@
 @use "mixins";
-
+@use "keyframes";
 
 @media (prefers-reduced-motion) {
   :root::view-transition-new(root) {
@@ -76,36 +76,6 @@ html {
   }
 }
 
-@keyframes highlight-link {
-  0% {
-    rotate: 0;
-  }
-  20% {
-    transform: scale(1);
-    rotate: -3deg;
-  }
-  60% {
-    transform: scale(1.1);
-  }
-  90% {
-    transform: scale(1);
-    rotate: -2deg;
-  }
-  100% {
-    rotate: 0deg;
-  }
-}
-
-@keyframes underline-link {
-  0% {
-    background-size: 0% 0.2em;
-  }
-
-  100% {
-    background-size: 95% 0.1em;
-  }
-}
-
 ::view-transition-new(root) {
   animation: wide-theme 500ms;
   clip-path: inset(0 0 0 0);
@@ -132,11 +102,5 @@ html {
 
   [data-theme="light"] {
     --from: 100% 0 0 0;
-  }
-}
-
-@keyframes wide-theme {
-  from {
-    clip-path: inset(var(--from));
   }
 }

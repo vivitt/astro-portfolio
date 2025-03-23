@@ -9,7 +9,7 @@ const projects = await getCollection("projects");
 
 <Layout title="My projects">
   <main>
-    <h1 >Some of the projects I’ve worked on</h1>
+    <h1 class="visually-hidden">My Projects</h1>
     <ul>
       {projects.map((project) => <ProjectCard content={project} />)}
     </ul>

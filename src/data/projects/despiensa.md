@@ -1,27 +1,29 @@
 ---
-description: 'This gender-inclusive illustrated version of the classic guess who game is my final project for the AllWomen Web Dev Bootcamp.'
+description: "A smart shopping list app that learns users' buying habits and helps them remember what they are likely to need to buy on their next trip to the store."
 image: 
-  alt: 'Guess who game home page'
-  image: '../../images/projects/guess-who.png'
-  url: 'guess-who.png'
+  alt: 'Despiensa homepage'
+  image: '../../images/projects/despiensa.png'
+  url: 'despiensa.png'
 
-link: 'https://guess-who-game.vercel.app/'
-technologies: ['React', 'MaterialUI']
-title: 'Guess Who Game'
-
+link: 'https://www.despiensa.site/'
+repo: 'https://github.com/vivitt/despiensa-smart-shopping-list'
+technologies: ['React', 'Firebase', 'Tailwind']
+title: 'Despiensa'
 ---
 
-Gender-inclusive illustrated version of the classic Guess Who Game.
+A smart shopping list app that learns users' buying habits and helps them remember what they are likely to need to buy on their next trip to the store.
 
 ### Links
-[GitHub repo](https://github.com/vivitt/Guess_Who_GAME)
+[GitHub repo](https://github.com/vivitt/despiensa-smart-shopping-list)
 
-[Live demo](https://guess-who-game-vivitt.vercel.app/)
+[Live demo](https://www.despiensa.site/)
 
 ### Motivation
-I worked on this game after realizing the classic version was quite biased, with only 5 women out of 20 cards and all the characters having almost identical skin tones. I illustrated the characters because I truly believe play is an important part of education, and I wanted players to have access to more diverse (and real) world representations. So, when I graduated from bootcamp, I saw the perfect opportunity to put my illustrations to use.
+[The Collab Lab](https://the-collab-lab.codes/) supports early-career developers by providing an environment to gain practical experience through remote collaboration on real-world projects as part of an agile team.
 
-In the end, it turned out to be a great learning tool for kids and foreign language learners.
+This project is the result of the TCL-71 participation and was developed by [Celine](https://github.com/ocsiddisco), [Borja](https://github.com/borjaMarti), [Judith](https://github.com/BikeMouse), and [Viviana](https://github.com/vivitt).
+
+We worked on this application from February to early April 2024, using React, Tailwind, and Firebase, with Figma employed to create our app's views.
 
 ### Details and Main Features
 The game involves guessing a random character by asking questions about their visible features. 
