@@ -1,7 +1,11 @@
 ---
 import { Image } from "astro:assets";
 import Tag from "./Tag.astro";
+import { randomClipPath } from "../utils/get-random-clip-shape";
 const { content } = Astro.props;
+
+const randomPath = `var(--${randomClipPath()}-path)`
+
 ---
 
 <li class="project-card" transition:animate="fade">
@@ -37,7 +41,7 @@ const { content } = Astro.props;
   </div>
 </li>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ clipPath: randomPath }}">
   @use "../styles/mixins";
   .project-card {
     border-bottom: 1px solid;
@@ -53,8 +57,9 @@ const { content } = Astro.props;
         max-width: 100%;
         width: 500px;
         height: auto;
+        
       }
-    }
+      clip-path: path(evenodd, var(--clipPath));    }
 
     &__content {
       color: var(--color);

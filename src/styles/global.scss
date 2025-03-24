@@ -1,5 +1,6 @@
 @use "mixins";
 @use "keyframes";
+@use "project-clipping-paths";
 
 @media (prefers-reduced-motion) {
   :root::view-transition-new(root) {
@@ -26,6 +27,8 @@
   --accColorDark: var(--lilac);
   --navFont: "Inclusive Sans", sans-serif;
 }
+
+
 
 * {
   box-sizing: border-box;
