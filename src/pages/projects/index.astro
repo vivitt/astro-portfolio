@@ -10,6 +10,7 @@ const projects = await getCollection("projects");
 <Layout title="My projects">
   <main>
     <h1 class="visually-hidden">My Projects</h1>
+
     <ul>
       {projects.map((project) => <ProjectCard content={project} />)}
     </ul>
@@ -20,6 +21,6 @@ const projects = await getCollection("projects");
   ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 2em 0 0 0;
   }
 </style>

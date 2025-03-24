@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
 import Tag from "../../components/Tag.astro";
 import { Icon } from "astro-icon/components";
@@ -21,44 +21,43 @@ const { Content } = await render(project);
   <main class="project">
     <header>
       <h1>{project?.data?.title}</h1>
-      <Image src={project.data.image.image} alt={project.data.image.alt}/>
-      
-     
-      
-      
+      <Image src={project.data.image.image} alt={project.data.image.alt} />
+
       <div class="tags">
         <h4 class="visually-hidden">This project was created with:</h4>
         {
           project?.data?.technologies &&
-            project?.data?.technologies.map((tech: string) => <Tag tag={tech} />)
+            project?.data?.technologies.map((tech: string) => (
+              <Tag tag={tech} />
+            ))
         }
       </div>
     </header>
 
     <Content />
-    <div class="project__link"><span aria-hidden><Icon name="arrow-back" /></span><a href="/projects">  Back to all projects</a></div>
+    <div class="project__link">
+      <span aria-hidden><Icon name="arrow-back" /></span><a href="/projects">
+        Back to all projects</a>
+    </div>
   </main>
 </Layout>
 <style lang="scss">
   @use "../../styles/mixins";
   .project {
     img {
-    max-width: 70%;
-    height: auto;
+      max-width: 70%;
+      height: auto;
+    }
+    &__link {
+      display: flex;
+      align-items: flex-end;
+      padding: 2em 0 0 0;
+      a {
+        font-size: 1.2em;
+        @include mixins.underline-link;
+        @include mixins.blog-title-link;
+        background-position: 0 85%;
+      }
+    }
   }
-  &__link {
-    display: flex;
-    align-items: flex-end;
-    padding: 2em 0 0 0;
-    a {
-   font-size: 1.2em;
-   @include mixins.underline-link;
-   @include mixins.blog-title-link;
-   background-position: 0 85%;
- }
-  }
- 
-
-  }
- 
 </style>

@@ -4,8 +4,7 @@ import Tag from "./Tag.astro";
 import { randomClipPath } from "../utils/get-random-clip-shape";
 const { content } = Astro.props;
 
-const randomPath = `var(--${randomClipPath()}-path)`
-
+const randomPath = `var(--${randomClipPath()}-path)`;
 ---
 
 <li class="project-card" transition:animate="fade">
@@ -17,13 +16,11 @@ const randomPath = `var(--${randomClipPath()}-path)`
     />
   </div>
   <div class="project-card__content">
-    <h3>
-      <a class="project-card__content__title" href={"/projects/" + content.id}
-        >{content.data.title}
-      </a>
+    <h3 class="project-card__content__title">
+      <a href={"/projects/" + content.id}>{content.data.title} </a>
     </h3>
     <p class="project-card__content__description">{content.data.description}</p>
-    <section>
+    <!-- <section>
       <p class="visually-hidden">Posts tagged with:</p>
       <ul class="project-card__content__tags">
         {
@@ -34,52 +31,97 @@ const randomPath = `var(--${randomClipPath()}-path)`
           ))
         }
       </ul>
-    </section>
+    </section> -->
     <a class="project-card__content__link" href={"/projects/" + content.id}
       >View project
     </a>
   </div>
 </li>
 
-<style lang="scss" define:vars={{ clipPath: randomPath }}">
+<style lang="scss" define:vars={{ clipPath: randomPath }}>
   @use "../styles/mixins";
   .project-card {
-    border-bottom: 1px solid;
-    padding: 0 0 1.2em 0;
+    padding: 0 0 2em 0;
     margin: 0 0.2em;
     display: flex;
     flex-flow: row nowrap;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-
+    gap: 1em;
+    position: relative;
     &__image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      clip-path: path(evenodd, var(--clipPath));
       img {
-        max-width: 100%;
-        width: 500px;
+        width: 240px;
         height: auto;
-        
-      }
-      clip-path: path(evenodd, var(--clipPath));    }
-
-    &__content {
-      color: var(--color);
-      margin: 0 0 1em 0;
-      text-decoration: none;
-      @include mixins.underline-link;
-      @include mixins.blog-title-link;
-      &:hover,
-      &:focus {
-        transform: scale(2);
-        transition: all 2ms;
-      }
-
-      &__tags {
-        display: flex;
       }
     }
 
+    &__content {
+      color: var(--color);
+
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      height: max-content;
+
+      &__title {
+        font-size: 2.3em;
+        margin-top: 0;
+        margin-bottom: 0.3em;
+
+        a {
+          @include mixins.underline-link;
+          @include mixins.blog-title-link;
+          animation: underline-link 200ms forwards;
+        }
+      }
+
+      &__description {
+        font-size: 1.2em;
+      }
+      &__tags {
+        display: flex;
+      }
+      &__link {
+        font-size: 1.2em;
+
+        @include mixins.underline-link;
+        background-position: 0 85%;
+        background-size: 0 0.2em;
+      }
+    }
+
+    &:hover > .project-card__image {
+      img {
+        transform: scale(1.2);
+        transition: all 4000ms;
+      }
+    }
+
+    &:hover > .project-card__content > .project-card__content__link {
+      
+      animation:
+              highlight-link 200ms forwards,
+              underline-link 200ms forwards;
+            font-weight: bold;
+      
+    }
+
     &:last-of-type {
-      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    &:nth-of-type(even) > .project-card__image {
+      order: 2;
+    }
+    &:nth-of-type(even) > .project-card__content {
+      align-items: flex-end;
     }
   }
 </style>
