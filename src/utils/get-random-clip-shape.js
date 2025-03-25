@@ -1,4 +1,4 @@
-const paths = ["flower", "arrow", "star"];
+const paths = ["flower", "star"];
 
 export const randomClipPath = () => {
   return paths[Math.floor(Math.random() * paths.length)];

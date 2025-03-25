@@ -9,10 +9,12 @@ const randomPath = `var(--${randomClipPath()}-path)`;
 
 <li class="project-card" transition:animate="fade">
   <div class="project-card__image">
+   
+
     <Image
+      class="project-card__image--image"
       src={content.data.image.image}
       alt="See project"
-      class="project-card__image"
     />
   </div>
   <div class="project-card__content">
@@ -41,22 +43,28 @@ const randomPath = `var(--${randomClipPath()}-path)`;
 <style lang="scss" define:vars={{ clipPath: randomPath }}>
   @use "../styles/mixins";
   .project-card {
-    padding: 0 0 2em 0;
-    margin: 0 0.2em;
+    
+    margin-bottom: 2em;
     display: flex;
     flex-flow: row nowrap;
     align-items: flex-start;
     justify-content: space-between;
     gap: 1em;
-    position: relative;
+    background-color: var(--bgColorBase);
+
     &__image {
       display: flex;
       align-items: center;
       justify-content: center;
-      clip-path: path(evenodd, var(--clipPath));
-      img {
-        width: 240px;
+      clip-path: inset(0%);
+      //clip-path: path(evenodd, var(--clipPath));
+  
+    
+      &--image {
+      
+        width: 250px;
         height: auto;
+
       }
     }
 
@@ -78,7 +86,6 @@ const randomPath = `var(--${randomClipPath()}-path)`;
         a {
           @include mixins.underline-link;
           @include mixins.blog-title-link;
-          animation: underline-link 200ms forwards;
         }
       }
 
@@ -92,25 +99,20 @@ const randomPath = `var(--${randomClipPath()}-path)`;
         font-size: 1.2em;
 
         @include mixins.underline-link;
-        background-position: 0 85%;
+        background-position: 0 86%;
         background-size: 0 0.2em;
       }
     }
 
-    &:hover > .project-card__image {
-      img {
-        transform: scale(1.2);
-        transition: all 4000ms;
-      }
+    &:hover .project-card__image--image {
+      scale: 1.1;
+      transition: all 800ms;
     }
 
     &:hover > .project-card__content > .project-card__content__link {
-      
-      animation:
-              highlight-link 200ms forwards,
-              underline-link 200ms forwards;
-            font-weight: bold;
-      
+      animation: underline-link 400ms forwards;
+      font-weight: bold;
+      background-size: 150% 0.1em;
     }
 
     &:last-of-type {
