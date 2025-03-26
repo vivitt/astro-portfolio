@@ -66,8 +66,7 @@
   });
 
   document.addEventListener('astro:after-swap', () => {
-    const localStorageTheme = localStorage?.getItem("theme") ?? "";
-    const isDark = localStorageTheme==='dark'
+    const isDark = localStorage?.getItem("theme") === 'dark'
     if(isDark) {
       document.documentElement.classList.add("dark");
       document.getElementById("background")?.setAttribute("aria-checked", isDark);  
