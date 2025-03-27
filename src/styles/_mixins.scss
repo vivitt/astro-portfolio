@@ -2,6 +2,7 @@
 $breakpoints: (
   phone: 400px,
   tablet: 600px,
+  smalldesk: 800px,
   desktop: 1200px,
 ) !default;
 
@@ -13,6 +14,12 @@ $breakpoints: (
 
 @mixin tablet {
   @media (max-width:  #{map.get($breakpoints, desktop)}) {
+    @content;
+  }
+}
+
+@mixin smalldesk {
+  @media (max-width:  #{map.get($breakpoints, smalldesk)}) {
     @content;
   }
 }

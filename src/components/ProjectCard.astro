@@ -9,8 +9,6 @@ const randomPath = `var(--${randomClipPath()}-path)`;
 
 <li class="project-card" transition:animate="fade">
   <div class="project-card__image">
-   
-
     <Image
       class="project-card__image--image"
       src={content.data.image.image}
@@ -43,41 +41,60 @@ const randomPath = `var(--${randomClipPath()}-path)`;
 <style lang="scss" define:vars={{ clipPath: randomPath }}>
   @use "../styles/mixins";
   .project-card {
-    
     margin-bottom: 2em;
     display: flex;
     flex-flow: row nowrap;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 1em;
-    background-color: var(--bgColorBase);
+    
+    
+
+    height: 300px;
+    @include mixins.smalldesk {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      &__image {
+        
+        &--image {
+          width: 800px;
+          height: auto;
+        }
+      }
+    }
 
     &__image {
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      clip-path: inset(0%);
+      clip-path: path("M64.1155 0.0257589H300V300H0.0109863C0.344849 241.407 0.812286 129.03 0.0109863 78.1492C-0.790314 27.2688 42.4134 -0.975825 64.1155 0.0257589Z");
       //clip-path: path(evenodd, var(--clipPath));
   
-    
-      &--image {
-      
-        width: 250px;
-        height: auto;
 
+      &--image {
+        width: 300px;
+        height: auto;
       }
     }
 
     &__content {
       color: var(--color);
-
+      height: 300px;
       text-decoration: none;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       justify-content: space-between;
-      height: max-content;
-
+      padding: 2em;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      background-color: var(--bgColorBase);
+      @include mixins.smalldesk {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: max-content;
+      }
       &__title {
         font-size: 2.3em;
         margin-top: 0;
@@ -119,11 +136,18 @@ const randomPath = `var(--${randomClipPath()}-path)`;
       margin-bottom: 0;
     }
 
-    &:nth-of-type(even) > .project-card__image {
-      order: 2;
-    }
-    &:nth-of-type(even) > .project-card__content {
-      align-items: flex-end;
+    @media (min-width: 801px) {
+
+      
+      &:nth-of-type(even) > .project-card__image {
+        order: 2;
+        
+        clip-path: path("M235.884 0.0257589H0V300H299.989C299.655 241.407 299.188 129.03 299.989 78.1493C300.79 27.2688 257.587 -0.975825 235.884 0.0257589Z");
+
+      }
+      &:nth-of-type(even) > .project-card__content {
+        align-items: flex-end;
+      }
     }
   }
 </style>
