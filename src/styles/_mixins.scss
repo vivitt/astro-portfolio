@@ -79,7 +79,6 @@ $breakpoints: (
 
 @mixin tag {
   font-family: var(--navFont);
-  text-transform: uppercase;
   border: 1px solid transparent;
   border-radius: 2em;
   padding: 0.2em 1em;

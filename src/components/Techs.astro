@@ -1,0 +1,17 @@
+---
+const { tech } = Astro.props;
+---
+
+<a  class="tech"><span aria-hidden
+>#&nbsp;</span>{tech}</a>
+
+
+<style lang="scss">
+  @use "../styles/mixins";
+  .tech {
+    @include mixins.tag;
+    cursor: default;
+    text-transform: uppercase;
+    font-size: 0.6em;
+  }
+</style>

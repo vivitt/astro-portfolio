@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import Tag from "./Tag.astro";
+import { Icon } from "astro-icon/components";
+import Techs from "./Techs.astro";
 import { randomClipPath } from "../utils/get-random-clip-shape";
 const { content } = Astro.props;
 
@@ -20,21 +21,25 @@ const randomPath = `var(--${randomClipPath()}-path)`;
       <a href={"/projects/" + content.id}>{content.data.title} </a>
     </h3>
     <p class="project-card__content__description">{content.data.description}</p>
-    <!-- <section>
-      <p class="visually-hidden">Posts tagged with:</p>
-      <ul class="project-card__content__tags">
-        {
-          content.data.tags?.map((tag: string) => (
-            <li>
-              <Tag tag={tag}>{tag}</Tag>
-            </li>
-          ))
-        }
-      </ul>
-    </section> -->
-    <a class="project-card__content__link" href={"/projects/" + content.id}
-      >View project
-    </a>
+
+    <div class="project-card__content__link">
+      <a
+        href={"/projects/" + content.id}
+        class="project-card__content__link--link"
+        >View project
+      </a>
+      <Icon name="play-arrow" class="project-card__content__link--icon" />
+    </div>
+    <p class="visually-hidden">This project was created using:</p>
+    <ul class="project-card__content__tags">
+      {
+        content.data.technologies?.map((tech: string) => (
+          <li>
+            <Techs tech={tech}>{tech}</Techs>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </li>
 
@@ -80,7 +85,6 @@ const randomPath = `var(--${randomClipPath()}-path)`;
     }
 
     &__content {
-    
       color: var(--color);
       height: 300px;
       text-decoration: none;
@@ -95,16 +99,16 @@ const randomPath = `var(--${randomClipPath()}-path)`;
         justify-content: center;
         text-align: center;
         height: max-content;
-        
       }
       &__title {
-        font-size: 1.3em;
+        font-size: 1.5em;
         margin-top: 0;
         margin-bottom: 0.3em;
-
         a {
           @include mixins.underline-link;
-          @include mixins.blog-title-link;
+          @include mixins.reset-link;
+          background-size: 100% 0.05em;
+          background-position: 0 98%;
         }
       }
 
@@ -113,13 +117,29 @@ const randomPath = `var(--${randomClipPath()}-path)`;
       }
       &__tags {
         display: flex;
+        margin-top: 2em;
       }
       &__link {
-        font-size: 1.2em;
-
-        @include mixins.underline-link;
-        background-position: 0 86%;
-        background-size: 0 0.2em;
+        display: flex;
+        align-items: center;
+        // @include mixins.underline-link;
+        // @include mixins.blog-title-link;
+          background-position: 0 86%;
+          background-size: 0 0.1em;
+          --to: 85%;
+          font-weight: 900;
+        a {
+          font-size: 0.85em;
+          
+          
+        }
+        &--link {
+          @include mixins.reset-link;
+        }
+        &--icon {
+          opacity: 0;
+          font-size: 1em;  
+        }
       }
     }
 
@@ -131,7 +151,15 @@ const randomPath = `var(--${randomClipPath()}-path)`;
     &:hover > .project-card__content > .project-card__content__link {
       animation: underline-link 400ms forwards;
       font-weight: bold;
-      background-size: 150% 0.1em;
+      
+    }
+
+    &:hover > .project-card__content > .project-card__content__title {
+      font-weight: bold;
+    }
+    &:hover .project-card__content__link--icon {
+      opacity: 1;
+      transition: all 500ms;
     }
 
     &:last-of-type {
@@ -139,7 +167,6 @@ const randomPath = `var(--${randomClipPath()}-path)`;
     }
 
     @media (min-width: 801px) {
-      
       &:nth-of-type(even) > .project-card__image {
         order: 2;
         clip-path: inset(0 0 0 0 round 0 20% 0 0);

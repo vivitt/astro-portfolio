@@ -2,21 +2,17 @@
 const { tag } = Astro.props;
 ---
 
-<span class="tag">#&nbsp;<a href={`/tags/${tag}/`} aria-hidden>{tag}</a>
-</span>
+<a href={`/tags/${tag}/`} class="tag"><span aria-hidden>#&nbsp;</span>{tag}</a>
 
 <style lang="scss">
-  @use '../styles/mixins';
+  @use "../styles/mixins";
   .tag {
     @include mixins.tag;
     font-size: 0.6em;
-    a {
-      @include mixins.reset-link;
-    }
-   
+    @include mixins.reset-link;
+
     &:hover {
-      border: 1px solid ;
+      border: 1px solid;
     }
   }
-  
 </style>
