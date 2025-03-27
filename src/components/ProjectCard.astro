@@ -124,21 +124,19 @@ const randomPath = `var(--${randomClipPath()}-path)`;
         align-items: center;
         // @include mixins.underline-link;
         // @include mixins.blog-title-link;
-          background-position: 0 86%;
-          background-size: 0 0.1em;
-          --to: 85%;
-          font-weight: 900;
+        background-position: 0 86%;
+        background-size: 0 0.1em;
+        --to: 85%;
+        font-weight: 900;
         a {
           font-size: 0.85em;
-          
-          
         }
         &--link {
           @include mixins.reset-link;
         }
         &--icon {
           opacity: 0;
-          font-size: 1em;  
+          font-size: 1em;
         }
       }
     }
@@ -151,7 +149,6 @@ const randomPath = `var(--${randomClipPath()}-path)`;
     &:hover > .project-card__content > .project-card__content__link {
       animation: underline-link 400ms forwards;
       font-weight: bold;
-      
     }
 
     &:hover > .project-card__content > .project-card__content__title {
