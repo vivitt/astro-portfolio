@@ -26,6 +26,8 @@
   --accColor: var(--light-lilac);
   --accColorDark: var(--lilac);
   --navFont: "Inclusive Sans", sans-serif;
+  --shadow: rgba(0, 0, 0, 0.2);
+  --shadowDark: rgba(255, 255, 255, 0.2);
 }
 
 
@@ -48,6 +50,7 @@
   --bgColor: var(--bgColorDark);
   --accColor: var(--accColorDark);
   --bgColorBase: var(--black);
+  --shadow: var(--shadowDark);
 }
 
 .remove-text-shadows a {
