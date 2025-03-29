@@ -13,7 +13,7 @@ const favs = ["creative developer"];
       </p>
       <p class="hero__text--paragraph">
         I'm a
-        <span data-splitting="words">creative developer</span>.
+        <span data-splitting>creative developer</span>.
       </p>
       <p class="hero__text--paragraph">
         I'm passionate about building for the web, and crafting beautiful,
@@ -30,9 +30,9 @@ const favs = ["creative developer"];
         includes: JavaScript, TypeScript, React, Vue, and Astro.
       </p>
       <p class="hero__text--paragraph">
-        Find out <a href="/about">more about me</a> and feel free to connect. I’m
-        always happy to share learnings and experiences, and open to collaborating
-        on projects that resonate with my interests.
+        Find out <a href="/about">more about me</a>, and feel free to connect.
+        I’m always happy to share learnings and experiences, and open to
+        collaborating on projects that resonate with my interests.
       </p>
     </div>
     <script>
@@ -40,6 +40,13 @@ const favs = ["creative developer"];
 
       document.addEventListener("astro:page-load", () => {
         Splitting();
+      });
+
+      document.addEventListener("scroll", (event) => {
+        console.log(window.scrollY)
+        if(window.scrollY > 256) {
+          document.querySelector('[data-splitting]')?.classList.add('highlight')
+        }
       });
     </script>
   </main>
@@ -56,24 +63,21 @@ const favs = ["creative developer"];
         font-size: 1em;
       }
       &--paragraph {
-        .words.splitting {
-          > span.word{
-            background-image: linear-gradient(
+        .words.chars.splitting {
+          background-image: linear-gradient(
             to right,
             var(--accColor) 100%,
             var(--accColor) 100%
           );
           background-repeat: no-repeat;
           background-position: 0 0;
+          animation: highlight 500ms forwards;
           animation-timeline: scroll(root);
-          animation-name: colorWord;
-          animation-duration: auto;
-          animation-fill-mode: forwards;
-          animation-iteration-count: 1;
-          animation-timing-function: linear;
           background-size: 0 1.2em;
-          }
-          
+        }
+        .highlight {
+          background-size: 100% 1.2em;
+          background-color: var(--accColor);
         }
       }
     }
