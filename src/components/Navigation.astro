@@ -62,15 +62,15 @@ const currentPath = pathname.slice(1);
           &:hover,
           &:focus {
             animation:
-              highlight-link 200ms forwards,
               underline-link 200ms forwards;
-            font-weight: bold;
+              font-weight: bold;
+              --to: 92%;
           }
         }
 
         .active &__text {
           animation: none;
-          @include mixins.active-link(95%, 0.1em);
+          @include mixins.active-link(92%, 0.1em);
 
           transform: scale(1.1);
         }
