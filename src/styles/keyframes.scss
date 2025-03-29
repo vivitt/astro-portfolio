@@ -52,7 +52,7 @@
 
 @keyframes move-link {
   to {
-    transform: translateX(-3px) translateY(-2px);
+    transform: translateX(var(--toX)) translateY(var(--toY));
   }
 }
 

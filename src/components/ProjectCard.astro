@@ -26,9 +26,8 @@ const randomPath = `var(--${randomClipPath()}-path)`;
       <a
         href={"/projects/" + content.id}
         class="project-card__content__link--link"
-        >View project
+        >View project <span aria-hidden>></span> <span aria-hidden>></span>
       </a>
-      <Icon name="play-arrow" class="project-card__content__link--icon" />
     </div>
     <p class="visually-hidden">This project was created using:</p>
     <ul class="project-card__content__tags">
@@ -53,8 +52,13 @@ const randomPath = `var(--${randomClipPath()}-path)`;
     justify-content: space-between;
     overflow: hidden;
     height: 300px;
-
     @include mixins.box-shadow;
+    &:hover {
+      @include mixins.smalldesk {
+        @include mixins.box-shadow;
+      }
+    }
+
     @include mixins.smalldesk {
       flex-direction: column;
       justify-content: center;
@@ -85,6 +89,8 @@ const randomPath = `var(--${randomClipPath()}-path)`;
     }
 
     &__content {
+      border: 1px solid;
+      border-left: 0;
       color: var(--color);
       height: 300px;
       text-decoration: none;
@@ -99,6 +105,8 @@ const randomPath = `var(--${randomClipPath()}-path)`;
         justify-content: center;
         text-align: center;
         height: max-content;
+        border: 1px solid;
+        border-top: 0;
       }
       &__title {
         font-size: 1.5em;
@@ -133,11 +141,18 @@ const randomPath = `var(--${randomClipPath()}-path)`;
         }
         &--link {
           @include mixins.reset-link;
-        }
-        &--icon {
+        
+        span {
           opacity: 0;
           font-size: 1em;
+          &:first-of-type {
+            --order: 1
+          }
+          &:last-of-type {
+            --order: 2
+          }
         }
+      }
       }
     }
 
@@ -154,9 +169,10 @@ const randomPath = `var(--${randomClipPath()}-path)`;
     &:hover > .project-card__content > .project-card__content__title {
       font-weight: bold;
     }
-    &:hover .project-card__content__link--icon {
+    &:hover .project-card__content__link--link > span {
       opacity: 1;
       transition: all 500ms;
+      transition-delay: calc(var(--order) * 150ms);
     }
 
     &:last-of-type {
@@ -170,6 +186,8 @@ const randomPath = `var(--${randomClipPath()}-path)`;
       }
       &:nth-of-type(even) > .project-card__content {
         align-items: flex-end;
+        border-left: 1px solid;
+        border-right: 0;
       }
     }
   }

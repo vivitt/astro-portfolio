@@ -43,9 +43,10 @@ const favs = ["creative developer"];
       });
 
       document.addEventListener("scroll", (event) => {
-        console.log(window.scrollY)
-        if(window.scrollY > 256) {
-          document.querySelector('[data-splitting]')?.classList.add('highlight')
+        if (window.scrollY > 256) {
+          document
+            .querySelector("[data-splitting]")
+            ?.classList.add("highlight");
         }
       });
     </script>
@@ -94,6 +95,8 @@ const favs = ["creative developer"];
           text-decoration: underline;
           box-shadow: 3px 3px 0px 1px;
           animation: move-link 100ms forwards;
+          --toY: -2px;
+          --toX: -3px;
         }
       }
     }
