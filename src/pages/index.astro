@@ -13,10 +13,10 @@ const favs = ["creative developer"];
       </p>
       <p class="hero__text--paragraph">
         I'm a
-        <span data-splitting>creative developer</span>.
+        <span data-splitting="words">creative developer</span>.
       </p>
       <p class="hero__text--paragraph">
-        I'm passionate about building for the web and crafting beautiful,
+        I'm passionate about building for the web, and crafting beautiful,
         accessible, and inclusive experiences.
       </p>
     </div>
@@ -35,9 +35,12 @@ const favs = ["creative developer"];
         on projects that resonate with my interests.
       </p>
     </div>
-    <script >
+    <script>
       import Splitting from "splitting";
-      Splitting();
+
+      document.addEventListener("astro:page-load", () => {
+        Splitting();
+      });
     </script>
   </main>
 </Layout>
@@ -53,12 +56,24 @@ const favs = ["creative developer"];
         font-size: 1em;
       }
       &--paragraph {
-        .words.chars.splitting > .word > .char {
+        .words.splitting {
+          > span.word{
+            background-image: linear-gradient(
+            to right,
+            var(--accColor) 100%,
+            var(--accColor) 100%
+          );
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          animation-timeline: scroll(root);
+          animation-name: colorWord;
+          animation-duration: auto;
+          animation-fill-mode: forwards;
+          animation-iteration-count: 1;
+          animation-timing-function: linear;
+          background-size: 0 1.2em;
+          }
           
-              background-color: red;
-              animation: slide-in 2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-              animation-delay: calc(60ms * var(--char-index));
-           
         }
       }
     }
@@ -77,16 +92,6 @@ const favs = ["creative developer"];
           animation: move-link 100ms forwards;
         }
       }
-    }
-  }
-
-  @keyframes slide-in {
-    0% {
-      transform: translateY(-1em) rotate(-0.5turn) scale(0.5);
-    }
-    20%,
-    100% {
-      transform: translateY(0) rotate(0deg) scale(1);
     }
   }
 </style>

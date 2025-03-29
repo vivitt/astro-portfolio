@@ -55,3 +55,12 @@
     transform: translateX(-3px) translateY(-2px);
   }
 }
+
+@keyframes colorWord {
+  0% {
+    background-size: 0 1.2em;
+  }
+  20%, 100% {
+    background-size: 100% 1.2em;
+  }
+}
