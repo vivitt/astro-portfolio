@@ -1,49 +1,92 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const identities = [
-'frontend developer', 'lifelong learner', 
-]
+const favs = ["creative developer"];
 ---
 
 <Layout title="Viviana Yanez Creative Frontend Developer">
-  <main>
-    <h1 class="visually-hidden">Viviana Yanez Web Developer</h1>
-    <div class="hero" >
-      <p class="hero__text">
-        I'm a 
-        <span data-splitting >{identities}</span> 
-        
-       passionate about crafting beautiful,
-        accessible, and inclusive web experiences.
+  <main class="hero">
+    <h1 class="visually-hidden">Vivi Yanez Web Developer</h1>
+    <div class="hero__text">
+      <p class="hero__text--paragraph">
+        Hi! I'm Vivi <span aria-hidden>👋🏽</span>
+      </p>
+      <p class="hero__text--paragraph">
+        I'm a
+        <span data-splitting>creative developer</span>.
+      </p>
+      <p class="hero__text--paragraph">
+        I'm passionate about building for the web and crafting beautiful,
+        accessible, and inclusive experiences.
+      </p>
+    </div>
+    <div class="hero__cta">
+      <a href="/projects">View my latest projects</a>
+      <a href="/blog/1">Read my latest blogpost</a>
+    </div>
+    <div class="hero__text">
+      <p class="hero__text--paragraph">
+        I'm always happy to learn new tools and at the moment my fav tech stack
+        includes: JavaScript, TypeScript, React, Vue, and Astro.
+      </p>
+      <p class="hero__text--paragraph">
+        Find out <a href="/about">more about me</a> and feel free to connect. I’m
+        always happy to share learnings and experiences, and open to collaborating
+        on projects that resonate with my interests.
       </p>
     </div>
     <script >
-      import Splitting from 'splitting';
+      import Splitting from "splitting";
       Splitting();
     </script>
   </main>
 </Layout>
 
-
 <style lang="scss">
-.hero {
-&__text {
-  font-size: 2em;
-}
-}
-.splitting.chars.words {
-
- 
-  animation: slide-in 1s cubic-bezier(.5, 0, .5, 1) both;
-  animation-delay: calc(60ms * var(--char-index));
-}
-
-@keyframes slide-in {
-  from {
-    transform: translateX(-1em) rotate(-0.5deg);
-    opacity: 0;
+  @use "../styles/mixins";
+  .hero {
+    &__text {
+      padding: 2em 0;
+      font-size: 2em;
+      &--list {
+        display: flex;
+        font-size: 1em;
+      }
+      &--paragraph {
+        .words.chars.splitting > .word > .char {
+          
+              background-color: red;
+              animation: slide-in 2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+              animation-delay: calc(60ms * var(--char-index));
+           
+        }
+      }
+    }
+    &__cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      a {
+        @include mixins.tag;
+        @include mixins.reset-link;
+        font-size: 1.2em;
+        border: 1px solid;
+        &:hover {
+          text-decoration: underline;
+          box-shadow: 3px 3px 0px 1px;
+          animation: move-link 100ms forwards;
+        }
+      }
+    }
   }
-}
 
+  @keyframes slide-in {
+    0% {
+      transform: translateY(-1em) rotate(-0.5turn) scale(0.5);
+    }
+    20%,
+    100% {
+      transform: translateY(0) rotate(0deg) scale(1);
+    }
+  }
 </style>

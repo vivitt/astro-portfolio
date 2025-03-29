@@ -42,10 +42,16 @@
 }
 
 @keyframes scale-background {
-    from{
-        background-size: 100%;
-    }
-    to {
-        background-size: 110%;
-    }
+  from {
+    background-size: 100%;
+  }
+  to {
+    background-size: 110%;
+  }
+}
+
+@keyframes move-link {
+  to {
+    transform: translateX(-3px) translateY(-2px);
+  }
 }
