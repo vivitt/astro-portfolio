@@ -1,7 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-const favs = ["creative developer"];
 ---
 
 <Layout title="Viviana Yanez Creative Frontend Developer">
@@ -13,11 +11,11 @@ const favs = ["creative developer"];
       </p>
       <p class="hero__text--paragraph">
         I'm a
-        <span data-splitting>creative developer</span>.
+        <span data-splitting>creative frontend developer</span>.
       </p>
       <p class="hero__text--paragraph">
-        I'm passionate about building for the web, and crafting beautiful,
-        accessible, and inclusive experiences.
+        I'm passionate about building for the web, and deeply care about
+        crafting beautiful, accessible, and inclusive experiences.
       </p>
     </div>
     <div class="hero__cta">
@@ -42,7 +40,7 @@ const favs = ["creative developer"];
         Splitting();
       });
 
-      document.addEventListener("scroll", (event) => {
+      document?.addEventListener("scroll", (event) => {
         if (window.scrollY > 256) {
           document
             .querySelector("[data-splitting]")
