@@ -2,8 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
-import Tag from "../../components/Tag.astro";
-import { Icon } from "astro-icon/components";
+import Tech from "../../components/Tech.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("projects");
@@ -19,45 +18,88 @@ const { Content } = await render(project);
 
 <Layout title={project.data.title}>
   <main class="project">
-    <header>
-      <h1>{project?.data?.title}</h1>
+    <header class="project__header">
+      <h1 class="project__header__title">{project?.data?.title}</h1>
       <Image src={project.data.image.image} alt={project.data.image.alt} />
+      <p class="project__header__description">{
+        project.data.description}</p>
+    </header>
+    <div class="project__content">
+      <section class="project__content__section">
+        <h2 class="project__content__section__title">Links</h2>
+        <div class="project__content__section__content"></div>
+      </section>
+
+      <section class="project__content__section">
+        <h2 class="project__content__section__title">Tech stack</h2>
+        <div class="project__content__section__content">
+          {
+            project?.data?.technologies &&
+              project?.data?.technologies.map((tech: string) => (
+                <Tech tech={tech} />
+              ))
+          }
+        </div>
+      </section>
 
       <div class="tags">
         <h4 class="visually-hidden">This project was created with:</h4>
-        {
-          project?.data?.technologies &&
-            project?.data?.technologies.map((tech: string) => (
-              <Tag tag={tech} />
-            ))
-        }
+       
       </div>
-    </header>
-
     <Content />
-    <div class="project__link">
-      <span aria-hidden><Icon name="arrow-back" /></span><a href="/projects">
-        Back to all projects</a>
+  </div>
+    <div class="project__link">  
+      <a href="/projects" class="project__link--link"><span aria-hidden>&#60;</span>
+        <span aria-hidden>&#60;</span> Back to all projects </a>
     </div>
   </main>
 </Layout>
 <style lang="scss">
   @use "../../styles/mixins";
   .project {
+    margin: 0 auto;
     img {
       max-width: 70%;
       height: auto;
     }
+
     &__link {
       display: flex;
-      align-items: flex-end;
       padding: 2em 0 0 0;
-      a {
-        font-size: 1.2em;
+      display: flex;
+      align-items: center;
+
+      --to: 100%;
+      font-weight: 900;
+    
+      &--link {
+        font-size: 1em;
+        @include mixins.reset-link;
         @include mixins.underline-link;
-        @include mixins.blog-title-link;
-        background-position: 0 85%;
+        background-position: 27px 88%;
+       
+        span {
+          color: var(--accColor);
+          opacity: 0;
+          font-size: 1em;
+          &:first-of-type {
+            --order: 2;
+          }
+          &:last-of-type {
+            --order: 1;
+          }
+        }
       }
+      &:hover .project__link--link {
+        animation: underline-link 400ms forwards;
+        font-weight: bold;
+      }
+
+      &:hover .project__link--link > span {
+      opacity: 1;
+      transition: all 500ms;
+      transition-delay: calc(var(--order) * 150ms);
+    }
     }
   }
 </style>

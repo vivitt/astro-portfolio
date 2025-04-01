@@ -41,7 +41,7 @@ I expanded my knowledge of React functional components and hooks, and became com
 
 I also took charge of designing the entire interface, choosing a color palette that complements the tones of the illustrations:
 
-![../../images/projects/colors.png]
+![../../images/projects/guess-who/colors.png]
 
 One of the most significant challenges was displaying a lot of picture cards on the screen to show all the characters. I learned about CSS Flexbox and used it to adapt the cards to different screen sizes.
 
