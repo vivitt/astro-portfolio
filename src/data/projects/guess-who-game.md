@@ -1,9 +1,8 @@
 ---
 description: 'This gender-inclusive illustrated version of the classic guess who game is my final project for the AllWomen Web Dev Bootcamp.'
-image: 
-  alt: 'Guess who game home page'
-  image: '../../images/projects/guess-who.png'
-  url: 'guess-who.png'
+images: 
+  thumb: '../../images/projects/guess-who/prev.png'
+  cover: '../../images/projects/guess-who/prev.png'
 
 link: 'https://guess-who-game.vercel.app/'
 technologies: ['React', 'MaterialUI']
@@ -19,7 +18,7 @@ Gender-inclusive illustrated version of the classic Guess Who Game.
 [Live demo](https://guess-who-game-vivitt.vercel.app/)
 
 ### Motivation
-I worked on this game after realizing the classic version was quite biased, with only 5 women out of 20 cards and all the characters having almost identical skin tones. I illustrated the characters because I truly believe play is an important part of education, and I wanted players to have access to more diverse (and real) world representations. So, when I graduated from bootcamp, I saw the perfect opportunity to put my illustrations to use.
+I decided to work on this game after realizing the classic version was quite biased, with only 5 women out of 20 cards and all the characters having almost identical skin tones. I illustrated the characters because I truly believe play is an important part of education, and I wanted players to have access to more diverse (and real) world representations. So, when I graduated from bootcamp, I saw the perfect opportunity to put my illustrations to use.
 
 In the end, it turned out to be a great learning tool for kids and foreign language learners.
 
@@ -41,7 +40,7 @@ I expanded my knowledge of React functional components and hooks, and became com
 
 I also took charge of designing the entire interface, choosing a color palette that complements the tones of the illustrations:
 
-![../../images/projects/guess-who/colors.png]
+![](../../images/projects/guess-who/colors.png)
 
 One of the most significant challenges was displaying a lot of picture cards on the screen to show all the characters. I learned about CSS Flexbox and used it to adapt the cards to different screen sizes.
 

@@ -111,3 +111,8 @@ html {
     --from: 100% 0 0 0;
   }
 }
+
+.project img, .blog img, .blog__illustration img {
+  max-width: 100%;
+  height: auto;
+}
