@@ -1,5 +1,5 @@
 ---
-description: 'This project features a gender-inclusive illustrated version of the classic guess who game and was my final project for the AllWomen Web Dev Bootcamp.'
+description: 'This project features a gender-inclusive, illustrated version of the classic Guess Who game and was my final project for the AllWomen Web Dev Bootcamp.'
 images: 
   thumb: '../../images/projects/guess-who/prev.png'
   cover: '../../images/projects/guess-who/prev.png'

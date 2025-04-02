@@ -121,4 +121,38 @@ html {
   max-width: 70%;
   height: auto;
   margin: 0 auto;
+  @include mixins.smalldesk {
+    max-width: 100%;
+  }
 }
+
+.project__content p {
+  display: flex;
+}
+
+.project [href^="http"]:not([href*="viviyanez.dev"])::after, 
+.blog [href^="http"]:not([href*="viviyanez.dev"])::after {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  background-image: url('../icons/external-link.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 75% auto;
+  content: '(external link)';
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 1em;
+  }
+
+  .dark .project [href^="http"]:not([href*="viviyanez.dev"])::after, 
+  .dark .blog [href^="http"]:not([href*="viviyanez.dev"])::after {
+    background-image: url('../icons/external-link-dark.svg');
+  }
+
+  .blog [href^="http"]:not([href*="viviyanez.dev"])::after {
+    background-position: left;
+  }
+  .blog [href^="http"]:not([href*="viviyanez.dev"]) {
+    background-size: 97% 0.1em;
+  }

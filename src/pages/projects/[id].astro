@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
 import Tech from "../../components/Tech.astro";
+import BoxLink from "../../components/BoxLink.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("projects");
@@ -19,75 +20,82 @@ const { Content } = await render(project);
 <Layout title={project.data.title}>
   <main class="project">
     <header class="project__header">
-      
-      <Image src={project.data.images.cover} alt='' />
-      <h1 class="project__header__title">{project?.data?.title}</h1>
-      <p class="project__header__description">{
-        project.data.description}</p>
+      <Image src={project.data.images.cover} alt="" />
+      <h1 class="project__header--title">{project?.data?.title}</h1>
+      <div class="project__header--techs">
+        <h4 class="visually-hidden">This project was created with:</h4>
+        {
+          project?.data?.technologies &&
+            project?.data?.technologies.map((tech: string) => (
+              <Tech tech={tech} />
+            ))
+        }
+      </div>
+      <p class="project__header--description">{project.data.description}</p>
     </header>
     <div class="project__content">
       <section class="project__content__section">
-        <h2 class="project__content__section__title">Links</h2>
-        <div class="project__content__section__content">
-          
+        <h2 class="project__content__section--title">Links</h2>
+        <div class="project__content__section--links">
+          <BoxLink
+            text="Check out the live project"
+            link={project?.data?.link}
+            blank="true"
+          />
+          <BoxLink
+            text="View the project repo"
+            link={project?.data?.repo}
+            blank="true"
+          />
         </div>
       </section>
-
-      <section class="project__content__section">
-        <h2 class="project__content__section__title">Tech stack</h2>
-        <div class="project__content__section__content">
-          {
-            project?.data?.technologies &&
-              project?.data?.technologies.map((tech: string) => (
-                <Tech tech={tech} />
-              ))
-          }
-        </div>
-      </section>
-
-      <div class="tags">
-        <h4 class="visually-hidden">This project was created with:</h4>
-       
-      </div>
-    <Content />
-  </div>
-    <div class="project__link">  
-      <a href="/projects" class="project__link--link"><span aria-hidden>&#60;</span>
-        <span aria-hidden>&#60;</span> Back to all projects </a>
+      <Content />
+    </div>
+    <div class="project__link">
+      <a href="/projects" class="project__link--link"
+        ><span aria-hidden>&#60;</span>
+        <span aria-hidden>&#60;</span> Back to all projects
+      </a>
     </div>
   </main>
 </Layout>
 <style lang="scss">
   @use "../../styles/mixins";
   .project {
-      &__header {
+    &__header {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+
+      &--title {
+        font-size: 2.2em;
+        margin-bottom: 0;
+      }
+
+      &--description {
+        font-size: 1.2em;
+        margin: 2em 0 0 0;
+      }
+    }
+
+    &__content {
+      padding-bottom: 2em;
+      border-bottom: 1px solid;
+
+      &__section--links {
         display: flex;
-        justify-content: center;
-        flex-direction: column;
         align-items: center;
-
-        &__title {
-          font-size: 2.2em;
+        justify-content: space-between;
+        @include mixins.smalldesk {
+          flex-direction: column;
+          align-items: flex-start;
+          
         }
-
-        &__description {
-          font-size: 1.2em;
-        }
-
+        &:first-child{
+            border: red solid 2px;
+          }
       }
-
-      &__content {
-        padding-bottom: 2em;
-        border-bottom: 1px solid;
-
-        > p {
-          background-color: red;
-        }
-      }
-
-    img {
-      max-width: 70%;
-      height: auto;
     }
 
     &__link {
@@ -98,15 +106,19 @@ const { Content } = await render(project);
 
       --to: 100%;
       font-weight: 900;
-    
+
       &--link {
         font-size: 1.2em;
         @include mixins.reset-link;
         @include mixins.underline-link;
+        background-image: linear-gradient(
+          to right,
+          var(--light-lilac) 0%,
+          var(--lilac) 100%
+        );
         background-position: 32px 86%;
-       
+
         span {
-          color: var(--accColor);
           opacity: 0;
           font-size: 1em;
           &:first-of-type {
@@ -123,10 +135,10 @@ const { Content } = await render(project);
       }
 
       &:hover .project__link--link > span {
-      opacity: 1;
-      transition: all 500ms;
-      transition-delay: calc(var(--order) * 150ms);
-    }
+        opacity: 1;
+        transition: all 500ms;
+        transition-delay: calc(var(--order) * 150ms);
+      }
     }
   }
 </style>
