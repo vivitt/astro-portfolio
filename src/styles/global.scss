@@ -121,14 +121,13 @@ html {
   max-width: 70%;
   height: auto;
   margin: 0 auto;
+  display: flex;
   @include mixins.smalldesk {
     max-width: 100%;
   }
 }
 
-.project__content p {
-  display: flex;
-}
+
 
 .project [href^="http"]:not([href*="viviyanez.dev"])::after, 
 .blog [href^="http"]:not([href*="viviyanez.dev"])::after {
