@@ -1,5 +1,6 @@
 @use "mixins";
-
+@use "keyframes";
+@use "project-clipping-paths";
 
 @media (prefers-reduced-motion) {
   :root::view-transition-new(root) {
@@ -25,7 +26,12 @@
   --accColor: var(--light-lilac);
   --accColorDark: var(--lilac);
   --navFont: "Inclusive Sans", sans-serif;
+  --shadow: rgba(0, 0, 0, 0.2);
+  --shadowDark: rgba(255, 255, 255, 0.2);
+  --to: 95%
 }
+
+
 
 * {
   box-sizing: border-box;
@@ -45,6 +51,7 @@
   --bgColor: var(--bgColorDark);
   --accColor: var(--accColorDark);
   --bgColorBase: var(--black);
+  --shadow: var(--shadowDark);
 }
 
 .remove-text-shadows a {
@@ -73,36 +80,6 @@ html {
     a {
       color: var(--color);
     }
-  }
-}
-
-@keyframes highlight-link {
-  0% {
-    rotate: 0;
-  }
-  20% {
-    transform: scale(1);
-    rotate: -3deg;
-  }
-  60% {
-    transform: scale(1.1);
-  }
-  90% {
-    transform: scale(1);
-    rotate: -2deg;
-  }
-  100% {
-    rotate: 0deg;
-  }
-}
-
-@keyframes underline-link {
-  0% {
-    background-size: 0% 0.2em;
-  }
-
-  100% {
-    background-size: 95% 0.1em;
   }
 }
 
@@ -135,8 +112,47 @@ html {
   }
 }
 
-@keyframes wide-theme {
-  from {
-    clip-path: inset(var(--from));
+.project img, .blog img, .blog__illustration img {
+  max-width: 100%;
+  height: auto;
+}
+
+.project__content img {
+  max-width: 70%;
+  height: auto;
+  margin: 0 auto;
+  @include mixins.smalldesk {
+    max-width: 100%;
   }
 }
+
+.project__content p {
+  display: flex;
+}
+
+.project [href^="http"]:not([href*="viviyanez.dev"])::after, 
+.blog [href^="http"]:not([href*="viviyanez.dev"])::after {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  background-image: url('../icons/external-link.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 75% auto;
+  content: '(external link)';
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 1em;
+  }
+
+  .dark .project [href^="http"]:not([href*="viviyanez.dev"])::after, 
+  .dark .blog [href^="http"]:not([href*="viviyanez.dev"])::after {
+    background-image: url('../icons/external-link-dark.svg');
+  }
+
+  .blog [href^="http"]:not([href*="viviyanez.dev"])::after {
+    background-position: left;
+  }
+  .blog [href^="http"]:not([href*="viviyanez.dev"]) {
+    background-size: 97% 0.1em;
+  }

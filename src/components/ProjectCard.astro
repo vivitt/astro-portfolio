@@ -1,56 +1,195 @@
 ---
+import { Image } from "astro:assets";
+import Tech from "./Tech.astro";
 const { content } = Astro.props;
-
-const backgroundImage = content.data.image.url
 ---
 
-<li class="link-card">
-	<a href={"/projects/" + content.id}  ></a>
-	<div class="link-card--image" >
-	{content.data.title}
-</div></a>
+<li class="project-card" transition:animate="fade">
+  <div class="project-card__image">
+    <Image
+      class="project-card__image--image"
+      src={content.data.images.thumb}
+      alt=""
+    />
+  </div>
+  <div class="project-card__content">
+    <h3 class="project-card__content__title">
+      <a href={"/projects/" + content.id}>{content.data.title} </a>
+    </h3>
+    <p class="project-card__content__description">{content.data.description}</p>
+
+    <div class="project-card__content__link">
+      <a
+        href={"/projects/" + content.id}
+        class="project-card__content__link--link"
+        >View project <span aria-hidden>&#62;</span> <span aria-hidden>&#62;</span>
+      </a>
+    </div>
+    <p class="visually-hidden">This project was created using:</p>
+    <ul class="project-card__content__tags">
+      {
+        content.data.technologies?.map((tech: string) => (
+          <li>
+            <Tech tech={tech}>{tech}</Tech>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </li>
-<style define:vars={{ backgroundImage} }>
-	
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 1px;
-		background-color: #23262d;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	}
-	.link-card__image {
-		background-image: url(var(--backgroundImage));
-	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
-		color: white;
-		background-color: #23262d;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
-	}
+
+<style lang="scss">
+  @use "../styles/mixins";
+  .project-card {
+    margin: 0 auto 2em auto;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    overflow: hidden;
+    height: 300px;
+    border: 1px solid;
+    border-radius: 61px 0 0 0;
+    @include mixins.box-shadow;
+    &:hover {
+      @include mixins.smalldesk {
+        @include mixins.box-shadow;
+      }
+    }
+
+    @include mixins.smalldesk {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: fit-content;
+      width: 500px;
+      max-width: 100%;
+      border-radius: 75px 75px 0 0;
+    }
+
+    &__image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      clip-path: inset(0 0 0 0 round 20% 0 0 0);
+      //clip-path: path(evenodd, var(--clipPath));
+      @include mixins.smalldesk {
+        clip-path: inset(0 0 0 0 round 15% 15% 0 0);
+      }
+
+      &--image {
+        width: 300px;
+        height: auto;
+        @include mixins.smalldesk {
+          width: 500px;
+          max-width: 100%;
+        }
+      }
+    }
+
+    &__content {
+      color: var(--color);
+      height: 300px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 2em;
+      background-color: var(--bgColorBase);
+      border-right: 0;
+      border-left: 1px solid;
+      @include mixins.smalldesk {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: max-content;
+        border-top: 1px solid;
+        border-left: 0;
+      }
+      &__title {
+        font-size: 1.5em;
+        margin-top: 0;
+        margin-bottom: 0.3em;
+        a {
+          @include mixins.underline-link;
+          @include mixins.reset-link;
+          background-size: 100% 0.05em;
+          background-position: 0 98%;
+        }
+      }
+
+      &__description {
+        font-size: 1em;
+      }
+      &__tags {
+        display: flex;
+        margin-top: 2em;
+      }
+      &__link {
+        display: flex;
+        align-items: center;
+
+        --to: 80%;
+        font-weight: 900;
+        
+        &--link {
+          font-size: 0.85em;
+          @include mixins.reset-link;
+          @include mixins.underline-link;
+          background-position: 0 88%;
+          span {
+            opacity: 0;
+            font-size: 1em;
+            &:first-of-type {
+              --order: 1;
+            }
+            &:last-of-type {
+              --order: 2;
+            }
+          }
+        }
+      }
+    }
+
+    &:hover .project-card__image--image {
+      scale: 1.1;
+      transition: all 800ms;
+    }
+
+    &:hover > .project-card__content .project-card__content__link--link {
+      animation: underline-link 400ms forwards;
+      font-weight: bold;
+    }
+
+    &:hover > .project-card__content > .project-card__content__title {
+      font-weight: bold;
+    }
+    &:hover .project-card__content__link--link > span {
+      opacity: 1;
+      transition: all 500ms;
+      transition-delay: calc(var(--order) * 150ms);
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    @media (min-width: 801px) {
+      &:nth-of-type(even) {
+        border-radius: 0 61px 0 0;
+      }
+
+      &:nth-of-type(even) > .project-card__image {
+        order: 2;
+        clip-path: inset(0 0 0 0 round 0 20% 0 0);
+      }
+      &:nth-of-type(even) > .project-card__content {
+        align-items: flex-end;
+        border-right: 1px solid;
+        border-left: 0;
+      }
+    }
+  }
 </style>

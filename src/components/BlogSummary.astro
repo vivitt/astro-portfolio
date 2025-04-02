@@ -48,9 +48,7 @@ const { post } = Astro.props;
         margin: 0 0 1em 0;
         text-decoration: none;
         @include mixins.underline-link;
-        background-image: linear-gradient(to right, var(--light-lilac) 0%, var(--lilac) 100%);  
-        background-size: 100% 0.1em;
-        background-position: 0 100%;
+        @include mixins.blog-title-link;
         &:hover, &:focus {
               transform: scale(2);
               transition: all 2ms;

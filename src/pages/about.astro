@@ -9,15 +9,17 @@ const pageTitle = "About Me";
   <main class="about">
     <h1 class="visually-hidden">About me</h1>
 
-    <div class="about__text">
+    <div class="about__content">
       <h2>Hello there!</h2>
-      <div class="about__text__intro">
+      <div class="about__content__section">
         <Image
-          class="about__text__intro--image"
+          class="about__content__section--image--right"
           src={vivitt}
           alt="Viviana is smiling at the camera in a black and white selfie."
         />
-        <div class="about__text__intro--text">
+        <div
+          class="about__content__section--text--left"
+        >
           <p>
             I am Viviana, a creative web developer with a background in
             audiovisual & visual communication.
@@ -39,19 +41,30 @@ const pageTitle = "About Me";
         </div>
       </div>
       <h2>Background</h2>
-      <p>
-        I wrote my first lines of code while working as a 2D character animator
-        and loved it. First learned HTML and CSS and eventially decided to fully
-        transition my career into software development.
-      </p>
-      <p>
-        Thanks to my background, I grew as a collaborative team player, used to
-        taking ownership of my work while working within a team towards a common
-        goal. I deeply care about what I create, but I learned early in my
-        career not to get too attached to a piece of work and to stay open to
-        changes. Adapting quickly to new environments and tasks is one of my
-        strengths.
-      </p>
+      <div class="about__content__section">
+        <Image
+          class="about__content__section--image--left"
+          src={vivitt}
+          alt="Viviana is smiling at the camera in a black and white selfie."
+        />
+        <div
+          class="about__content__section--text--right"
+        >
+          <p>
+            I wrote my first lines of code while working as a 2D character
+            animator and loved it. First learned HTML and CSS and eventially
+            decided to fully transition my career into software development.
+          </p>
+          <p>
+            Thanks to my background, I grew as a collaborative team player, used
+            to taking ownership of my work while working within a team towards a
+            common goal. I deeply care about what I create, but I learned early
+            in my career not to get too attached to a piece of work and to stay
+            open to changes. Adapting quickly to new environments and tasks is
+            one of my strengths.
+          </p>
+        </div>
+      </div>
 
       <h2>Breaking Into Tech</h2>
       <p>
@@ -90,6 +103,8 @@ const pageTitle = "About Me";
         without preprocessors. Recently, I’ve spent time learning about web
         security and web fundamentals.
       </p>
+    </div>
+    <div class="about__close">
       <p>
         Thanks a bunch for your visit, and please feel free to reach out on my
         socials. I’m always happy to exchange experiences, learnings, and
@@ -103,37 +118,46 @@ const pageTitle = "About Me";
   @use "../styles/mixins";
 
   .about {
-    &__text {
-      &__intro {
+    &__content {
+      &__section {
         display: grid;
         padding: 0;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(3, 1fr);
         &--image {
-          height: auto;
-          width: 80%;
-          margin: 0 0 auto auto;
-          grid-column: 2/5;
-          grid-row: 1/4;
-
           @include mixins.tablet {
-            grid-column: 1/5;
-            width: 90%;
-            justify-self: center;
-            grid-row: 2/4;
+            @include mixins.about-img-tablet;
+          }
+          &--right {
+            @include mixins.about-img-right;
+            @include mixins.tablet {
+            @include mixins.about-img-tablet;
+          }
+          }
+          &--left {
+            @include mixins.about-img-left;
+            @include mixins.tablet {
+            @include mixins.about-img-tablet;
+          }
           }
         }
         &--text {
-          grid-column: 1/3;
-          grid-row: 1/4;
-          @include mixins.tablet {
-            grid-row: 1/3;
-            grid-column: 1/5;
+          
+          &--right {
+            @include mixins.about-text-right;
+            @include mixins.tablet {
+            @include mixins.about-text-tablet;
+          }
+          }
+          &--left {
+            @include mixins.about-text-left;
+            @include mixins.tablet {
+            @include mixins.about-text-tablet;
+          }
           }
         }
+        font-size: 1.1em;
       }
-      padding: 2em;
-      font-size: 1.1em;
     }
   }
 </style>

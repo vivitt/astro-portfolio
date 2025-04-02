@@ -15,7 +15,7 @@ const { page } = Astro.props as {
 ---
 
 <Layout title="Vivi's Blog">
-  <main>
+  <main class="blog">
     <h1 class="visually-hidden">Vivi's Blog</h1>
     <ul>
       {page.data.map((post) => <BlogSummary post={post} />)}
