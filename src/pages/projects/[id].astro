@@ -79,6 +79,10 @@ const { Content } = await render(project);
       &__content {
         padding-bottom: 2em;
         border-bottom: 1px solid;
+
+        > p {
+          background-color: red;
+        }
       }
 
     img {
@@ -96,10 +100,10 @@ const { Content } = await render(project);
       font-weight: 900;
     
       &--link {
-        font-size: 1em;
+        font-size: 1.2em;
         @include mixins.reset-link;
         @include mixins.underline-link;
-        background-position: 27px 88%;
+        background-position: 32px 86%;
        
         span {
           color: var(--accColor);
