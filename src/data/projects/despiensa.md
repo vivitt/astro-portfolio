@@ -2,7 +2,7 @@
 description: "A smart shopping list app that learns users' buying habits and helps them remember what they are likely to need to buy on their next trip to the store."
 images: 
   thumb: '../../images/projects/despiensa/prev.png'
-  cover: '../../images/projects/despiensa/prev.png'
+  cover: '../../images/projects/despiensa/cover.png'
 
 link: 'https://www.despiensa.site/'
 repo: 'https://github.com/vivitt/despiensa-smart-shopping-list'

@@ -156,3 +156,9 @@ html {
   .blog [href^="http"]:not([href*="viviyanez.dev"]) {
     background-size: 97% 0.1em;
   }
+
+  .blog ul , .project ul {
+    font-size: 1em;
+    list-style: circle;
+    padding: 0 1em;
+  }

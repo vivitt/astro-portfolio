@@ -2,7 +2,7 @@
 description: 'This project features a gender-inclusive, illustrated version of the classic Guess Who game and was my final project for the AllWomen Web Dev Bootcamp.'
 images: 
   thumb: '../../images/projects/guess-who/prev.png'
-  cover: '../../images/projects/guess-who/prev.png'
+  cover: '../../images/projects/guess-who/cover.png'
 
 link: 'https://guess-who-game.vercel.app/'
 repo: 'https://github.com/vivitt/Guess_Who_GAME'
