@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { getCollection, render } from "astro:content";
+import BackLink from "../../components/BackToAllLink.astro";
 import Tech from "../../components/Tech.astro";
 import BoxLink from "../../components/BoxLink.astro";
 
@@ -51,13 +52,9 @@ const { Content } = await render(project);
         </div>
       </section>
       <Content />
+      <BackLink link="/projects" text="Back to all projects"></BackLink>
     </div>
-    <div class="project__link">
-      <a href="/projects" class="project__link--link"
-        ><span aria-hidden>&#60;</span>
-        <span aria-hidden>&#60;</span> Back to all projects
-      </a>
-    </div>
+   
   </main>
 </Layout>
 <style lang="scss">
@@ -87,7 +84,7 @@ const { Content } = await render(project);
 
     &__content {
       padding-bottom: 2em;
-      border-bottom: 1px solid;
+      // border-bottom: 1px solid;
 
       &__section--links {
         display: flex;

@@ -72,7 +72,7 @@ const { page } = Astro.props as {
       display: flex;
       justify-content: center;
       align-items: center;
-
+      @include mixins.reset-list;
       &__listItem {
         padding: 1rem;
         &:hover,

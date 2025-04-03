@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import BackLink from "../../components/BackToAllLink.astro";
 import Tag from "../../components/Tag.astro";
 import { formatPostDate } from "../../utils/date";
 
@@ -34,5 +35,6 @@ const { Content } = await render(post);
     </header>
 
     <Content />
+    <BackLink link="/blog/1" text="Back to all posts"></BackLink>
   </main>
 </Layout>

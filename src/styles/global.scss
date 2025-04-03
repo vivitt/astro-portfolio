@@ -73,9 +73,7 @@ html {
       margin-top: 2em;
     }
 
-    ul {
-      @include mixins.reset-list;
-    }
+    
 
     a {
       color: var(--color);
@@ -158,7 +156,6 @@ html {
   }
 
   .blog ul , .project ul {
-    font-size: 1em;
     list-style: circle;
-    padding: 0 1em;
+  
   }

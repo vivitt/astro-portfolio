@@ -1,0 +1,59 @@
+---
+const { text, link } = Astro.props;
+---
+
+<div class="back__link">
+  <a href={link} class="back__link--link"
+    ><span aria-hidden>&#60;</span>
+    <span aria-hidden>&#60;</span>
+    {text}
+  </a>
+</div>
+
+<style lang="scss">
+  @use "../styles/mixins";
+  .back__link {
+    border-top: 1px solid ;
+    margin-top: 4em;
+    display: flex;
+    padding: 2em 0 0 0;
+    display: flex;
+    align-items: center;
+
+    --to: 100%;
+    font-weight: 900;
+
+    &--link {
+      font-size: 1.2em;
+      @include mixins.reset-link;
+      @include mixins.underline-link;
+      background-image: linear-gradient(
+        to right,
+        var(--light-lilac) 0%,
+        var(--lilac) 100%
+      );
+      background-position: 32px 86%;
+
+      span {
+        opacity: 0;
+        font-size: 1em;
+        &:first-of-type {
+          --order: 2;
+        }
+        &:last-of-type {
+          --order: 1;
+        }
+      }
+    }
+    &:hover .back__link--link {
+      animation: underline-link 400ms forwards;
+      font-weight: bold;
+    }
+
+    &:hover .back__link--link > span {
+      opacity: 1;
+      transition: all 500ms;
+      transition-delay: calc(var(--order) * 150ms);
+    }
+  }
+</style>
