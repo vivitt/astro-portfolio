@@ -1,6 +1,4 @@
 ---
-import { Icon } from "astro-icon/components";
-
 const { page } = Astro.props as {
   page: {
     data: Array<{ data: { pubDate: string } }>;
@@ -16,52 +14,45 @@ const { page } = Astro.props as {
     };
   };
 };
+
+const pageNumbers = Array.from({ length: page.lastPage }).map(
+  (_: undefined, index: number) => index
+);
 ---
 
 <nav aria-label="pagination" class="blog__pagination">
-  <ul class="blog__pagination__controls">
-    <li
-      class=`blog__pagination__controls__listItem ${page.currentPage === 1 ?'blog__pagination__controls__listItem--disabled' :''}`
+  <div class="blog__pagination__controls">
+    <a
+      aria-disabled={page.currentPage === 1}
+      href={page.url.prev}
+      class=`blog__pagination__controls__arrow ${page.currentPage === 1 ?'disabled' :''}`
     >
-      <a
-        href={page.url.prev}
-        class="blog__pagination__controls__listItem__link"
-      >
-        <Icon name="arrow-back" />
-      </a>
-    </li>
+      &#60;
+    </a>
 
-    {
-      Array.from(
-        { length: page.lastPage },
-        (el, index) => (el = index + 1)
-      ).map((p) => (
-        <li
-          class={`blog__pagination__controls__listItem ${p === page.currentPage ? "blog__pagination__controls__listItem--current" : ""}`}
-        >
-          <a
-            class="blog__pagination__controls__listItem__link blog__pagination__controls__listItem__link--number"
-            href={`/blog/${p}`}
-            aria-current={`${p === page.currentPage}`}
-          >
-            {" "}
-            {p}
-          </a>
-        </li>
-      ))
-    }
-
-    <li
-      class=`blog__pagination__controls__listItem ${page.currentPage === page.lastPage ?'blog__pagination__controls__listItem--disabled' :''}`
+    <ul>
+      {
+        pageNumbers.map((el) => (
+          <li class={`blog__pagination__controls__listItem `}>
+            <a
+              class={`blog__pagination__controls__listItem--number ${page.currentPage === el + 1 ? "blog__pagination__controls__listItem--current disabled" : ""}`}
+              href={`/blog/${el + 1}`}
+              aria-current="true"
+            >
+              {el + 1}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <a
+      aria-disabled={page.currentPage === page.lastPage}
+      href={page.url.next}
+      class=`blog__pagination__controls__arrow ${page.currentPage === page.lastPage ?'disabled' :''}`
     >
-      <a
-        href={page.url.next}
-        class="blog__pagination__controls__listItem__link"
-      >
-        <Icon name="play-arrow" />
-      </a>
-    </li>
-  </ul>
+      &#62;
+    </a>
+  </div>
 </nav>
 
 <style lang="scss">
@@ -72,39 +63,53 @@ const { page } = Astro.props as {
       display: flex;
       justify-content: center;
       align-items: center;
-      @include mixins.reset-list;
-      &__listItem {
-        padding: 1rem;
+
+      &__arrow {
+        font-size: 1.5em;
+        @include mixins.reset-link;
+        padding: 1em;
         &:hover,
         &:focus {
           animation: highlight-link 200ms forwards;
         }
+      }
+      ul {
+        @include mixins.reset-list;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .blog__pagination__controls__listItem {
+          padding: 1em;
+          &--number {
+            font-size: 1em;
+            @include mixins.reset_link;
+            @include mixins.reset_link;
+            @include mixins.underline-link;
+            background-size: 0 0.1em;
+            background-position: 0 100%;
+          }
+          &--current {
+            background-size: 100% 0.1em;
+          }
 
-        &--disabled {
-          cursor: normal;
-          &:hover {
-            animation: none;
-          }
-        }
-        &__link {
-          @include mixins.reset_link;
-          @include mixins.underline-link;
-          background-size: 0 0.1em;
-          background-position: 0 100%;
-          [data-icon] {
-            font-size: 1.8rem;
-            color: var(--color);
-          }
-        }
-        &__link--number {
-          font-size: 1.5em;
-          &:hover,
-          &:focus {
+          &:hover .blog__pagination__controls__listItem--number,
+          &:focus .blog__pagination__controls__listItem--number {
             animation:
               highlight-link 200ms forwards,
               underline-link 200ms forwards;
           }
+
+          &:hover,
+          &:focus {
+            animation: highlight-link 200ms forwards;
+          }
         }
+      }
+    }
+    .disabled {
+      cursor: normal;
+      &:hover {
+        animation: none;
       }
     }
   }
