@@ -40,7 +40,7 @@ import Layout from "../layouts/Layout.astro";
         Splitting();
       });
 
-      document?.addEventListener("scroll", (event) => {
+      document?.addEventListener("scroll", () => {
         if (window.scrollY > 256) {
           document
             .querySelector("[data-splitting]")
