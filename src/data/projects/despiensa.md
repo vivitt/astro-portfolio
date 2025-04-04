@@ -8,6 +8,7 @@ link: 'https://www.despiensa.site/'
 repo: 'https://github.com/vivitt/despiensa-smart-shopping-list'
 technologies: ['React', 'Firebase', 'Tailwind', 'Figma']
 title: 'Despiensa'
+id: 10
 ---
 
 

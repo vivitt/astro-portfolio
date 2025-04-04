@@ -1,6 +1,7 @@
 import { defineCollection, z } from "astro:content";
 
 import { glob } from "astro/loaders";
+import { number } from "astro:schema";
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/data/blog" }),
@@ -36,6 +37,7 @@ const projects = defineCollection({
     repo: z.string().optional(),
     technologies: z.array(z.string()),
     title: z.string(),
+    id: z.number(),
   }),
 });
 

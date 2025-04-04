@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import ProjectCard from "../../components/ProjectCard.astro";
 
 const projects = await getCollection("projects");
+projects.sort((a,b) => b.data.id - a.data.id)
 ---
 
 <Layout title="My projects">
