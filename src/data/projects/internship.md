@@ -4,8 +4,6 @@ images:
   thumb: '../../images/projects/internship/prev.png'
   cover: ''
 
-link: 'https://guess-who-game.vercel.app/'
-repo: 'https://github.com/vivitt/Guess_Who_GAME'
 technologies: ['JavaScript', 'LESS', 'Vue.js', 'PHP']
 title: 'My Software Engineering Internship at the Wikimedia Foundation'
 

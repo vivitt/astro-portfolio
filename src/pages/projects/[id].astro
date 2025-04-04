@@ -39,21 +39,26 @@ const { Content } = await render(project);
       <p class="project__header--description">{project.data.description}</p>
     </header>
     <div class="project__content">
+      {project.data.link || project.data.repo &&
       <section class="project__content__section">
         <h2 class="project__content__section--title">Links</h2>
         <div class="project__content__section--links">
+          {project.data.link &&
           <BoxLink
             text="Check out the live project"
             link={project?.data?.link}
             blank="true"
-          />
+          />}
+          {project.data.repo &&
           <BoxLink
             text="View the project repo"
             link={project?.data?.repo}
             blank="true"
           />
+          }
         </div>
       </section>
+      }
       <Content />
       <BackLink link="/projects" text="Back to all projects"></BackLink>
     </div>
