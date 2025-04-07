@@ -31,40 +31,53 @@ const { Content } = await render(project);
             ))
         }
       </div>{
-        project.data.images.cover &&
-        <Image src={project.data.images.cover} class="project__header--image" alt="" />
+        project.data.images.cover && (
+          <Image
+            src={project.data.images.cover}
+            class="project__header--image"
+            alt=""
+          />
+        )
       }
-     
-    
+
       <p class="project__header--description">{project.data.description}</p>
     </header>
     <div class="project__content">
-      {project.data.link || project.data.repo &&
-      <section class="project__content__section">
-        <h2 class="project__content__section--title">Links</h2>
-        <div class="project__content__section--links">
-          {project.data.link &&
-          <BoxLink
-            text="Check out the live project"
-            link={project?.data?.link}
-            blank="true"
-          />}
-          {project.data.repo &&
-          <BoxLink
-            text="View the project repo"
-            link={project?.data?.repo}
-            blank="true"
-          />
-          }
-        </div>
-      </section>
+      {
+        project.data.link ||
+          (project.data.repo && (
+            <section class="project__content__section">
+              <h2 class="project__content__section--title">Links</h2>
+              <div class="project__content__section--links">
+                {project.data.link && (
+                  <BoxLink
+                    text="Check out the live project"
+                    link={project?.data?.link}
+                    blank="true"
+                  />
+                )}
+                {project.data.repo && (
+                  <BoxLink
+                    text="View the project repo"
+                    link={project?.data?.repo}
+                    blank="true"
+                  />
+                )}
+              </div>
+            </section>
+          ))
       }
       <Content />
-      <BackLink link="/projects" text="Back to all projects"></BackLink>
+      <BackLink link="/projects" text="Back to all projects" />
     </div>
-   
   </main>
 </Layout>
+<script
+  is:inline
+  type="text/partytown"
+  data-goatcounter="https://vivitt.goatcounter.com/count"
+  async
+  src="//gc.zgo.at/count.js"></script>
 <style lang="scss">
   @use "../../styles/mixins";
   .project {
@@ -102,7 +115,6 @@ const { Content } = await render(project);
         @include mixins.smalldesk {
           flex-direction: column;
           align-items: flex-start;
-          
         }
       }
     }

@@ -22,9 +22,9 @@ const { Content } = await render(post);
     <header>
       <img />
       <p>{formatPostDate(post?.data?.pubDate).date}</p>
-     
+
       <h1>{post?.data?.title}</h1>
-      
+
       <div class="tags">
         <h4 class="visually-hidden">Posts tagged with:</h4>
         {
@@ -35,6 +35,12 @@ const { Content } = await render(post);
     </header>
 
     <Content />
-    <BackLink link="/blog/1" text="Back to all posts"></BackLink>
+    <BackLink link="/blog/1" text="Back to all posts" />
   </main>
 </Layout>
+<script
+  is:inline
+  type="text/partytown"
+  data-goatcounter="https://vivitt.goatcounter.com/count"
+  async
+  src="//gc.zgo.at/count.js"></script>

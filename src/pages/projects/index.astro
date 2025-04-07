@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import ProjectCard from "../../components/ProjectCard.astro";
 
 const projects = await getCollection("projects");
-projects.sort((a,b) => b.data.id - a.data.id)
+projects.sort((a, b) => b.data.id - a.data.id);
 ---
 
 <Layout title="My projects">
@@ -16,7 +16,12 @@ projects.sort((a,b) => b.data.id - a.data.id)
     </ul>
   </main>
 </Layout>
-
+<script
+  is:inline
+  type="text/partytown"
+  data-goatcounter="https://vivitt.goatcounter.com/count"
+  async
+  src="//gc.zgo.at/count.js"></script>
 <style>
   ul {
     list-style-type: none;
