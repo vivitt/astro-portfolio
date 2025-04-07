@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Viviana Yanez Creative Frontend Developer">
+  <main class="not-found">
+    <h1 >404</h1>
+    <div class="not-found__content">
+        <h3></h3>
+        <p>
+            This page doesn't exist.
+           
+    </p>
+    <ul>
+        <li><a href="/">Back to homepage</a></li>
+        <li><a href="/projects">Explore what I've been working on</a></li>
+        <li><a href="/blog/1">Read my latest blogpost</a></li>
+    </ul>
+    </div>
+  </main>
+</Layout>
+
+<style lang="scss">
+  @use "../styles/mixins";
+  .not-found {
+    
+    h1 {
+        font-size: 7em;
+        margin: 0;
+    }
+    p {
+        font-size: 2em;
+    }
+    ul {
+        
+        list-style: circle;
+        
+        
+        li {
+            a {
+                @include mixins.reset-link;
+                @include mixins.underline-link;
+                background-size: 100% 0.1em;
+                background-position: 0 95%;
+               
+            }
+        }
+    }
+
+  }
+</style>
