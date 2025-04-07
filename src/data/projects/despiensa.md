@@ -20,7 +20,7 @@ Despiensa is a wordplay on the Spanish words despensa and piensa.
 
 It's a web app that allows users to register and create shopping lists, which they can also share with other users.
 
-![](../../images/projects/despiensa/desktop.png)
+![List view showing the list title, a text input for searching items, a button to add new items, and a button to share the list. Below, all list items are displayed, ordered by time of need](../../images/projects/despiensa/desktop.png)
 
 The app also records the user's buying habits, so it displays the list items ordered by their likely next purchase date.
 
@@ -49,12 +49,12 @@ The most interesting part of this project was collaborating with other developer
 
 We used GitHub to track project progress, creating and assigning issues.
 The most challenging ones involved computing the need and buy frequency of items to properly order them in the list.
-![](../../images/projects/despiensa/list.png)
+![List view showing a group of ordered items, with one marked as recently bought. This is indicated by a checked checkbox and a strikethrough](../../images/projects/despiensa/list.png)
 One thing I loved was how committed the team was to building an accessible app. We ensured to correctly label inputs, ensure full keyboard navigation, and maintain a color palette with sufficient contrast.
 We also made sure the app was fully responsive and easy to navigate across different devices.
-![](../../images/projects/despiensa/mobile.png)
+![Mobile layout of the list view, displaying ordered items optimized for smaller screens](../../images/projects/despiensa/mobile.png)
 Once the core functionality was complete, we transitioned to the styling phase, using Figma to create a mood board and refine the app’s design.
-![](../../images/projects/despiensa/figma.png)
+![Figma mood board showcasing design inspirations, color palette, and UI component drafts for the project](../../images/projects/despiensa/figma.png)
 
 
 ## Highlighted learnings

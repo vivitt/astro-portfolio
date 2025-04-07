@@ -49,15 +49,15 @@ In this project, I was involved not only in coding but also in designing the ent
 
 The first step was to choose a color palette that complemented the tones of the illustrations:
 
-![](../../images/projects/guess-who/colors.png)
+![Sample of the color palette used in the project](../../images/projects/guess-who/colors.png)
 
 One of the most significant challenges was displaying many picture cards on the screen while ensuring all characters were visible. I learned about CSS Flexbox and used it to make the cards adapt to different screen sizes.
 
-![](../../images/projects/guess-who/chars.png)
+![Screenshot of the Guess Who game main view, featuring twenty illustrated character cards](../../images/projects/guess-who/chars.png)
 
 To make the most of the available space, I used toggleable panels and modular components that users can show or hide as needed. I also customized Material UI components to better fit the project’s design and ensure they complemented the color palette and illustrations.
 
-![](../../images/projects/guess-who/panel.png)
+![Screenshot of the main view with a modal open, displaying the interface for asking questions](../../images/projects/guess-who/panel.png)
 
 ## Highlighted learnings
 As my first self-guided project, this experience came with both challenges and valuable learning opportunities.
