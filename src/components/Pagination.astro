@@ -16,7 +16,7 @@ const { page } = Astro.props as {
 };
 
 const pageNumbers = Array.from({ length: page.lastPage }).map(
-  (_: undefined, index: number) => index
+  (_: undefined, index: number) => index,
 );
 ---
 

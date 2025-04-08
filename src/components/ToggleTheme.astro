@@ -65,15 +65,17 @@
       ?.addEventListener("click", toggle_theme);
   });
 
-  document.addEventListener('astro:after-swap', () => {
+  document.addEventListener("astro:after-swap", () => {
     const element = document.documentElement;
-    const isDark = localStorage?.getItem("theme") === 'dark'
-    if(isDark) {
+    const isDark = localStorage?.getItem("theme") === "dark";
+    if (isDark) {
       document.documentElement.classList.add("dark");
-      document.getElementById("background")?.setAttribute("aria-checked", isDark);  
+      document
+        .getElementById("background")
+        ?.setAttribute("aria-checked", isDark);
     }
     element.dataset.theme = isDark ? "dark" : "light";
-});
+  });
 </script>
 
 <style>

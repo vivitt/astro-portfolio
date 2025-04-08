@@ -28,10 +28,8 @@
   --navFont: "Inclusive Sans", sans-serif;
   --shadow: rgba(0, 0, 0, 0.2);
   --shadowDark: rgba(255, 255, 255, 0.2);
-  --to: 95%
+  --to: 95%;
 }
-
-
 
 * {
   box-sizing: border-box;
@@ -73,8 +71,6 @@ html {
       margin-top: 2em;
     }
 
-    
-
     a {
       color: var(--color);
     }
@@ -110,7 +106,9 @@ html {
   }
 }
 
-.project img, .blog img, .blog__illustration img {
+.project img,
+.blog img,
+.blog__illustration img {
   max-width: 100%;
   height: auto;
   padding: 2em 0;
@@ -126,36 +124,34 @@ html {
   }
 }
 
-
-
-.project [href^="http"]:not([href*="viviyanez.dev"])::after, 
+.project [href^="http"]:not([href*="viviyanez.dev"])::after,
 .blog [href^="http"]:not([href*="viviyanez.dev"])::after {
   display: inline-block;
   width: 0.8em;
   height: 0.8em;
-  background-image: url('../icons/external-link.svg');
+  background-image: url("../icons/external-link.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 75% auto;
-  content: '(external link)';
+  content: "(external link)";
   overflow: hidden;
   white-space: nowrap;
   text-indent: 1em;
-  }
+}
 
-  .dark .project [href^="http"]:not([href*="viviyanez.dev"])::after, 
-  .dark .blog [href^="http"]:not([href*="viviyanez.dev"])::after {
-    background-image: url('../icons/external-link-dark.svg');
-  }
+.dark .project [href^="http"]:not([href*="viviyanez.dev"])::after,
+.dark .blog [href^="http"]:not([href*="viviyanez.dev"])::after {
+  background-image: url("../icons/external-link-dark.svg");
+}
 
-  .blog [href^="http"]:not([href*="viviyanez.dev"])::after {
-    background-position: left;
-  }
-  .blog [href^="http"]:not([href*="viviyanez.dev"]) {
-    background-size: 97% 0.1em;
-  }
+.blog [href^="http"]:not([href*="viviyanez.dev"])::after {
+  background-position: left;
+}
+.blog [href^="http"]:not([href*="viviyanez.dev"]) {
+  background-size: 97% 0.1em;
+}
 
-  .blog ul , .project ul {
-    list-style: circle;
-  
-  }
+.blog ul,
+.project ul {
+  list-style: circle;
+}

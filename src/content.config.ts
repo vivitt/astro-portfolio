@@ -26,18 +26,19 @@ const blog = defineCollection({
 
 const projects = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/data/projects" }),
-  schema: ({ image }) => z.object({
-    description: z.string(),
-    images: z.object({
-      thumb: image(),
-      cover: image(),
+  schema: ({ image }) =>
+    z.object({
+      description: z.string(),
+      images: z.object({
+        thumb: image(),
+        cover: image(),
+      }),
+      link: z.string().optional(),
+      repo: z.string().optional(),
+      technologies: z.array(z.string()),
+      title: z.string(),
+      id: z.number(),
     }),
-    link: z.string().optional(),
-    repo: z.string().optional(),
-    technologies: z.array(z.string()),
-    title: z.string(),
-    id: z.number(),
-  }),
 });
 
 export const collections = { blog, projects };

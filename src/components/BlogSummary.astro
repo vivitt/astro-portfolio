@@ -9,14 +9,14 @@ const { post } = Astro.props;
   <article>
     <p>{formatPostDate(post.data.pubDate).date}</p>
     <h3>
-    <a
-      class="blog-summary__link"
-      href={post.data.link === "" || !post.data.link
-        ? "/posts/" + post.id
-        : post.data.link}
-      >{post.data.title}
-    </a>
-  </h3>
+      <a
+        class="blog-summary__link"
+        href={post.data.link === "" || !post.data.link
+          ? "/posts/" + post.id
+          : post.data.link}
+        >{post.data.title}
+      </a>
+    </h3>
     <p>{post.data.description}</p>
     <section>
       <h4 class="visually-hidden">Posts tagged with:</h4>
@@ -34,26 +34,27 @@ const { post } = Astro.props;
 </li>
 
 <style lang="scss">
-@use '../styles/mixins';
+  @use "../styles/mixins";
   .blog-summary {
     border-bottom: 1px solid;
     padding: 0 0 1.2em 0;
     margin: 0 0.2em;
     display: flex;
     flex-direction: column;
-      
+
     &__link {
-        color: var(--color);
-        margin: 0 0 1em 0;
-        text-decoration: none;
-        @include mixins.underline-link;
-        @include mixins.blog-title-link;
-        &:hover, &:focus {
-              transform: scale(2);
-              transition: all 2ms;
-            }
+      color: var(--color);
+      margin: 0 0 1em 0;
+      text-decoration: none;
+      @include mixins.underline-link;
+      @include mixins.blog-title-link;
+      &:hover,
+      &:focus {
+        transform: scale(2);
+        transition: all 2ms;
       }
-    
+    }
+
     &__tags {
       display: flex;
       @include mixins.reset-list;

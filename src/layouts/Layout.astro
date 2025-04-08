@@ -23,7 +23,6 @@ const { title } = Astro.props;
 
 const date = new Date();
 let year = date.getFullYear();
-
 ---
 
 <!doctype html>
@@ -173,14 +172,13 @@ let year = date.getFullYear();
           }
           picture {
             @include mixins.tablet {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
+              flex-grow: 1;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin: 0 auto;
+            }
           }
-          }
-        
         }
       }
     }

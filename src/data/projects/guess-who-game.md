@@ -1,20 +1,22 @@
 ---
-description: 'This project features a gender-inclusive, illustrated version of the classic Guess Who game and was my final project for the AllWomen Web Dev Bootcamp.'
-images: 
-  thumb: '../../images/projects/guess-who/prev.png'
-  cover: '../../images/projects/guess-who/cover.png'
+description: "This project features a gender-inclusive, illustrated version of the classic Guess Who game and was my final project for the AllWomen Web Dev Bootcamp."
+images:
+  thumb: "../../images/projects/guess-who/prev.png"
+  cover: "../../images/projects/guess-who/cover.png"
 
-link: 'https://guess-who-game.vercel.app/'
-repo: 'https://github.com/vivitt/Guess_Who_GAME'
-technologies: ['React', 'MaterialUI']
-title: 'Guess Who Game'
+link: "https://guess-who-game.vercel.app/"
+repo: "https://github.com/vivitt/Guess_Who_GAME"
+technologies: ["React", "MaterialUI"]
+title: "Guess Who Game"
 id: 12
 ---
 
 ## Tech Stack
+
 This project was created with React. It started as a frontend project, with the main focus on implementing a UI that is intuitive and easy to use. That’s why I chose to use Material UI components and customize them to fit the project design.
 
 ## Details and Main Features
+
 This game involves guessing a random character by asking questions about their visible features. To add more fun and improve the overall experience, players can also:
 
 - Choose an avatar
@@ -32,6 +34,7 @@ This game involves guessing a random character by asking questions about their v
 - See how long it took them to guess correctly
 
 ## Motivation
+
 I decided to work on this game after realizing that the classic version was quite biased, with only 5 women out of 20 characters and almost identical skin tones across all of them.
 
 It started as a personal illustration project, where I created drawings for all the characters. When I graduated from bootcamp, I saw the perfect opportunity to put my illustrations to use.
@@ -39,6 +42,7 @@ It started as a personal illustration project, where I created drawings for all 
 Beyond being a fun game, the project turned out to be a great learning tool for kids and foreign language learners. I truly believe play is an important part of education, and I wanted players to have access to more diverse (and real) representations.
 
 ## Development & Challenges
+
 During development, I first focused on implementing the game logic. I wanted users to be able to formulate any question they wanted, so I couldn’t rely on pre-made questions.
 
 To achieve this, I implemented a solution that combines two select inputs, one of them mandatory and the other optional. So users have the flexibility to create questions that match what they want to ask.
@@ -60,8 +64,7 @@ To make the most of the available space, I used toggleable panels and modular co
 ![Screenshot of the main view with a modal open, displaying the interface for asking questions](../../images/projects/guess-who/panel.png)
 
 ## Highlighted learnings
+
 As my first self-guided project, this experience came with both challenges and valuable learning opportunities.
 
 I expanded my understanding of React functional components and hooks, becoming more comfortable installing and working with various packages and libraries. I also learned the importance of maintaining a well-structured project and being mindful of each line of code, refactoring when needed to keep things clean and maintainable.
-
-
