@@ -1,7 +1,6 @@
 import { defineCollection, z } from "astro:content";
 
 import { glob } from "astro/loaders";
-import { number } from "astro:schema";
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/data/blog" }),
