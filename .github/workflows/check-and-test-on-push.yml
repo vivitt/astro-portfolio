@@ -1,0 +1,22 @@
+name: run astro check and vitest on push
+on:
+  push:
+    branches:
+      - main
+    
+jobs:
+  run-tests-and-coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Lint code
+        run: npm run astro check
+
+      - name: Run tests
+        run: npm test
