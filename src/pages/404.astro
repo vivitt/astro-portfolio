@@ -8,6 +8,7 @@ import Layout from "../layouts/Layout.astro";
     <div class="not-found__content">
       <h3></h3>
       <p>This page doesn't exist.</p>
+      <p>Let's get you back on a valid path:</p>
       <ul>
         <li><a href="/">Back to homepage</a></li>
         <li><a href="/projects">Explore what I've been working on</a></li>
@@ -31,6 +32,7 @@ import Layout from "../layouts/Layout.astro";
     }
     p {
       font-size: 2em;
+      margin: 0;
     }
     ul {
       list-style: circle;
@@ -41,6 +43,8 @@ import Layout from "../layouts/Layout.astro";
           @include mixins.underline-link;
           background-size: 100% 0.1em;
           background-position: 0 95%;
+          font-size: 1.2em;
+          line-height: 2;
         }
       }
     }

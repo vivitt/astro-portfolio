@@ -1,6 +1,5 @@
 @use "mixins";
 @use "keyframes";
-@use "project-clipping-paths";
 
 @media (prefers-reduced-motion) {
   :root::view-transition-new(root) {
@@ -65,6 +64,7 @@ html {
     font-family: "Inclusive Sans", sans-serif;
     padding: 0;
     line-height: 1.5;
+    font-size: 1.1em;
 
     main {
       @include mixins.max-w;
@@ -74,6 +74,8 @@ html {
     a {
       color: var(--color);
     }
+
+
   }
 }
 
