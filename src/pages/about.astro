@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import vivitt from "../images/projects/guess-who.png";
+import vivitt from "../images/about/about.png";
+import background from "../images/about/background.png";
 const pageTitle = "About Me";
 ---
 
@@ -13,11 +14,11 @@ const pageTitle = "About Me";
       <h2>Hello there!</h2>
       <div class="about__content__section">
         <Image
-          class="about__content__section--image--right"
+          class="about__content__section--image about__content__section--image--right"
           src={vivitt}
-          alt="Viviana is smiling at the camera in a black and white selfie."
+          alt="Viviana is smiling at the camera in front of a plain white background."
         />
-        <div class="about__content__section--text--left">
+        <div class="about__content__section--text">
           <p>
             I am Viviana, a creative web developer with a background in
             audiovisual & visual communication.
@@ -41,11 +42,13 @@ const pageTitle = "About Me";
       <h2>Background</h2>
       <div class="about__content__section">
         <Image
-          class="about__content__section--image--left"
-          src={vivitt}
-          alt="Viviana is smiling at the camera in a black and white selfie."
+          class="about__content__section--image"
+          src={background}
+          alt="Part of Viviana’s arms and hands are visible in front of a laptop and mouse on a desk."
         />
-        <div class="about__content__section--text--right">
+        <div
+          class="about__content__section--text about__content__section--text--right"
+        >
           <p>
             I wrote my first lines of code while working as a 2D character
             animator and loved it. First learned HTML and CSS and eventially
@@ -54,10 +57,13 @@ const pageTitle = "About Me";
           <p>
             Thanks to my background, I grew as a collaborative team player, used
             to taking ownership of my work while working within a team towards a
-            common goal. I deeply care about what I create, but I learned early
-            in my career not to get too attached to a piece of work and to stay
-            open to changes. Adapting quickly to new environments and tasks is
-            one of my strengths.
+            common goal.
+          </p>
+          <p>
+            I deeply care about what I create, but I learned early in my career
+            not to get too attached to a piece of work and to stay open to
+            changes. Adapting quickly to new environments and tasks is one of my
+            strengths.
           </p>
         </div>
       </div>
@@ -121,42 +127,49 @@ const pageTitle = "About Me";
   .about {
     &__content {
       &__section {
-        display: grid;
-        padding: 0;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(3, 1fr);
+        display: flex;
+
+        @include mixins.tablet {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
         &--image {
-          @include mixins.tablet {
-            @include mixins.about-img-tablet;
-          }
+          max-width: 50%;
+          height: auto;
+          z-index: -1;
+
           &--right {
-            @include mixins.about-img-right;
-            @include mixins.tablet {
-              @include mixins.about-img-tablet;
-            }
+            order: 2;
           }
-          &--left {
-            @include mixins.about-img-left;
-            @include mixins.tablet {
-              @include mixins.about-img-tablet;
-            }
+
+          @include mixins.tablet {
+            max-width: 60%;
+            order: 2;
+          }
+
+          @include mixins.phone {
+            max-width: 100%;
           }
         }
         &--text {
-          &--right {
-            @include mixins.about-text-right;
-            @include mixins.tablet {
-              @include mixins.about-text-tablet;
-            }
+          font-size: 1.1em;
+          flex-grow: 2;
+          margin-right: -80px;
+          margin-left: 0;
+          @include mixins.tablet {
+            margin-right: 0;
+            margin-bottom: -80px;
           }
-          &--left {
-            @include mixins.about-text-left;
+          &--right {
+            margin-left: -80px;
+            margin-right: 0;
+
             @include mixins.tablet {
-              @include mixins.about-text-tablet;
+              margin-left: 0;
             }
           }
         }
-        font-size: 1.1em;
       }
     }
   }

@@ -155,3 +155,14 @@ html {
 .project ul {
   list-style: circle;
 }
+
+.dark .about__content__section--image {
+  filter:  brightness(0.7);
+  z-index: -1;
+}
+
+
+html:not(.dark) .about__content__section--image {
+  filter: brightness(1.1);
+  z-index: -1;
+}

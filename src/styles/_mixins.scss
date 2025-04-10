@@ -123,44 +123,6 @@ $breakpoints: (
   background-size: $line-length $line-width;
 }
 
-@mixin about-img-right {
-  height: auto;
-  width: 80%;
-  margin: 0 0 auto auto;
-  grid-column: 2/5;
-  grid-row: 1/4;
-}
-
-@mixin about-img-left {
-  height: auto;
-  width: 80%;
-  grid-column: 1/4;
-  grid-row: 1/4;
-}
-
-@mixin about-text-left {
-  grid-column: 1/3;
-  grid-row: 1/4;
-}
-
-@mixin about-text-right {
-  grid-column: 3/5;
-  grid-row: 1/4;
-}
-
-@mixin about-img-tablet {
-  grid-column: 1/5;
-  width: 90%;
-  justify-self: center;
-  margin: 2em auto;
-  grid-row: 2/4;
-}
-
-@mixin about-text-tablet {
-  grid-row: 1/3;
-  grid-column: 1/5;
-}
-
 @mixin box-shadow {
   box-shadow: var(--shadow) 0px 25px 30px -32px;
 }
