@@ -44,6 +44,25 @@ Open your browser and navigate to `http://localhost:4321`
 
 A quick look at how the project is organized:
 
+```
+/
+├── public/         
+├── src/
+│   ├── components/
+|   |── data/
+|   |     ├── blog
+|   |     └── projects
+│   ├── icons/
+│   ├── images/
+│   ├── layouts/
+|   ├── pages/ 
+|   ├── styles/  
+|   ├── utils/
+│   └── content.config.ts
+├── test/
+├── astro.config.mjs
+└── package.json
+```
 
 ## License
 Feel free to use it as a reference, fork it, or build on top of it. Licensed under MIT.
