@@ -65,4 +65,4 @@ A quick look at how the project is organized:
 ```
 
 ## License
-Feel free to use it as a reference, fork it, or build on top of it. Licensed under MIT.
+Feel free to use it as a reference, fork it, or build on top of it. Licensed under [MIT](https://github.com/vivitt/astro-portfolio/blob/main/LICENSE).
