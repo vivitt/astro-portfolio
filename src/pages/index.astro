@@ -11,7 +11,7 @@ import Layout from "../layouts/Layout.astro";
       </p>
       <p class="hero__text--paragraph">
         I'm a
-        <span class="hero__text--highlighted">creative frontend developer</span
+        <span class="hero__text--highlighted">creative software developer</span
         >.
       </p>
       <p class="hero__text--paragraph">
@@ -34,17 +34,18 @@ import Layout from "../layouts/Layout.astro";
         collaborating on projects that resonate with my interests.
       </p>
     </div>
-    <script>
-      document?.addEventListener("scroll", () => {
-        if (window.scrollY > 400) {
-          document
-            .querySelector(".hero__text--highlighted")
-            ?.classList.add("highlight");
-        }
-      });
-    </script>
   </main>
 </Layout>
+
+<script>
+  document?.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+      document
+        .querySelector(".hero__text--highlighted")
+        ?.classList.add("highlight");
+    }
+  });
+</script>
 
 <style lang="scss">
   @use "../styles/mixins";
