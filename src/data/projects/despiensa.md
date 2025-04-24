@@ -4,7 +4,7 @@ images:
   thumb: "../../images/projects/despiensa/prev.png"
   cover: "../../images/projects/despiensa/cover.png"
 
-link: "https://www.despiensa.site/"
+link: "https://despiensa-94998.web.app/"
 repo: "https://github.com/vivitt/despiensa-smart-shopping-list"
 technologies: ["React", "Firebase", "Tailwind", "Figma"]
 title: "Despiensa"
