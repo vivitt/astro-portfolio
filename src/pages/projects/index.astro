@@ -1,7 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import ProjectCard from "../../components/ProjectCard.astro";
 
 const projects = await getCollection("projects");
 projects.sort((a, b) => b.data.id - a.data.id);
@@ -9,18 +8,69 @@ projects.sort((a, b) => b.data.id - a.data.id);
 
 <Layout title="My projects">
   <main>
-    <h1 class="visually-hidden">My Projects</h1>
+    <h1 class="visually-hidden">Vivi Yanez, recent work & experiments</h1>
+    <h2 aria-hidden="true">Recent work & experiments</h2>
 
     <ul>
-      {projects.map((project) => <ProjectCard content={project} />)}
+      {
+        projects.map((project) => (
+          <li class="project-card">
+            <div class="project-card__project">
+              <h3 class="project-card__project__title">
+                <a href={"/projects/" + project.id}>{project.data.title} </a>
+              </h3>
+              <p class="visually-hidden">This project was created using:</p>
+
+              <p class="project-card__project__description">
+                {project.data.description}
+              </p>
+
+              <div class="project-card__project__link">
+                <a
+                  href={"/projects/" + project.id}
+                  class="project-card__project__link--link"
+                >
+                  View project <span aria-hidden>&#62;</span>
+                  <span aria-hidden>&#62;</span>
+                </a>
+              </div>
+            </div>
+          </li>
+        ))
+      }
     </ul>
   </main>
 </Layout>
 
-<style>
+<style lang="scss">
+  @use "../../styles/mixins";
+
   ul {
     list-style-type: none;
-    margin: 0;
-    padding: 2em 0 0 0;
+    margin-inline-start: 0;
+    padding-top: 0.2em;
+    padding-inline-start: 0;
+
+    .project-card {
+      &__project {
+        &__link {
+          display: flex;
+          align-items: center;
+
+          --to: 80%;
+          font-weight: 900;
+          &--link {
+            font-size: 0.85em;
+            @include mixins.reset-link;
+            @include mixins.underline-link;
+            background-position: 0 88%;
+            &:hover {
+              animation: underline-link 400ms forwards;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
   }
 </style>

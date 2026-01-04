@@ -58,7 +58,7 @@
 html {
   color: var(--color);
   background-color: var(--bgColor);
-  min-width: 400px;
+  min-width: 500px;
   body {
     margin: 0;
     font-family: "Inclusive Sans", sans-serif;
@@ -151,20 +151,4 @@ html {
 }
 .blog [href^="http"]:not([href*="viviyanez.dev"]) {
   background-size: 97% 0.1em;
-}
-
-.blog ul,
-.project ul {
-  list-style: circle;
-}
-
-.dark .about__content__section--image {
-  filter:  brightness(0.7);
-  z-index: -1;
-}
-
-
-html:not(.dark) .about__content__section--image {
-  filter: brightness(1.1);
-  z-index: -1;
 }

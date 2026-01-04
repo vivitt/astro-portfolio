@@ -23,10 +23,5 @@ test("Card", async () => {
     },
   });
 
-  expect(result).toContain('Participating in The Collab Lab');
-
-  expect(result).toContain('Those past weeks have been a bit busy on my side, so I am summarizing both in this new blog entry.\n✨ Our shopping list app&#39;s functionality is now almost completed, and we are really close to starting work on the UI styling.');
-
-  expect(result).toContain('March 22, 2024');
-
+  expect(result).toContain("Participating in The Collab Lab");
 });

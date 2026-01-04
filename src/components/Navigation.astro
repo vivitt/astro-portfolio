@@ -1,24 +1,41 @@
 ---
 import { blogPathReg, postsPathReg, projectsPathReg } from "../utils/pathRegex";
+import { Picture } from "astro:assets";
+import blogLogo from "../images/logos/blog-viviyanez.png";
+import logo from "../images/logos/logo-viviyanez.png";
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 ---
 
 <nav class="nav">
+  <div class="nav__logo">
+    {
+      currentPath.match(postsPathReg) || currentPath.match(blogPathReg) ? (
+        <a class="nav__logo__link">
+          <Picture formats={["avif", "webp"]} src={blogLogo} alt="" />
+        </a>
+      ) : (
+        <a href="/" class="nav__logo__link">
+          <Picture formats={["avif", "webp"]} src={logo} alt="" />
+        </a>
+      )
+    }
+  </div>
   <ul class="nav__links">
     <li
-      class=`${currentPath.match(projectsPathReg) ? "active" : ""} nav__links__link`
+      class=`${currentPath === "about" || currentPath === '' ? "active" : ""} nav__links__link `
     >
-      <a class="nav__links__link__text" href="/projects">Projects</a>
+      <a class="nav__links__link__text" href="/">About</a>
     </li>
-
     <li
       class=`${currentPath.match(blogPathReg) || currentPath.match(postsPathReg) ? "active" : ""} nav__links__link`
     >
       <a class="nav__links__link__text" href="/blog/1">Blog</a>
     </li>
-    <li class=`${currentPath === "about" ? "active" : ""} nav__links__link `>
-      <a class="nav__links__link__text" href="/about">About</a>
+    <li
+      class=`${currentPath.match(projectsPathReg) ? "active" : ""} nav__links__link`
+    >
+      <a class="nav__links__link__text" href="/projects">Projects</a>
     </li>
   </ul>
 </nav>
@@ -27,23 +44,40 @@ const currentPath = pathname.slice(1);
   @use "../styles/mixins";
 
   .nav {
-    flex-grow: 1;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    display: flex;
     @include mixins.tablet {
-      margin: 0 0 0 auto;
+      flex-flow: column;
+      justify-content: flex-start;
+      align-items: flex-start;
     }
-    @include mixins.phone {
-      margin: 0 auto;
+
+    &__logo {
+      width: 400px;
+      height: 115px;
+      &__link {
+        display: block;
+      }
+      picture > img {
+        width: 400px;
+        height: 110px;
+        height: auto;
+        @include mixins.phone {
+          min-width: 320px;
+        }
+      }
     }
+
     &__links {
       display: flex;
       justify-content: end;
       flex-flow: nowrap;
-
+      @include mixins.tablet {
+        margin: 0;
+        padding: 0;
+      }
       &__link {
         animation: none;
         list-style: none;

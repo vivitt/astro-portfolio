@@ -1,42 +1,30 @@
 ---
 import { formatPostDate } from "../utils/date";
-import Tag from "./Tag.astro";
 
 const { post } = Astro.props;
 ---
 
 <li class="blog-summary" transition:animate="fade">
   <article>
-    <p>{formatPostDate(post.data.pubDate).date}</p>
-    <h3>
-      <a
-        class="blog-summary__link"
-        href={post.data.link === "" || !post.data.link
-          ? "/posts/" + post.id
-          : post.data.link}
-        >{post.data.title}
-      </a>
-    </h3>
-    <p>{post.data.description}</p>
-    <section>
-      <h4 class="visually-hidden">Posts tagged with:</h4>
-      <ul class="blog-summary__tags">
-        {
-          post.data.tags?.map((tag: string) => (
-            <li>
-              <Tag tag={tag}>{tag}</Tag>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+    <div>
+      <h3>
+        <a
+          class="blog-summary__link"
+          href={post.data.link === "" || !post.data.link
+            ? "/posts/" + post.id
+            : post.data.link}
+          target={post.data.link && "_blank"}
+          >{post.data.title}
+        </a>
+      </h3>
+      <span>{formatPostDate(post.data.pubDate).date}</span>
+    </div>
   </article>
 </li>
 
 <style lang="scss">
   @use "../styles/mixins";
   .blog-summary {
-    border-bottom: 1px solid;
     padding: 0 0 1.2em 0;
     margin: 0 0.2em;
     display: flex;
