@@ -1,8 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import BlogSummary from "../../components/BlogSummary.astro";
 import { getCollection } from "astro:content";
 import Pagination from "../../components/Pagination.astro";
+import { formatPostDate } from "../../utils/date";
 
 export async function getStaticPaths({ paginate }) {
   const allBlogPosts = await getCollection("blog");
@@ -10,15 +10,49 @@ export async function getStaticPaths({ paginate }) {
   return paginate(allBlogPosts, { pageSize: 10 });
 }
 const { page } = Astro.props as {
-  page: { data: Array<{ data: { pubDate: string } }> };
+  page: {
+    data: Array<{
+      id: string;
+      data: {
+        title: string;
+        link: string;
+        pubDate: string;
+      };
+    }>;
+  };
 };
 ---
 
 <Layout title="Vivi's Blog">
   <main class="blog">
     <h1 class="visually-hidden">Vivi's Blog</h1>
+    <h2>Writing about software engineering and career transitions</h2>
+
     <ul>
-      {page.data.map((post) => <BlogSummary post={post} />)}
+      {
+        page.data.map((post) => (
+          <li class="blog-summary">
+            <article>
+              <div>
+                <h3>
+                  <a
+                    class="blog-summary__link"
+                    href={
+                      post.data.link === "" || !post.data.link
+                        ? "/posts/" + post.id
+                        : post.data.link
+                    }
+                    target={post.data.link && "_blank"}
+                  >
+                    {post.data.title}
+                  </a>
+                </h3>
+                <span>{formatPostDate(post.data.pubDate).date}</span>
+              </div>
+            </article>
+          </li>
+        ))
+      }
     </ul>
     <Pagination page={page} />
   </main>
@@ -26,8 +60,8 @@ const { page } = Astro.props as {
 
 <style>
   ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+    margin-inline-start: 0;
+    padding-top: 0.2em;
+    padding-inline-start: 0;
   }
 </style>
